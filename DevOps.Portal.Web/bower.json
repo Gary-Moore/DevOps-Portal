@@ -2,6 +2,7 @@
   "name": "DevOps-Portal",
   "private": true,
   "dependencies": {
-    "angular": "v1.6.4"
+    "angular": "v1.6.4",
+    "angular-ui-router": "1.0.0-rc.1"
   }
 }
