@@ -1,0 +1,7 @@
+{
+  "name": "DevOps-Portal",
+  "private": true,
+  "dependencies": {
+    "angular": "v1.6.4"
+  }
+}
