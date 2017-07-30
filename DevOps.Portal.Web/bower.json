@@ -1,0 +1,12 @@
+{
+  "name": "DevOps-Portal",
+  "private": true,
+  "dependencies": {
+    "angular": "v1.6.5",
+    "angular-ui-router": "1.0.5"
+  },
+  "resolutions": {
+    "angular": "v1.6.5",
+    "angular-ui-router": "1.0.5"
+  }
+}

@@ -250,3 +250,5 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+# Bower pacakges
+/DevOps.Portal.Web/Scripts/bower

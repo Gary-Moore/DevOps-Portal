@@ -23,6 +23,15 @@ namespace DevOps.Portal.Web
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
+                       "~/Scripts/bower/angular/angular.js",
+                       "~/Scripts/bower/angular-ui-router/release/angular-ui-router.js",
+                       "~/Scripts/app/*module.js",
+                       "~/Scripts/app/core/*module.js",
+                       "~/Scripts/app/core/*.js",
+                       "~/Scripts/app/solutionbuilder/*module.js",
+                       "~/Scripts/app/solutionbuilder/*.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
