@@ -24,8 +24,8 @@ namespace DevOps.Portal.Web
                       "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
-                       "~/Scripts/angular/angular.js",
-                       "~/Scripts/angular-ui-router/release/angular-ui-router.js",
+                       "~/Scripts/bower/angular/angular.js",
+                       "~/Scripts/bower/angular-ui-router/release/angular-ui-router.js",
                        "~/Scripts/app/*module.js",
                        "~/Scripts/app/core/*module.js",
                        "~/Scripts/app/core/*.js",

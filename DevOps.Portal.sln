@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevOps.Portal.Web", "DevOps.Portal.Web\DevOps.Portal.Web.csproj", "{1C3744F7-5874-4127-921F-CCB25A8BAAF2}"
 EndProject
@@ -14,7 +14,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevOps.Portal.Domain", "Dev
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevOps.Portal.Tests", "DevOps.Portal.Tests\DevOps.Portal.Tests.csproj", "{B53D0459-D19C-42CF-B8E6-72A3DB6176CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevOps.Portal.Business", "DevOps.Portal.Business\DevOps.Portal.Business.csproj", "{A0931399-179A-40E5-B4D1-75001AE0195F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevOps.Portal.Application", "DevOps.Portal.Application\DevOps.Portal.Application.csproj", "{4A78A1ED-910C-4C6B-8F73-46A11993C215}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevOps.Portal.Infrastructure", "DevOps.Portal.Infrastructure\DevOps.Portal.Infrastructure.csproj", "{3F3AC37B-ED9E-475A-99B2-288BFE34CB61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevOps.Portal.Common", "DevOps.Portal.Common\DevOps.Portal.Common.csproj", "{AC6D161D-CE91-4E2B-B809-C521AA79D9EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,10 +38,18 @@ Global
 		{B53D0459-D19C-42CF-B8E6-72A3DB6176CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B53D0459-D19C-42CF-B8E6-72A3DB6176CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B53D0459-D19C-42CF-B8E6-72A3DB6176CE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A0931399-179A-40E5-B4D1-75001AE0195F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A0931399-179A-40E5-B4D1-75001AE0195F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A0931399-179A-40E5-B4D1-75001AE0195F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A0931399-179A-40E5-B4D1-75001AE0195F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A78A1ED-910C-4C6B-8F73-46A11993C215}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A78A1ED-910C-4C6B-8F73-46A11993C215}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A78A1ED-910C-4C6B-8F73-46A11993C215}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A78A1ED-910C-4C6B-8F73-46A11993C215}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F3AC37B-ED9E-475A-99B2-288BFE34CB61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F3AC37B-ED9E-475A-99B2-288BFE34CB61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F3AC37B-ED9E-475A-99B2-288BFE34CB61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F3AC37B-ED9E-475A-99B2-288BFE34CB61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC6D161D-CE91-4E2B-B809-C521AA79D9EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC6D161D-CE91-4E2B-B809-C521AA79D9EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC6D161D-CE91-4E2B-B809-C521AA79D9EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC6D161D-CE91-4E2B-B809-C521AA79D9EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
