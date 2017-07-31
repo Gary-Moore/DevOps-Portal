@@ -1,8 +1,17 @@
-﻿@model dynamic
+﻿@model IEnumerable<DevOps.Portal.Domain.Teamcity.Project>
 
 @{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
+    ViewBag.Title = "Solution Builder";
 }
 
-<h2>title</h2>
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <ul>
+        @foreach (var proj in Model)
+        {
+            <li>@proj.Name</li>
+        }
+    </ul>
+    @Html.ActionLink("Create", "Create", null, new {@class = "btn btn-primary"})
+</div>

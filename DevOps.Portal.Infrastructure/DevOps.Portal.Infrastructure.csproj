@@ -30,7 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap, Version=4.5.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StructureMap.4.5.1\lib\net45\StructureMap.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,7 +47,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\ConfigurationWrapper.cs" />
+    <Compile Include="Configuration\IConfiguration.cs" />
+    <Compile Include="InfrastructureRegistry.cs" />
+    <Compile Include="Network\HttpClientWrapper.cs" />
+    <Compile Include="Network\IHttpClientWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Teamcity\ITeamcityService.cs" />
+    <Compile Include="Teamcity\TeamcityService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DevOps.Portal.Domain\DevOps.Portal.Domain.csproj">
+      <Project>{CB2C84C3-F5DB-48BA-81D4-DD2277E4FF26}</Project>
+      <Name>DevOps.Portal.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
