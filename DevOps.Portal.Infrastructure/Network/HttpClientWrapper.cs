@@ -9,7 +9,7 @@ namespace DevOps.Portal.Infrastructure.Network
 {
     public class HttpClientWrapper : IHttpClientWrapper
     {
-        public async Task<T> GetDataAsync<T>(string url, ICredentials credentials = null) where T : class
+        public async Task<T> GetDataAsync<T>(Uri url, ICredentials credentials = null) where T : class
         {
             try
             {
@@ -28,7 +28,7 @@ namespace DevOps.Portal.Infrastructure.Network
             }
         }
 
-        public async Task<string> PostDataAsync(string url, string data, ICredentials credentials)
+        public async Task<string> PostDataAsync(Uri url, string data, ICredentials credentials)
         {
             var content = new StringContent(data);
             try
@@ -52,6 +52,32 @@ namespace DevOps.Portal.Infrastructure.Network
                 Console.WriteLine(e);
                 throw;
             }
+        }
+
+        public async Task<T> SendDataAsync<T>(Uri url, string data, ICredentials credentials,
+            Func<string, T> convertAction) where T : class
+        {
+            try
+            {
+                using (var handler = new HttpClientHandler() {Credentials = credentials})
+                using (var client = new HttpClient(handler))
+                {
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    var requestContent = new HttpRequestMessage(HttpMethod.Get, url)
+                    {
+                        //Content = new StringContent(data)
+                    };
+                    var response = await client.SendAsync(requestContent);
+                    var content = await response.Content.ReadAsStringAsync();
+                    return convertAction(content);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            
         }
     }
 }

@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 using DevOps.Portal.Domain.Teamcity;
 using DevOps.Portal.Infrastructure.Configuration;
 using DevOps.Portal.Infrastructure.Network;
+using Newtonsoft.Json.Linq;
 
 namespace DevOps.Portal.Infrastructure.Teamcity
 {
@@ -26,7 +25,8 @@ namespace DevOps.Portal.Infrastructure.Teamcity
 
         public async Task<IEnumerable<Project>> GetProjects()
         {
-            var projects = await _client.GetDataAsync<IEnumerable<Project>>(TeamCityProjectsUrl, _credentials);
+            var projects = await _client.SendDataAsync(TeamCityProjectsUrl, String.Empty, _credentials,
+                ParseProjectJson);
 
             return projects;
         }
@@ -43,6 +43,13 @@ namespace DevOps.Portal.Infrastructure.Teamcity
             return result;
         }
 
-        private string TeamCityProjectsUrl => $"{_teamcityUrl}/httpAuth/app/rest/projects";
+        private Uri TeamCityProjectsUrl => new Uri($"{_teamcityUrl}/httpAuth/app/rest/projects");
+
+        private static IEnumerable<Project> ParseProjectJson(string json)
+        {
+            var jsonObject = JObject.Parse(json);
+
+            return jsonObject["project"].Children().Select(proj => proj.ToObject<Project>()).ToList();
+        }
     }
 }

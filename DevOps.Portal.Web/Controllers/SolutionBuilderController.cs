@@ -23,7 +23,6 @@ namespace DevOps.Portal.Web.Controllers
         public async Task<ActionResult> Index()
         {
             var result = await _teamcityService.GetProjects();
-            result = new List<Project>();
             return View(result);
         }
 
