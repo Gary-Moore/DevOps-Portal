@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,9 +45,33 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Teamcity\Commands\CreateProject\CreateProjectCommand.cs" />
+    <Compile Include="Teamcity\Commands\CreateProject\Factory\CreateTeamcityProjectFactory.cs" />
+    <Compile Include="Teamcity\Commands\CreateProject\Factory\ICreateTeamcityProjectFactory.cs" />
+    <Compile Include="Teamcity\Commands\CreateProject\ParentProjectModel.cs" />
+    <Compile Include="Teamcity\Commands\CreateProject\CreateTeamcityProjectModel.cs" />
+    <Compile Include="Teamcity\Commands\CreateProject\ICreateProjectCommand.cs" />
+    <Compile Include="Teamcity\Commands\CreateSolution\CreateTeamcitySolutionCommand.cs" />
+    <Compile Include="Teamcity\Commands\CreateSolution\ICreateTeamcitySolutionCommand.cs" />
+    <Compile Include="Teamcity\Commands\CreateVcsRoot\CreateVcsRootCommand.cs" />
+    <Compile Include="Teamcity\ProjectBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Teamcity\" />
+    <Folder Include="Teamcity\Commands\CreateBuild\" />
+    <Folder Include="Teamcity\Queries\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DevOps.Portal.Domain\DevOps.Portal.Domain.csproj">
+      <Project>{CB2C84C3-F5DB-48BA-81D4-DD2277E4FF26}</Project>
+      <Name>DevOps.Portal.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DevOps.Portal.Infrastructure\DevOps.Portal.Infrastructure.csproj">
+      <Project>{3F3AC37B-ED9E-475A-99B2-288BFE34CB61}</Project>
+      <Name>DevOps.Portal.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

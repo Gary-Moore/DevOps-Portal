@@ -8,28 +8,34 @@ using DevOps.Portal.Domain.Teamcity;
 using DevOps.Portal.Infrastructure.Configuration;
 using DevOps.Portal.Infrastructure.Network;
 using DevOps.Portal.Infrastructure.Teamcity;
+using DevOps.Portal.Web.Models.SolutionBuilder;
+using DevOps.Portal.Application.Teamcity.Commands.CreateProject;
+using DevOps.Portal.Application.Teamcity.Commands.CreateSolution;
 
 namespace DevOps.Portal.Web.Controllers
 {
     public class SolutionBuilderController : Controller
     {
         private readonly ITeamcityService _teamcityService;
+        private readonly ICreateTeamcitySolutionCommand _command;
 
-        public SolutionBuilderController(ITeamcityService teamcityService)
+        public SolutionBuilderController(ITeamcityService teamcityService, ICreateTeamcitySolutionCommand command)
         {
             _teamcityService = teamcityService;
+            _command = command;
         }
 
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            var result = await _teamcityService.GetProjects();
-            return View(result);
+            var model = new CreateSolutionViewModel();
+            return View(model);
         }
 
-        public async Task<ActionResult> Create()
+        public async Task<ActionResult> Create(CreateSolutionViewModel model)
         {
-            var result = await _teamcityService.CreateProject("Dave");
-            return View(result);
+            await _command.Execute(model.SolutionName, model.SubProjectName);
+            return RedirectToAction("Index");
         }
+        
     }
 }

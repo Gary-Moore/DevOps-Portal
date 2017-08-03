@@ -169,6 +169,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\SolutionBuilder\CreateSolutionViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -236,9 +237,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DevOps.Portal.Application\DevOps.Portal.Application.csproj">
+      <Project>{4A78A1ED-910C-4C6B-8F73-46A11993C215}</Project>
+      <Name>DevOps.Portal.Application</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DevOps.Portal.Domain\DevOps.Portal.Domain.csproj">
       <Project>{CB2C84C3-F5DB-48BA-81D4-DD2277E4FF26}</Project>
       <Name>DevOps.Portal.Domain</Name>

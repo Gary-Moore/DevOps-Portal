@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DevOps.Portal.Domain.Teamcity;
 using DevOps.Portal.Infrastructure.Configuration;
 using DevOps.Portal.Infrastructure.Network;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace DevOps.Portal.Infrastructure.Teamcity
@@ -30,17 +31,18 @@ namespace DevOps.Portal.Infrastructure.Teamcity
 
             return projects;
         }
-
+        
         public void ActivateBuild(string projectId)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<string> CreateProject(string name)
+        public async Task<Project> CreateProjectAsync(string createProjectJson)
         {
-            var result = await _client.PostDataAsync(TeamCityProjectsUrl, name, _credentials);
+            var result = await _client.PostDataAsync(TeamCityProjectsUrl, createProjectJson,
+                MediaContentTypes.Json, _credentials, JsonConvert.DeserializeObject<Project>);
 
-            return result;
+            return result.ResponseData;
         }
 
         private Uri TeamCityProjectsUrl => new Uri($"{_teamcityUrl}/httpAuth/app/rest/projects");

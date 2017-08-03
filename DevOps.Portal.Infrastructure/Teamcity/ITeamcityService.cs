@@ -8,7 +8,7 @@ namespace DevOps.Portal.Infrastructure.Teamcity
     {
         Task<IEnumerable<Project>> GetProjects();
 
-        Task<string> CreateProject(string name);
+        Task<Project> CreateProjectAsync(string createProjectJson);
 
         void ActivateBuild(string projectId);
     }
