@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Mime;
+using System.Text;
 using System.Threading.Tasks;
 using DevOps.Portal.Domain.Teamcity;
 using DevOps.Portal.Infrastructure.Configuration;
@@ -26,7 +28,7 @@ namespace DevOps.Portal.Infrastructure.Teamcity
 
         public async Task<IEnumerable<Project>> GetProjects()
         {
-            var projects = await _client.SendDataAsync(TeamCityProjectsUrl, String.Empty, _credentials,
+            var projects = await _client.SendDataAsync(TeamCityProjectsUrl, string.Empty, _credentials,
                 ParseProjectJson);
 
             return projects;
@@ -45,7 +47,25 @@ namespace DevOps.Portal.Infrastructure.Teamcity
             return result.ResponseData;
         }
 
+        public async Task<Build> CreateBuildAsync(string buildName, string projectId)
+        {
+            var result = await _client.PostDataAsync(TeamCityProjectBuildsUrl(projectId), buildName,
+                MediaTypeNames.Text.Plain, _credentials, JsonConvert.DeserializeObject<Build>);
+
+            return result.ResponseData;
+        }
+
+        public async Task<Build> UpdateBuildTemplateAsync(string buildId, string templateId)
+        {
+            var result = await _client.PutDataAsync(TeamCityBuildTemplateUrl(buildId), templateId,
+                MediaTypeNames.Text.Plain, _credentials, JsonConvert.DeserializeObject<Build>);
+
+            return result.ResponseData;
+        }
+
         private Uri TeamCityProjectsUrl => new Uri($"{_teamcityUrl}/httpAuth/app/rest/projects");
+        private Uri TeamCityProjectBuildsUrl(string projectId) => new Uri($"{_teamcityUrl}/httpAuth/app/rest/projects/id:{projectId}/buildTypes");
+        private Uri TeamCityBuildTemplateUrl(string buildId) => new Uri($"{_teamcityUrl}/httpAuth/app/rest/buildTypes/id:{buildId}/template");
 
         private static IEnumerable<Project> ParseProjectJson(string json)
         {

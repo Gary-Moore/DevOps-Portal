@@ -45,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Teamcity\Commands\CreateBuild\CreateBuildCommand.cs" />
+    <Compile Include="Teamcity\Commands\CreateBuild\ICreateBuildCommand.cs" />
     <Compile Include="Teamcity\Commands\CreateProject\CreateProjectCommand.cs" />
     <Compile Include="Teamcity\Commands\CreateProject\Factory\CreateTeamcityProjectFactory.cs" />
     <Compile Include="Teamcity\Commands\CreateProject\Factory\ICreateTeamcityProjectFactory.cs" />
@@ -57,7 +59,6 @@
     <Compile Include="Teamcity\ProjectBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Teamcity\Commands\CreateBuild\" />
     <Folder Include="Teamcity\Queries\" />
   </ItemGroup>
   <ItemGroup>

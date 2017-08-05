@@ -17,6 +17,14 @@
             @Html.LabelFor(model => model.SubProjectName)
             @Html.TextBoxFor(model => model.SubProjectName, new { @class = "form-control" })
         </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.BuildTemplateName)
+            @Html.TextBoxFor(model => model.BuildTemplateName, new { @class = "form-control" })
+        </div> 
+        <div class="form-group">
+            @Html.LabelFor(model => model.SourceControlUrl)
+            @Html.TextBoxFor(model => model.SourceControlUrl, new { @class = "form-control" })
+        </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     }
 </div>

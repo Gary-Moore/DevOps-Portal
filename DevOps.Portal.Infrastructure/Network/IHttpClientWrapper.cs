@@ -11,6 +11,9 @@ namespace DevOps.Portal.Infrastructure.Network
         Task<NetworkResponse<T>> PostDataAsync<T>(Uri url, string data, string contentType, ICredentials credentials,
             Func<string, T> convertAction) where T : class;
 
+        Task<NetworkResponse<T>> PutDataAsync<T>(Uri url, string data, string contentType, ICredentials credentials,
+            Func<string, T> convertAction) where T : class;
+
         Task<T> SendDataAsync<T>(Uri url, string data, ICredentials credentials,
             Func<string, T> convertAction) where T : class;
     }

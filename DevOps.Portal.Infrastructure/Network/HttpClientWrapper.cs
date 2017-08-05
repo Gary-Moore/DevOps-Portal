@@ -38,7 +38,7 @@ namespace DevOps.Portal.Infrastructure.Network
                 using (var handler = new HttpClientHandler { Credentials = credentials })
                 using (var client = new HttpClient(handler))
                 {
-                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(contentType));
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(MediaContentTypes.Json));
                     var response = await client.PostAsync(url, content);
 
                     if (response.IsSuccessStatusCode)
@@ -49,6 +49,35 @@ namespace DevOps.Portal.Infrastructure.Network
                     }
 
                     return new NetworkResponse<T>(new [] {response.ReasonPhrase});
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public async Task<NetworkResponse<T>> PutDataAsync<T>(Uri url, string data, string contentType, ICredentials credentials,
+            Func<string, T> convertAction) where T : class
+        {
+            var content = new StringContent(data, System.Text.Encoding.UTF8, contentType);
+            try
+            {
+                using (var handler = new HttpClientHandler { Credentials = credentials })
+                using (var client = new HttpClient(handler))
+                {
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(MediaContentTypes.Json));
+                    var response = await client.PutAsync(url, content);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var reponseContent = await response.Content.ReadAsStringAsync();
+                        var contentData = convertAction(reponseContent);
+                        return new NetworkResponse<T>(contentData);
+                    }
+
+                    return new NetworkResponse<T>(new[] { response.ReasonPhrase });
                 }
             }
             catch (Exception e)
