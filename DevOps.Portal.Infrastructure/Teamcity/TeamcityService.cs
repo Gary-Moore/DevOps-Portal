@@ -33,7 +33,15 @@ namespace DevOps.Portal.Infrastructure.Teamcity
 
             return projects;
         }
-        
+
+        public async Task<VcsRoot> CreateVcsRoot(string createvcsRootJson)
+        {
+            var vcsRoot = await _client.PostDataAsync(TeamCityVcsRootUrl(""), createvcsRootJson, 
+                MediaContentTypes.Json, _credentials, JsonConvert.DeserializeObject<VcsRoot>);
+
+            return vcsRoot.ResponseData;
+        }
+
         public void ActivateBuild(string projectId)
         {
             throw new NotImplementedException();
@@ -66,6 +74,8 @@ namespace DevOps.Portal.Infrastructure.Teamcity
         private Uri TeamCityProjectsUrl => new Uri($"{_teamcityUrl}/httpAuth/app/rest/projects");
         private Uri TeamCityProjectBuildsUrl(string projectId) => new Uri($"{_teamcityUrl}/httpAuth/app/rest/projects/id:{projectId}/buildTypes");
         private Uri TeamCityBuildTemplateUrl(string buildId) => new Uri($"{_teamcityUrl}/httpAuth/app/rest/buildTypes/id:{buildId}/template");
+
+        private Uri TeamCityVcsRootUrl (string projectId) => new Uri($"{_teamcityUrl}/httpAuth/app/rest/vcs-roots/");
 
         private static IEnumerable<Project> ParseProjectJson(string json)
         {

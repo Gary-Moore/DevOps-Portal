@@ -56,6 +56,10 @@
     <Compile Include="Teamcity\Commands\CreateSolution\CreateTeamcitySolutionCommand.cs" />
     <Compile Include="Teamcity\Commands\CreateSolution\ICreateTeamcitySolutionCommand.cs" />
     <Compile Include="Teamcity\Commands\CreateVcsRoot\CreateVcsRootCommand.cs" />
+    <Compile Include="Teamcity\Commands\CreateVcsRoot\Factory\CreateTeamcityVcsRootFactory.cs" />
+    <Compile Include="Teamcity\Commands\CreateVcsRoot\CreateTeamcityVcsRootModel.cs" />
+    <Compile Include="Teamcity\Commands\CreateVcsRoot\Factory\ICreateTeamcityVcsRootModelFactory.cs" />
+    <Compile Include="Teamcity\Commands\CreateVcsRoot\ICreateVcsRootCommand.cs" />
     <Compile Include="Teamcity\ProjectBuilder.cs" />
   </ItemGroup>
   <ItemGroup>

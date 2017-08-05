@@ -1,6 +1,4 @@
-﻿using System.IO;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
+﻿using System.Threading.Tasks;
 using DevOps.Portal.Domain.Teamcity;
 using DevOps.Portal.Infrastructure.Teamcity;
 using Newtonsoft.Json;

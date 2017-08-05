@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using DevOps.Portal.Domain.Teamcity;
 using DevOps.Portal.Infrastructure.Teamcity;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 
 namespace DevOps.Portal.Application.Teamcity.Commands.CreateBuild
 {

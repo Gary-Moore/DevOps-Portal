@@ -1,8 +1,6 @@
 ﻿namespace DevOps.Portal.Domain.Teamcity
 {
-    public class Project
+    public class Project : TeamCityComponent
     {
-        public string Id { get; set; }
-        public string Name { get; set; }
     }
 }

@@ -15,8 +15,6 @@
                 {
                     Locator = "id:_Root"
                 };
-
-                //model.Id = $"{name}";
             }
             else
             {
@@ -24,10 +22,7 @@
                 {
                     Locator = $"id:{parentName}"
                 };
-
-               // model.Id = $"{parentName}_{name}";
             }
-            
 
             return model;
         }
