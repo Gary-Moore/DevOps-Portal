@@ -6,6 +6,7 @@ namespace DevOps.Portal.Infrastructure.Teamcity
 {
     public interface ITeamcityService
     {
+        Task<VcsRoot> AttachVcsRoot(string attachJson, string buildId);
         Task<IEnumerable<Project>> GetProjects();
         Task<VcsRoot> CreateVcsRoot(string urlName);
         Task<Project> CreateProjectAsync(string createProjectJson);

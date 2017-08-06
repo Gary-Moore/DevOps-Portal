@@ -10,13 +10,13 @@ namespace DevOps.Portal.Application.Teamcity.Commands.CreateSolution
     public class CreateTeamcitySolutionCommand : ICreateTeamcitySolutionCommand
     {
         private readonly ICreateTeamcityProjectFactory _modelFactory;
-        private readonly ICreateTeamcityVcsRootModelFactory _vcsModelFactory;
+        private readonly ITeamcityVcsRootModelFactory _vcsModelFactory;
         private readonly ICreateProjectCommand _createProjectCommand;
         private readonly ICreateBuildCommand _createBuildCommand;
         private readonly ICreateVcsRootCommand _createVcsRootCommand;
 
         public CreateTeamcitySolutionCommand(ICreateTeamcityProjectFactory modelFactory,
-            ICreateTeamcityVcsRootModelFactory vcsModelFactory,
+            ITeamcityVcsRootModelFactory vcsModelFactory,
             ICreateProjectCommand createProjectCommand,
             ICreateBuildCommand createBuildCommand,
             ICreateVcsRootCommand createVcsRootCommand)
@@ -28,7 +28,7 @@ namespace DevOps.Portal.Application.Teamcity.Commands.CreateSolution
             _createVcsRootCommand = createVcsRootCommand;
         }
 
-        public async Task Execute(string mainProjectName, string subProjectName)
+        public async Task Execute(string mainProjectName, string subProjectName, string sourceControlUrl)
         {
            // Create Main Project
             var mainProjectModel = _modelFactory.Create(mainProjectName);
@@ -41,9 +41,9 @@ namespace DevOps.Portal.Application.Teamcity.Commands.CreateSolution
             // Create Build
             var build = await _createBuildCommand.ExecuteAsync(subProject.Id);
             
-            // Create VCS Root
-            var vcsModel =  _vcsModelFactory.Create(subProjectName + " master", subProject.Id);
-            var vcs = await _createVcsRootCommand.Execute(vcsModel);
+            // Create VCS Root and attach to build
+            var vcsModel =  _vcsModelFactory.Create(subProjectName + " master", subProject.Id, sourceControlUrl);
+            var vcs = await _createVcsRootCommand.Execute(vcsModel, build.Id);
         }
     }
 }

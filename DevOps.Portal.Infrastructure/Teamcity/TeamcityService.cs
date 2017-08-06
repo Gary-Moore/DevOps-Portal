@@ -26,6 +26,14 @@ namespace DevOps.Portal.Infrastructure.Teamcity
             _credentials = new NetworkCredential(configuration.TeamcityUsername, configuration.TeamcityPassword);
         }
 
+        public async Task<VcsRoot> AttachVcsRoot(string attachJson, string buildId)
+        {
+            var vcs = await _client.PostDataAsync(TeamCityBuildRootEntriesUrl(buildId), attachJson, MediaContentTypes.Json,
+                _credentials, JsonConvert.DeserializeObject<VcsRoot>);
+
+            return vcs.ResponseData;
+        }
+
         public async Task<IEnumerable<Project>> GetProjects()
         {
             var projects = await _client.SendDataAsync(TeamCityProjectsUrl, string.Empty, _credentials,
@@ -36,7 +44,7 @@ namespace DevOps.Portal.Infrastructure.Teamcity
 
         public async Task<VcsRoot> CreateVcsRoot(string createvcsRootJson)
         {
-            var vcsRoot = await _client.PostDataAsync(TeamCityVcsRootUrl(""), createvcsRootJson, 
+            var vcsRoot = await _client.PostDataAsync(TeamCityVcsRootUrl, createvcsRootJson, 
                 MediaContentTypes.Json, _credentials, JsonConvert.DeserializeObject<VcsRoot>);
 
             return vcsRoot.ResponseData;
@@ -74,8 +82,8 @@ namespace DevOps.Portal.Infrastructure.Teamcity
         private Uri TeamCityProjectsUrl => new Uri($"{_teamcityUrl}/httpAuth/app/rest/projects");
         private Uri TeamCityProjectBuildsUrl(string projectId) => new Uri($"{_teamcityUrl}/httpAuth/app/rest/projects/id:{projectId}/buildTypes");
         private Uri TeamCityBuildTemplateUrl(string buildId) => new Uri($"{_teamcityUrl}/httpAuth/app/rest/buildTypes/id:{buildId}/template");
-
-        private Uri TeamCityVcsRootUrl (string projectId) => new Uri($"{_teamcityUrl}/httpAuth/app/rest/vcs-roots/");
+        private Uri TeamCityVcsRootUrl => new Uri($"{_teamcityUrl}/httpAuth/app/rest/vcs-roots/");
+        private Uri TeamCityBuildRootEntriesUrl(string buildId) => new Uri($"{_teamcityUrl}/httpAuth/app/rest/buildTypes/id:{buildId}/vcs-root-entries"); 
 
         private static IEnumerable<Project> ParseProjectJson(string json)
         {

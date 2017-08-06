@@ -33,7 +33,7 @@ namespace DevOps.Portal.Web.Controllers
 
         public async Task<ActionResult> Create(CreateSolutionViewModel model)
         {
-            await _command.Execute(model.SolutionName, model.SubProjectName);
+            await _command.Execute(model.SolutionName, model.SubProjectName, model.SourceControlUrl);
             return RedirectToAction("Index");
         }
         

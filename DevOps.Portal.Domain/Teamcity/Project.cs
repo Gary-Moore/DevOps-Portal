@@ -2,5 +2,6 @@
 {
     public class Project : TeamCityComponent
     {
+        public string ParentProjectId { get; set; }
     }
 }

@@ -5,6 +5,6 @@ namespace DevOps.Portal.Application.Teamcity.Commands.CreateVcsRoot
 {
     public interface ICreateVcsRootCommand
     {
-        Task<VcsRoot> Execute(CreateTeamcityVcsRootModel rootUrl);
+        Task<VcsRoot> Execute(VcsRoot vcsRoot, string buildId);
     }
 }
