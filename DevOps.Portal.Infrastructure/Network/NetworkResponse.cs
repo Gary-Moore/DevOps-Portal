@@ -15,9 +15,9 @@ namespace DevOps.Portal.Infrastructure.Network
             ResponseData = responseData;
         }
 
-        public bool Success => Errors.Any();
+        public bool Success => !Errors.Any();
 
-        public IEnumerable<string> Errors { get; }
+        public IEnumerable<string> Errors { get; } = new List<string>();
 
         public T ResponseData { get; }
     }

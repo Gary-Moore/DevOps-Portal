@@ -2,9 +2,22 @@
 
 @{
     ViewBag.Title = "Solution Builder";
+    IEnumerable<string> errors = ViewBag.Error;
 }
 
 <h2>@ViewBag.Title</h2>
+
+@if (errors != null)
+{
+    <div class="alert alert-danger">
+        <ul>
+        @foreach (var error in errors)
+        {
+            <li>@error</li>
+        }
+        </ul>
+    </div>
+}
 
 <div>
     @using (Html.BeginForm("Create", "SolutionBuilder", FormMethod.Post))

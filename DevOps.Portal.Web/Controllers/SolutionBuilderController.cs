@@ -16,12 +16,10 @@ namespace DevOps.Portal.Web.Controllers
 {
     public class SolutionBuilderController : Controller
     {
-        private readonly ITeamcityService _teamcityService;
         private readonly ICreateTeamcitySolutionCommand _command;
 
-        public SolutionBuilderController(ITeamcityService teamcityService, ICreateTeamcitySolutionCommand command)
+        public SolutionBuilderController(ICreateTeamcitySolutionCommand command)
         {
-            _teamcityService = teamcityService;
             _command = command;
         }
 
@@ -33,8 +31,17 @@ namespace DevOps.Portal.Web.Controllers
 
         public async Task<ActionResult> Create(CreateSolutionViewModel model)
         {
-            await _command.Execute(model.SolutionName, model.SubProjectName, model.SourceControlUrl);
-            return RedirectToAction("Index");
+            try
+            {
+                await _command.Execute(model.SolutionName, model.SubProjectName, model.SourceControlUrl);
+                return RedirectToAction("Index", "SolutionBuilder");
+            }
+            catch (TeamCityOperationException ex)
+            {
+                ViewBag.Error = ex.Errors.ToArray();
+                return View("Index", model);
+            }
+            
         }
         
     }

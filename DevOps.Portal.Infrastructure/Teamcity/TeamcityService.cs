@@ -28,15 +28,20 @@ namespace DevOps.Portal.Infrastructure.Teamcity
 
         public async Task<VcsRoot> AttachVcsRoot(string attachJson, string buildId)
         {
-            var vcs = await _client.PostDataAsync(TeamCityBuildRootEntriesUrl(buildId), attachJson, MediaContentTypes.Json,
+            var response = await _client.PostDataAsync(TeamCityBuildRootEntriesUrl(buildId), attachJson, MediaContentTypes.Json,
                 _credentials, JsonConvert.DeserializeObject<VcsRoot>);
 
-            return vcs.ResponseData;
+            if (response.Success)
+            {
+                return response.ResponseData;
+            }
+
+            throw new TeamCityOperationException(response.Errors, "Error attaching a TeamCity VCS root");
         }
 
         public async Task<IEnumerable<Project>> GetProjects()
         {
-            var projects = await _client.SendDataAsync(TeamCityProjectsUrl, string.Empty, _credentials,
+            var projects = await _client.GetDataAsync(TeamCityProjectsUrl, string.Empty, _credentials,
                 ParseProjectJson);
 
             return projects;
@@ -44,10 +49,15 @@ namespace DevOps.Portal.Infrastructure.Teamcity
 
         public async Task<VcsRoot> CreateVcsRoot(string createvcsRootJson)
         {
-            var vcsRoot = await _client.PostDataAsync(TeamCityVcsRootUrl, createvcsRootJson, 
+            var response = await _client.PostDataAsync(TeamCityVcsRootUrl, createvcsRootJson, 
                 MediaContentTypes.Json, _credentials, JsonConvert.DeserializeObject<VcsRoot>);
 
-            return vcsRoot.ResponseData;
+            if (response.Success)
+            {
+                return response.ResponseData;
+            }
+
+            throw new TeamCityOperationException(response.Errors, "Error creating a TeamCity VCS root"); 
         }
 
         public void ActivateBuild(string projectId)
@@ -65,18 +75,28 @@ namespace DevOps.Portal.Infrastructure.Teamcity
 
         public async Task<Build> CreateBuildAsync(string buildName, string projectId)
         {
-            var result = await _client.PostDataAsync(TeamCityProjectBuildsUrl(projectId), buildName,
+            var response = await _client.PostDataAsync(TeamCityProjectBuildsUrl(projectId), buildName,
                 MediaTypeNames.Text.Plain, _credentials, JsonConvert.DeserializeObject<Build>);
 
-            return result.ResponseData;
+            if (response.Success)
+            {
+                return response.ResponseData;
+            }
+
+            throw new TeamCityOperationException(response.Errors, "Error creating a build");
         }
 
         public async Task<Build> UpdateBuildTemplateAsync(string buildId, string templateId)
         {
-            var result = await _client.PutDataAsync(TeamCityBuildTemplateUrl(buildId), templateId,
+            var response = await _client.PutDataAsync(TeamCityBuildTemplateUrl(buildId), templateId,
                 MediaTypeNames.Text.Plain, _credentials, JsonConvert.DeserializeObject<Build>);
 
-            return result.ResponseData;
+            if (response.Success)
+            {
+                return response.ResponseData;
+            }
+
+            throw new TeamCityOperationException(response.Errors, "Error updating build with template"); 
         }
 
         private Uri TeamCityProjectsUrl => new Uri($"{_teamcityUrl}/httpAuth/app/rest/projects");

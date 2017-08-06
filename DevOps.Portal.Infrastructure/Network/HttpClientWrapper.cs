@@ -10,84 +10,7 @@ namespace DevOps.Portal.Infrastructure.Network
 {
     public class HttpClientWrapper : IHttpClientWrapper
     {
-        public async Task<T> GetDataAsync<T>(Uri url, ICredentials credentials = null) where T : class
-        {
-            try
-            {
-                using (var handler = new HttpClientHandler{ Credentials = credentials }) 
-                using (var client = new HttpClient(handler))
-                {
-                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    var response = await client.GetStringAsync(url);
-                    return JsonConvert.DeserializeObject<T>(response);
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                return null;
-            }
-        }
-
-        public async Task<NetworkResponse<T>> PostDataAsync<T>(Uri url, string data, string contentType, ICredentials credentials,
-            Func<string, T> convertAction) where T : class
-        {
-            var content = new StringContent(data, System.Text.Encoding.UTF8, contentType);
-            try
-            {
-                using (var handler = new HttpClientHandler { Credentials = credentials })
-                using (var client = new HttpClient(handler))
-                {
-                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(MediaContentTypes.Json));
-                    var response = await client.PostAsync(url, content);
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var reponseContent = await response.Content.ReadAsStringAsync();
-                        var contentData  = convertAction(reponseContent);
-                        return new NetworkResponse<T>(contentData);
-                    }
-
-                    return new NetworkResponse<T>(new [] {response.ReasonPhrase});
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
-        }
-
-        public async Task<NetworkResponse<T>> PutDataAsync<T>(Uri url, string data, string contentType, ICredentials credentials,
-            Func<string, T> convertAction) where T : class
-        {
-            var content = new StringContent(data, System.Text.Encoding.UTF8, contentType);
-            try
-            {
-                using (var handler = new HttpClientHandler { Credentials = credentials })
-                using (var client = new HttpClient(handler))
-                {
-                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(MediaContentTypes.Json));
-                    var response = await client.PutAsync(url, content);
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var reponseContent = await response.Content.ReadAsStringAsync();
-                        var contentData = convertAction(reponseContent);
-                        return new NetworkResponse<T>(contentData);
-                    }
-
-                    return new NetworkResponse<T>(new[] { response.ReasonPhrase });
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
-        }
-
-        public async Task<T> SendDataAsync<T>(Uri url, string data, HttpMethod httpMethod, string contentType, ICredentials credentials,
+        public async Task<T> GetDataAsync<T>(Uri url, string data, ICredentials credentials,
             Func<string, T> convertAction) where T : class
         {
             try
@@ -95,11 +18,8 @@ namespace DevOps.Portal.Infrastructure.Network
                 using (var handler = new HttpClientHandler() { Credentials = credentials })
                 using (var client = new HttpClient(handler))
                 {
-                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    var requestContent = new HttpRequestMessage(httpMethod, url)
-                    {
-                        //Content = new StringContent(data)
-                    };
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(MediaContentTypes.Json));
+                    var requestContent = new HttpRequestMessage(HttpMethod.Get, url);
                     var response = await client.SendAsync(requestContent);
                     var content = await response.Content.ReadAsStringAsync();
                     return convertAction(content);
@@ -112,23 +32,41 @@ namespace DevOps.Portal.Infrastructure.Network
             }
         }
 
+        public async Task<NetworkResponse<T>> PostDataAsync<T>(Uri url, string data, string contentType, ICredentials credentials,
+            Func<string, T> convertAction) where T : class
+        {
+            return await SendDataAsync(url, data, contentType, HttpMethod.Post, credentials, convertAction);
+        }
+        
+        public async Task<NetworkResponse<T>> PutDataAsync<T>(Uri url, string data, string contentType, ICredentials credentials,
+            Func<string, T> convertAction) where T : class
+        {
+            return await SendDataAsync(url, data, contentType, HttpMethod.Put, credentials, convertAction);
+        }
 
-        public async Task<T> SendDataAsync<T>(Uri url, string data, ICredentials credentials,
+        private static async Task<NetworkResponse<T>> SendDataAsync<T>(Uri url, string data, string contentType, HttpMethod httpMethod, ICredentials credentials,
             Func<string, T> convertAction) where T : class
         {
             try
             {
-                using (var handler = new HttpClientHandler() {Credentials = credentials})
+                using (var handler = new HttpClientHandler { Credentials = credentials })
                 using (var client = new HttpClient(handler))
                 {
-                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    var requestContent = new HttpRequestMessage(HttpMethod.Get, url)
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(MediaContentTypes.Json));
+
+                    var requestContent = new StringContent(data, System.Text.Encoding.UTF8, contentType);
+                    var requestMessage = new HttpRequestMessage(httpMethod, url) {Content = requestContent};
+
+                    var response = await client.SendAsync(requestMessage);
+
+                    var reponseContent = await response.Content.ReadAsStringAsync();
+                    if (response.IsSuccessStatusCode)
                     {
-                        //Content = new StringContent(data)
-                    };
-                    var response = await client.SendAsync(requestContent);
-                    var content = await response.Content.ReadAsStringAsync();
-                    return convertAction(content);
+                        var contentData = convertAction(reponseContent);
+                        return new NetworkResponse<T>(contentData);
+                    }
+
+                    return new NetworkResponse<T>(new[] { reponseContent });
                 }
             }
             catch (Exception e)
