@@ -27,7 +27,7 @@ namespace DevOps.Portal.Application.Teamcity.Commands.CreateVcsRoot
                     NullValueHandling = NullValueHandling.Ignore
                 };
             var json = JsonConvert.SerializeObject(vcsRoot, serializerSettings);
-            await _teamcityService.CreateVcsRoot(json);
+            vcsRoot = await _teamcityService.CreateVcsRoot(json);
             return await _attachVcsRootCommand.Execute(vcsRoot.Id, buildId);
         }
     }

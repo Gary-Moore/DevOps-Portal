@@ -13,7 +13,6 @@ namespace DevOps.Portal.Application.Teamcity.Commands.AttachVcsRoot.Factory
         {
             return new VcsRootEntry()
             {
-                Id = vcsRootId,
                 VcsRoot = new VcsRoot()
                 {
                     Id = vcsRootId

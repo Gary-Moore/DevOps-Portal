@@ -16,7 +16,8 @@ namespace DevOps.Portal.Application.Teamcity.Commands.CreateBuild
         public async Task<Build> ExecuteAsync(string projectId)
         {
             var build = await _teamcityService.CreateBuildAsync("CI", projectId);
-            return await _teamcityService.UpdateBuildTemplateAsync(build.Id, "Ci");
+            await _teamcityService.UpdateBuildTemplateAsync(build.Id, "Ci");
+            return build;
         }
     }
 }
