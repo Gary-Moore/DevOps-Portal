@@ -1,0 +1,44 @@
+﻿@import "partials/_base.scss";
+
+@import  "partials/_menu.scss";
+@import "partials/_framework.scss";
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-color: $color-dark-grey;
+    font-family: $font-stack-primary;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;    
+}
+
+.navbar-brand {
+
+    & > img {
+        height: 100%;
+        display: inline-block;
+        color: $color-light-blue;
+    }
+}
+
+.navbar.portal-navbar {
+    .navbar-brand {
+        color: $color-light-blue;
+    }
+}
+
+input.form-control{
+    background-color: $color-white;
+}

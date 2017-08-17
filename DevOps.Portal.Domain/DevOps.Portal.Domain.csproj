@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Teamcity\Build.cs" />
+    <Compile Include="Teamcity\BuildType.cs" />
     <Compile Include="Teamcity\Project.cs" />
     <Compile Include="Teamcity\TeamCityComponent.cs" />
     <Compile Include="Teamcity\VcsProperties.cs" />

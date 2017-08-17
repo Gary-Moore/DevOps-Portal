@@ -41,10 +41,15 @@ namespace DevOps.Portal.Infrastructure.Teamcity
 
         public async Task<IEnumerable<Project>> GetProjects()
         {
-            var projects = await _client.GetDataAsync(TeamCityProjectsUrl, string.Empty, _credentials,
-                ParseProjectJson);
+            var response = await _client.GetDataAsync(TeamCityProjectsUrl, null, MediaContentTypes.Json,
+                _credentials, ParseProjectJson);
 
-            return projects;
+            if (response.Success)
+            {
+                return response.ResponseData;
+            }
+
+            throw new TeamCityOperationException(response.Errors, "Error retrieving build templates");
         }
 
         public async Task<VcsRoot> CreateVcsRoot(string createvcsRootJson)
@@ -58,6 +63,19 @@ namespace DevOps.Portal.Infrastructure.Teamcity
             }
 
             throw new TeamCityOperationException(response.Errors, "Error creating a TeamCity VCS root"); 
+        }
+
+        public async Task<IEnumerable<BuildType>> GetBuildTemplates()
+        {
+            var response = await _client.GetDataAsync(TeamCityBuildTemplatesUrl, null, MediaContentTypes.Json,
+                _credentials, ParseBuildTypeJson);
+
+            if (response.Success)
+            {
+                return response.ResponseData;
+            }
+
+            throw new TeamCityOperationException(response.Errors, "Error retrieving build templates");
         }
 
         public void ActivateBuild(string projectId)
@@ -104,12 +122,20 @@ namespace DevOps.Portal.Infrastructure.Teamcity
         private Uri TeamCityBuildTemplateUrl(string buildId) => new Uri($"{_teamcityUrl}/httpAuth/app/rest/buildTypes/id:{buildId}/template");
         private Uri TeamCityVcsRootUrl => new Uri($"{_teamcityUrl}/httpAuth/app/rest/vcs-roots/");
         private Uri TeamCityBuildRootEntriesUrl(string buildId) => new Uri($"{_teamcityUrl}/httpAuth/app/rest/buildTypes/id:{buildId}/vcs-root-entries"); 
+        private Uri TeamCityBuildTemplatesUrl => new Uri($"{_teamcityUrl}/httpAuth/app/rest/buildTypes?locator=templateFlag:true");
 
         private static IEnumerable<Project> ParseProjectJson(string json)
         {
             var jsonObject = JObject.Parse(json);
 
             return jsonObject["project"].Children().Select(proj => proj.ToObject<Project>()).ToList();
+        }
+
+        private static IEnumerable<BuildType> ParseBuildTypeJson(string json)
+        {
+            var jsonObject = JObject.Parse(json);
+
+            return jsonObject["buildType"].Children().Select(proj => proj.ToObject<BuildType>()).ToList();
         }
     }
 }

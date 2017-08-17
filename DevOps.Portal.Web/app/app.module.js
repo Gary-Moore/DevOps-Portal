@@ -3,6 +3,8 @@
 
     angular.module('app', [
         'app.core',
-        'app.solutionbuilder'
+
+        /* Features */
+        'app.solutioncreator'
     ]);
 })();

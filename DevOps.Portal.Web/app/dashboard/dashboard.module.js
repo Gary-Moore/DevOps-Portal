@@ -1,11 +1,11 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('app.core', [
+    angular.module('app.dashboard', [
         // Angular modules 
-        
-        // Custom modules 
 
+
+        // Custom modules 
         // 3rd Party Modules
 
     ]);

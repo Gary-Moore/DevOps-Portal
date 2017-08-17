@@ -5,6 +5,10 @@
     IEnumerable<string> errors = ViewBag.Error;
 }
 
+<dp-menu>
+    <dp-menu-item label="TeamCity" icon="fa-dashboard"></dp-menu-item>
+</dp-menu>
+
 <h2>@ViewBag.Title</h2>
 
 @if (errors != null)
@@ -24,7 +28,7 @@
     {
         <div class="form-group">
             @Html.LabelFor(model => model.SolutionName)
-            @Html.TextBoxFor(model => model.SolutionName, new {@class = "form-control"})
+            <input class="form-control" name="SolutionName" type="text" ng-model="vm.model.solutionName" placeholder="Solution name"/>
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.SubProjectName)

@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
-using DevOps.Portal.Domain.Teamcity;
-using DevOps.Portal.Infrastructure.Configuration;
-using DevOps.Portal.Infrastructure.Network;
 using DevOps.Portal.Infrastructure.Teamcity;
 using DevOps.Portal.Web.Models.SolutionBuilder;
-using DevOps.Portal.Application.Teamcity.Commands.CreateProject;
 using DevOps.Portal.Application.Teamcity.Commands.CreateSolution;
 
 namespace DevOps.Portal.Web.Controllers

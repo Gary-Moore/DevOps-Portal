@@ -12,7 +12,7 @@ namespace DevOps.Portal.Infrastructure.Network
         Task<NetworkResponse<T>> PutDataAsync<T>(Uri url, string data, string contentType, ICredentials credentials,
             Func<string, T> convertAction) where T : class;
 
-        Task<T> GetDataAsync<T>(Uri url, string data, ICredentials credentials,
+        Task<NetworkResponse<T>> GetDataAsync<T>(Uri url, string data, string contentType, ICredentials credentials,
             Func<string, T> convertAction) where T : class;
     }
 }

@@ -87,7 +87,7 @@
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="StructureMap, Version=4.5.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\StructureMap.4.5.1\lib\net45\StructureMap.dll</HintPath>
+      <HintPath>..\packages\StructureMap.4.5.2\lib\net45\StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="StructureMap.Web, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\structuremap.web.4.0.0.315\lib\net40\StructureMap.Web.dll</HintPath>
@@ -95,8 +95,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.2.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -161,6 +161,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SolutionBuilderController.cs" />
+    <Compile Include="Controllers\TeamCityController.cs" />
     <Compile Include="DependencyResolution\ControllerConvention.cs" />
     <Compile Include="DependencyResolution\DefaultRegistry.cs" />
     <Compile Include="DependencyResolution\IoC.cs" />
@@ -173,16 +174,44 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\core\core.routes.js" />
+    <Content Include="app\dashboard\dashboard.directive.js" />
+    <Content Include="app\dashboard\dashboard.module.js" />
+    <Content Include="app\dashboard\dashboardTemplate.html" />
+    <Content Include="app\layout\framework\dpFramework.directive.js" />
+    <Content Include="app\layout\layout.module.js" />
+    <Content Include="app\layout\framework\dpFrameworkTemplate.html" />
+    <Content Include="app\solutioncreator\createSolutionTemplate.html" />
+    <Content Include="app\solutioncreator\gitlabStepTemplate.html" />
+    <Content Include="app\solutioncreator\solutioncreator.directive.js" />
+    <Content Include="app\solutioncreator\solutioncreator.routes.js" />
+    <Content Include="app\solutioncreator\teamcity.service.js" />
+    <Content Include="app\solutioncreator\teamcityStep.directive.js" />
+    <Content Include="app\solutioncreator\visualStudioStepTemplate.html" />
+    <Content Include="app\solutioncreator\step.directive.js" />
+    <Content Include="app\solutioncreator\stepTemplate.html" />
+    <Content Include="app\solutioncreator\teamcityStepTemplate.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\images\gearwheels-couple.svg" />
     <Content Include="Content\images\two-cogwheels-configuration-interface-symbol.svg" />
+    <Content Include="Content\scss\main.css">
+      <DependentUpon>main.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\scss\main.min.css">
+      <DependentUpon>main.css</DependentUpon>
+    </Content>
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
+    <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\site.css" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -195,13 +224,42 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Scripts\app\app.module.js" />
-    <Content Include="Scripts\app\core\core.module.js" />
-    <Content Include="Scripts\app\solutionbuilder\solutionbuilder.module.js" />
+    <Content Include="app\app.module.js" />
+    <Content Include="app\core\core.globals.js" />
+    <Content Include="app\core\core.config.js" />
+    <Content Include="app\core\core.module.js" />
+    <Content Include="app\layout\menu\dpMenu.directive.js" />
+    <Content Include="app\layout\menu\dpMenuItem.directive.js" />
+    <Content Include="app\layout\menu\dpMenuTemplate.html" />
+    <Content Include="app\layout\menu\dpMenuItemTemplate.html" />
+    <Content Include="app\solutioncreator\create.solution.service.js" />
+    <Content Include="app\solutioncreator\solutionbuilder.module.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.min.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include=".bowerrc" />
     <Content Include="bower.json" />
+    <Content Include="app\solutioncreator\create.solution.controller.js" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\scss\main.scss" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
+    <Content Include="Content\scss\partials\_menu.scss" />
+    <Content Include="Content\scss\modules\_colours.scss" />
+    <Content Include="Content\scss\modules\_all.scss" />
+    <Content Include="Content\scss\partials\_base.scss" />
+    <Content Include="Content\scss\partials\_framework.scss" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
@@ -219,6 +277,8 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -236,7 +296,9 @@
     <Content Include="Views\SolutionBuilder\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="app\widgets\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Views\TeamCity\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DevOps.Portal.Application\DevOps.Portal.Application.csproj">
@@ -286,7 +348,9 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.3.1\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.3.1\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.6\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.6\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\BuildWebCompiler.1.11.347\build\BuildWebCompiler.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\BuildWebCompiler.1.11.347\build\BuildWebCompiler.targets'))" />
   </Target>
+  <Import Project="..\packages\BuildWebCompiler.1.11.347\build\BuildWebCompiler.targets" Condition="Exists('..\packages\BuildWebCompiler.1.11.347\build\BuildWebCompiler.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

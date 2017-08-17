@@ -66,10 +66,12 @@
     <Compile Include="Teamcity\Commands\UpdateBuildParameter\IUpdateBuildParameterCommand.cs" />
     <Compile Include="Teamcity\Commands\UpdateBuildParameter\UpdateBuildParameterCommand.cs" />
     <Compile Include="Teamcity\ProjectBuilder.cs" />
+    <Compile Include="Teamcity\Queries\GetBuildTemplates\GetBuildTemplatesQuery.cs" />
+    <Compile Include="Teamcity\Queries\GetBuildTemplates\IGetBuildTemplatesQuery.cs" />
+    <Compile Include="Teamcity\Queries\GetProjectsTemplates\GetProjectsQuery.cs" />
+    <Compile Include="Teamcity\Queries\GetProjectsTemplates\IGetProjectsQuery.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Teamcity\Queries\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\DevOps.Portal.Domain\DevOps.Portal.Domain.csproj">
       <Project>{CB2C84C3-F5DB-48BA-81D4-DD2277E4FF26}</Project>
