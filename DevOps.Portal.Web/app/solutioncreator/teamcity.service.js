@@ -23,10 +23,16 @@
             return deferred.promise;
         }
 
-        function getProjects() {
+        function getProjects(searchTerm) {
             var deferred = $q.defer();
 
-            $http.get('/TeamCity/Projects').then(function (result) {
+            var parameters = {
+                searchTerm: searchTerm
+            };
+            var config = {
+                params: parameters
+            };
+            $http.get('/TeamCity/Projects', config).then(function (result) {
                 deferred.resolve(result.data);
             }, function (error) {
                 deferred.reject(error);

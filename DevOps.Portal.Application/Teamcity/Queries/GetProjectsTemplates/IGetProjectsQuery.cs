@@ -6,6 +6,6 @@ namespace DevOps.Portal.Application.Teamcity.Queries.GetProjectsTemplates
 {
     public interface IGetProjectsQuery
     {
-        Task<IEnumerable<Project>> Execute();
+        Task<IEnumerable<Project>> Execute(string searchTerm);
     }
 }

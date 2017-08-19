@@ -15,7 +15,7 @@
                     url: '/',
                     views: {
                         'wizard': {
-                            templateUrl: 'app/solutioncreator/visualStudioStepTemplate.html'
+                            template: '<dp-visual-studio-step></dp-visual-studio-step>'
                         }
                     }
                 })
@@ -24,7 +24,7 @@
                     url: '/gitlab',
                     views: {
                         'wizard': {
-                            templateUrl: 'app/solutioncreator/gitlabStepTemplate.html'
+                            template: '<dp-gitlab-step></dp-gitlab-step>'
                         }
                     }
                 })
@@ -34,6 +34,42 @@
                     views: {
                         'wizard': {
                             template: '<dp-teamcity-step></dp-teamcity-step>'
+                        }
+                    }
+                })
+            .state('solutioncreator.azure',
+                {
+                    url: '/azure',
+                    views: {
+                        'wizard': {
+                            template: '<dp-azure-step></dp-azure-step>'
+                        }
+                    }
+                })
+            .state('solutioncreator.octopus',
+                {
+                    url: '/octopus',
+                    views: {
+                        'wizard': {
+                            template: '<dp-octopus-step></dp-octopus-step>'
+                        }
+                    }
+                })
+            .state('solutioncreator.confirm',
+                {
+                    url: '/confirm',
+                    views: {
+                        'wizard': {
+                            template: '<dp-confirm-step></dp-confirm-step>'
+                        }
+                    }
+                })
+            .state('solutioncreator.progress',
+                {
+                    url: '/progress',
+                    views: {
+                        'wizard': {
+                            template: '<dp-progress-step></dp-progress-step>'
                         }
                     }
                 });

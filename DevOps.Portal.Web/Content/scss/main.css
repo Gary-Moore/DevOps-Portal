@@ -1,6 +1,35 @@
 ﻿.body-content {
   padding: 0; }
 
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+  background-color: #444;
+  font-family: az_ea_font, wf_segoe-ui_normal, "Segoe UI", "Segoe WP", Tahoma, Arial, sans-serif; }
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+  white-space: normal; }
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+  max-width: 280px; }
+
+.navbar-brand > img {
+  height: 100%;
+  display: inline-block;
+  color: #28cfed; }
+
+.navbar.portal-navbar .navbar-brand {
+  color: #28cfed; }
+
+input.form-control {
+  background-color: #eee; }
+
 .dp-menu-area {
   background-color: #222;
   width: 200px;
@@ -49,34 +78,18 @@
   color: #eee;
   border: solid 1px #101010;
   background-color: #222;
-  min-height: 100vh;
-  overflow: auto; }
+  min-height: 85vh;
+  overflow: auto;
+  position: relative; }
 
-body {
-  padding-top: 50px;
-  padding-bottom: 20px;
-  background-color: #444;
-  font-family: az_ea_font, wf_segoe-ui_normal, "Segoe UI", "Segoe WP", Tahoma, Arial, sans-serif; }
+.wizard-footer {
+  position: absolute;
+  padding-top: 20px;
+  bottom: 20px;
+  right: 20px; }
+  .wizard-footer .footer-btns {
+    float: right;
+    padding: 10px 0; }
+    .wizard-footer .footer-btns .btn {
+      margin-left: 5px; }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-  white-space: normal; }
-
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-  max-width: 280px; }
-
-.navbar-brand > img {
-  height: 100%;
-  display: inline-block;
-  color: #28cfed; }
-
-.navbar.portal-navbar .navbar-brand {
-  color: #28cfed; }
-
-input.form-control {
-  background-color: #eee; }

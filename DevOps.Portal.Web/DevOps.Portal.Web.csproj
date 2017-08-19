@@ -26,6 +26,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -182,15 +183,26 @@
     <Content Include="app\layout\layout.module.js" />
     <Content Include="app\layout\framework\dpFrameworkTemplate.html" />
     <Content Include="app\solutioncreator\createSolutionTemplate.html" />
-    <Content Include="app\solutioncreator\gitlabStepTemplate.html" />
+    <Content Include="app\solutioncreator\steps\azureStep.directive.js" />
+    <Content Include="app\solutioncreator\steps\azureStepTemplate.html" />
+    <Content Include="app\solutioncreator\steps\confirmStep.directive.js" />
+    <Content Include="app\solutioncreator\steps\confirmStepTemplate.html" />
+    <Content Include="app\solutioncreator\steps\gitlabStep.directive.js" />
+    <Content Include="app\solutioncreator\steps\gitlabStepTemplate.html" />
     <Content Include="app\solutioncreator\solutioncreator.directive.js" />
     <Content Include="app\solutioncreator\solutioncreator.routes.js" />
+    <Content Include="app\solutioncreator\steps\octopusStep.directive.js" />
+    <Content Include="app\solutioncreator\steps\octopusStepTemplate.html" />
+    <Content Include="app\solutioncreator\steps\progressStepTemplate.html" />
+    <Content Include="app\solutioncreator\steps\visualStudioStep.directive.js" />
     <Content Include="app\solutioncreator\teamcity.service.js" />
-    <Content Include="app\solutioncreator\teamcityStep.directive.js" />
-    <Content Include="app\solutioncreator\visualStudioStepTemplate.html" />
+    <Content Include="app\solutioncreator\steps\teamcityStep.directive.js" />
+    <Content Include="app\solutioncreator\steps\visualStudioStepTemplate.html" />
     <Content Include="app\solutioncreator\step.directive.js" />
     <Content Include="app\solutioncreator\stepTemplate.html" />
-    <Content Include="app\solutioncreator\teamcityStepTemplate.html" />
+    <Content Include="app\solutioncreator\steps\teamcityStepTemplate.html" />
+    <Content Include="app\solutioncreator\wizardfooter.directive.js" />
+    <Content Include="app\solutioncreator\wizardFooterTemplate.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -260,6 +272,7 @@
     <Content Include="Content\scss\modules\_all.scss" />
     <Content Include="Content\scss\partials\_base.scss" />
     <Content Include="Content\scss\partials\_framework.scss" />
+    <Content Include="Content\scss\partials\_wizard.scss" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />

@@ -15,6 +15,10 @@
             <label>Build Configuration Template</label>
             <input class="form-control" name="BuildTemplate" type="text" ng-model="vm.model.buildTemplate" placeholder="Build Template" />
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+    <dp-wizard-footer>
+        <a ui-sref="solutioncreator.gitlab" class="btn btn-default">
+            <i class="glyphicon glyphicon-chevron-right"></i> Next: GitLab
+        </a>
+    </dp-wizard-footer>
 </div>

@@ -41,7 +41,8 @@ namespace DevOps.Portal.Web
                        "~/app/dashboard/*module.js",
                        "~/app/dashboard/*.js",
                        "~/app/solutioncreator/*module.js",
-                       "~/app/solutioncreator/*.js"));
+                       "~/app/solutioncreator/*.js",
+                       "~/app/solutioncreator/steps/*.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

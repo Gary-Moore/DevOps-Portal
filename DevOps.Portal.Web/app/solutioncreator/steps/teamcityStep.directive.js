@@ -7,7 +7,7 @@
 
     function dpTeamcityStep() {
         var directive = {
-            templateUrl: 'app/solutioncreator/teamcityStepTemplate.html',
+            templateUrl: 'app/solutioncreator/steps/teamcityStepTemplate.html',
             scope: {
                 
             },
@@ -26,6 +26,8 @@
         vm.$onInit = activate;
 
         function activate() {
+            vm.newParent = 'existing';
+
             teamcityService.getBuildTemplates().then(function(data) {
                 vm.buildTemplates = data;
             });

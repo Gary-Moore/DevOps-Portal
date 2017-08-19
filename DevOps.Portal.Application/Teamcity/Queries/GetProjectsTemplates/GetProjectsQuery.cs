@@ -17,9 +17,18 @@ namespace DevOps.Portal.Application.Teamcity.Queries.GetProjectsTemplates
             _teamcityService = teamcityService;
         }
 
-        public async Task<IEnumerable<Project>> Execute()
+        public async Task<IEnumerable<Project>> Execute(string searchTerm)
         {
-            return await _teamcityService.GetProjects();
+            var projects = await _teamcityService.GetProjects();
+
+            projects = projects.Where(proj => proj.Id != "_Root");
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                projects = projects.Where(proj => proj.Name.ToLower().Contains(searchTerm.ToLower()));
+            }
+
+            return projects;
         }
     }
 }

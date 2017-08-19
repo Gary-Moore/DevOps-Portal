@@ -25,9 +25,9 @@ namespace DevOps.Portal.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> Projects()
+        public async Task<ActionResult> Projects(string searchTerm)
         {
-            var projects = await _getProjectsQuery.Execute();
+            var projects = await _getProjectsQuery.Execute(searchTerm);
 
             return Json(projects, JsonRequestBehavior.AllowGet);
         }

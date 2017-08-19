@@ -1,0 +1,14 @@
+﻿.wizard-footer{
+    position: absolute;
+    padding-top: 20px;
+    bottom: 20px;
+    right: 20px;
+
+    .footer-btns{
+        float: right;
+        padding: 10px 0;
+        .btn{
+            margin-left: 5px;
+        }
+    }
+}
