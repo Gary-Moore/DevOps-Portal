@@ -13,12 +13,6 @@ body {
 .dl-horizontal dt {
   white-space: normal; }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-  max-width: 280px; }
-
 .navbar-brand > img {
   height: 100%;
   display: inline-block;
@@ -78,18 +72,29 @@ input.form-control {
   color: #eee;
   border: solid 1px #101010;
   background-color: #222;
-  min-height: 85vh;
+  min-height: 89vh;
   overflow: auto;
   position: relative; }
+
+footer.page-footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  color: #eee;
+  height: 5vh;
+  background-color: #222; }
+  footer.page-footer span {
+    float: right;
+    padding: 4px 1em;
+    display: inline-block; }
 
 .wizard-footer {
   position: absolute;
   padding-top: 20px;
   bottom: 20px;
-  right: 20px; }
+  right: 25px; }
   .wizard-footer .footer-btns {
     float: right;
     padding: 10px 0; }
     .wizard-footer .footer-btns .btn {
       margin-left: 5px; }
-

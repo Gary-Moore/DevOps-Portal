@@ -21,6 +21,5 @@
                 template: "<dp-solution-creator></dp-solution-creator>"
             });
 
-
     }
 })();

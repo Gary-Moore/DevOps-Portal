@@ -1,0 +1,38 @@
+﻿<div>
+    <h2>Step 1: Set Visual Studio Solution Details</h2>
+    <span>Set visual studio solution name, project type and name</span>
+    <hr />
+    <form>
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label>Type of solution</label>
+                <input class="form-control" name="" type="text"
+                       ng-model="vm.model.visualStudioSolutionType" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-7">
+                <label>Visual Studio Solution Name</label>
+                <input class="form-control" name="SolutionName" type="text"
+                       ng-model="vm.model.visualStudioSolutionName"
+                       placeholder="E.g. VetSugery" />
+                <span class="help-block">The name should not contain spaces or special characters.</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-7">
+                <label>Visual Studio Project name</label>
+                <input class="form-control" name="Visual Studio Project" type="text"
+                       ng-model="vm.model.visualStudioSubprojectName"
+                       placeholder="Enter project name" />
+                <span class="help-block">This will be used in the C# namespace and in filenames.</span>
+            </div>
+        </div>
+    </form>
+    <dp-wizard-footer>
+        <a ng-click="vm.moveToNextStep()" class="btn btn-default">
+            <i class="glyphicon glyphicon-chevron-right"></i> Next: GitLab
+        </a>
+    </dp-wizard-footer>
+</div>

@@ -20,7 +20,7 @@
         <a ui-sref="solutioncreator.teamcity" class="btn btn-default">
             <i class="glyphicon glyphicon-chevron-left"></i> Back
         </a>
-        <a ui-sref="solutioncreator.azure" class="btn btn-default">
+        <a ng-click="vm.moveToNextStep()" class="btn btn-default">
             <i class="glyphicon glyphicon-chevron-right"></i> Next: Azure
         </a>
     </dp-wizard-footer>

@@ -1,0 +1,71 @@
+﻿<div>
+    <h2>Step 3: Set Teamcity project and build</h2>
+    <span>Set name for teamcity build</span>
+    <hr/>
+    <form>
+        <div class="form-group">
+            <label>Parent Project Name</label>
+            <div class="btn-group">
+                <label class="btn btn-primary btn-sm" ng-model="vm.newParent" uib-btn-radio="'existing'">Use existing</label>
+                <label class="btn btn-primary btn-sm" ng-model="vm.newParent" uib-btn-radio="'new'">Create New</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-7" ng-show="vm.newParent === 'existing'">
+                <input type="text" ng-model="vm.model.teamCityParentProjectId"
+                       placeholder="Choose parent project"
+                       uib-typeahead="project as project.Name for project in vm.projects | filter:$viewValue"
+                       typeahead-show-hint="true"
+                       typeahead-min-length="0"
+                       class="form-control">
+                <span class="help-block">The name should not contain spaces or special characters.</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-7" ng-show="vm.newParent === 'new'">
+                <input class="form-control" name="Subproject" type="text"
+                       ng-model="vm.model.teamCityNewParentProjectName"
+                       placeholder="Subproject name" />
+                <span class="help-block">The name should not contain spaces or special characters.</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-7">
+                <label>Subproject Name</label>
+                <input class="form-control" name="Subproject" type="text"
+                       ng-model="vm.model.teamCitySubprojectName"
+                       placeholder="Subproject name"/>
+                <span class="help-block">The name should not contain spaces or special characters.</span>
+            </div> 
+        </div>
+        <div class="row">
+            <div class="form-group col-md-7">
+                <label>Subproject Name</label>
+                <input class="form-control" name="SubprojectDescription" type="text"
+                       ng-model="vm.model.teamCitySubprojectDescription"
+                       placeholder="Subproject description" />
+                <span class="help-block">This will be used as the description of the TeamCity Subproject.</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-7">
+                <label>Build Configuration Template</label>
+                <input type="text" ng-model="vm.model.teamcityBuildTemplateId"
+                       placeholder="Build Template"
+                       uib-typeahead="buildTemplate as buildTemplate.Name for buildTemplate in vm.buildTemplates | filter:$viewValue"
+                       typeahead-show-hint="true"
+                       typeahead-min-length="0"
+                       class="form-control">
+                <span class="help-block">The name should not contain spaces or special characters.</span>
+            </div>
+        </div>
+    </form>
+    <dp-wizard-footer >
+        <a ui-sref="solutioncreator.gitlab" class="btn btn-default">
+            <i class="glyphicon glyphicon-chevron-left"></i> Back
+        </a>
+        <a ng-click="vm.moveToNextStep()" class="btn btn-default">
+            <i class="glyphicon glyphicon-chevron-right"></i> Next: Octopus
+        </a>
+    </dp-wizard-footer>
+</div>

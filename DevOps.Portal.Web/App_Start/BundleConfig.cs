@@ -33,16 +33,19 @@ namespace DevOps.Portal.Web
                        "~/app/*module.js",
                        "~/app/core/*module.js",
                        "~/app/core/*.js",
+                       "~/app/common/*module.js",
+                       "~/app/common/*.js",
                        "~/app/layout/*module.js",
-                       "~/app/layout/framework/*module.js",
                        "~/app/layout/framework/*.js",
-                       "~/app/layout/menu/*module.js",
                        "~/app/layout/menu/*.js",
+                       "~/app/layout/footer/*.js",
                        "~/app/dashboard/*module.js",
                        "~/app/dashboard/*.js",
                        "~/app/solutioncreator/*module.js",
                        "~/app/solutioncreator/*.js",
-                       "~/app/solutioncreator/steps/*.js"));
+                       "~/app/solutioncreator/steps/*.js",
+                       "~/app/solutioncreator/visualstudio/*.js",
+                       "~/app/solutioncreator/teamcity/*.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

@@ -1,7 +1,7 @@
 ﻿(function () {
     "use strict";
 
-    angular.module("app.solutioncreator").directive("dpWizardFooter", dpWizardFooter);
+    angular.module("app.layout").directive("dpWizardFooter", dpWizardFooter);
 
     dpWizardFooter.$inject = [];
 
@@ -11,7 +11,7 @@
             scope: {
 
             },
-            templateUrl: 'app/solutioncreator/wizardFooterTemplate.html'
+            templateUrl: 'app/layout/footer/wizardFooterTemplate.html'
         };
 
         return directive;

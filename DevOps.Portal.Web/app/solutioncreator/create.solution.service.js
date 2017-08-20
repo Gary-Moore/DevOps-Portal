@@ -1,17 +1,21 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('app.solutioncreator').controller('createSolutionService', createSolutionService);
+    angular.module('app.solutioncreator').factory('createSolutionService', createSolutionService);
 
-    createSolutionService.$inject = [];
+    createSolutionService.$inject = ['dataService'];
 
-    function createSolutionService() {
+    function createSolutionService(dataService) {
+        var model = {};
         return {
-            save: save
+            create: create,
+            model: model
         };
 
-        function save() {
-            
+        function create() {
+
+            var data = model;
+            return dataService.post('SolutionCreator/Create', data);
         }
     }
 })();

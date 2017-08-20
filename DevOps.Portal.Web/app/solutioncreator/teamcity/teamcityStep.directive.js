@@ -7,7 +7,7 @@
 
     function dpTeamcityStep() {
         var directive = {
-            templateUrl: 'app/solutioncreator/steps/teamcityStepTemplate.html',
+            templateUrl: 'app/solutioncreator/teamcity/teamcityStepTemplate.html',
             scope: {
                 
             },
@@ -19,13 +19,15 @@
         return directive;
     }
 
-    dpTeamcityStepController.$inject = ['teamcityService'];
+    dpTeamcityStepController.$inject = ['$state', 'teamcityService', 'createSolutionService'];
 
-    function dpTeamcityStepController(teamcityService) {
+    function dpTeamcityStepController($state, teamcityService, createSolutionService) {
         var vm = this;
         vm.$onInit = activate;
+        vm.moveToNextStep = moveToNextStep;
 
         function activate() {
+            vm.model = createSolutionService.model;
             vm.newParent = 'existing';
 
             teamcityService.getBuildTemplates().then(function(data) {
@@ -35,6 +37,11 @@
             teamcityService.getProjects().then(function (data) {
                 vm.projects = data;
             });
+        }
+
+        function moveToNextStep() {
+            createSolutionService.model = vm.model;
+            $state.go('solutioncreator.octopus');
         }
     }
 })();

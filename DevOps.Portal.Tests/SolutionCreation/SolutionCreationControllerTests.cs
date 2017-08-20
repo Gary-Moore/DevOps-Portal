@@ -4,7 +4,7 @@ using System.Web.Mvc;
 using DevOps.Portal.Application.Teamcity.Commands.CreateSolution;
 using DevOps.Portal.Infrastructure.Teamcity;
 using DevOps.Portal.Web.Controllers;
-using DevOps.Portal.Web.Models.SolutionBuilder;
+using DevOps.Portal.Web.Models.SolutionCreator;
 using FakeItEasy;
 using NUnit.Framework;
 
@@ -13,7 +13,7 @@ namespace DevOps.Portal.Tests.SolutionCreation
     [TestFixture]
     public class SolutionCreationControllerTests
     {
-        private SolutionBuilderController _sut;
+        private SolutionCreatorController _sut;
         
         private ICreateTeamcitySolutionCommand _mockCreateSolutionCommand;
 
@@ -21,7 +21,7 @@ namespace DevOps.Portal.Tests.SolutionCreation
         public void Setup()
         {
             _mockCreateSolutionCommand = A.Fake<ICreateTeamcitySolutionCommand>();
-            _sut = new SolutionBuilderController(_mockCreateSolutionCommand);
+            _sut = new SolutionCreatorController(_mockCreateSolutionCommand);
         }
 
         [Test]
