@@ -12,8 +12,5 @@ namespace DevOps.Portal.Web.Controllers
         {
             return View();
         }
-        
-
-        
     }
 }

@@ -24,17 +24,36 @@ namespace DevOps.Portal.Web
                       "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
+                       "~/Scripts/toastr.js",
                        "~/Scripts/bower/angular/angular.js",
                        "~/Scripts/bower/angular-ui-router/release/angular-ui-router.js",
-                       "~/Scripts/app/*module.js",
-                       "~/Scripts/app/core/*module.js",
-                       "~/Scripts/app/core/*.js",
-                       "~/Scripts/app/solutionbuilder/*module.js",
-                       "~/Scripts/app/solutionbuilder/*.js"));
+                       "~/Scripts/bower/angular-animate/angular-animate.min.js",
+                       "~/Scripts/bower/angular-sanitize/angular-sanitize.min.js",
+                       "~/Scripts/angular-ui/ui-bootstrap-tpls.min.js",
+                       "~/Scripts/select.js",
+                       "~/app/*module.js",
+                       "~/app/core/*module.js",
+                       "~/app/core/*.js",
+                       "~/app/common/*module.js",
+                       "~/app/common/*.js",
+                       "~/app/layout/*module.js",
+                       "~/app/layout/framework/*.js",
+                       "~/app/layout/menu/*.js",
+                       "~/app/layout/footer/*.js",
+                       "~/app/dashboard/*module.js",
+                       "~/app/dashboard/*.js",
+                       "~/app/solutioncreator/*module.js",
+                       "~/app/solutioncreator/*.js",
+                       "~/app/solutioncreator/steps/*.js",
+                       "~/app/solutioncreator/visualstudio/*.js",
+                       "~/app/solutioncreator/teamcity/*.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/scss/main.css",
+                      "~/Content/select.css",
+                      "~/Content/font-awesome.css",
+                      "~/Content/toastr.css"));
         }
     }
 }
