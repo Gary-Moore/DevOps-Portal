@@ -11,18 +11,20 @@
             </div>
         </div>
         <div class="row">
-            <div class="form-group col-md-7" ng-show="vm.newParent === 'existing'">
-                <input type="text" ng-model="vm.model.teamCityParentProjectId"
-                       placeholder="Choose parent project"
-                       uib-typeahead="project as project.Name for project in vm.projects | filter:$viewValue"
-                       typeahead-show-hint="true"
-                       typeahead-min-length="0"
-                       class="form-control">
+            <div class="form-group col-md-5" ng-show="vm.newParent === 'existing'">
+               <ui-select theme="bootstrap" ng-model="vm.model.teamCityParentProjectId">
+                    <ui-select-match placeholder="Select a project">
+                        <span ng-bind="$select.selected.Name"></span>
+                    </ui-select-match>
+                    <ui-select-choices repeat="project in (vm.projects | filter: $select.search) track by project.Id">
+                        <span ng-bind="project.Name"></span>
+                    </ui-select-choices>
+                </ui-select>
                 <span class="help-block">The name should not contain spaces or special characters.</span>
             </div>
         </div>
         <div class="row">
-            <div class="form-group col-md-7" ng-show="vm.newParent === 'new'">
+            <div class="form-group col-md-5" ng-show="vm.newParent === 'new'">
                 <input class="form-control" name="Subproject" type="text"
                        ng-model="vm.model.teamCityNewParentProjectName"
                        placeholder="Subproject name" />
@@ -48,14 +50,16 @@
             </div>
         </div>
         <div class="row">
-            <div class="form-group col-md-7">
+            <div class="form-group col-md-5">
                 <label>Build Configuration Template</label>
-                <input type="text" ng-model="vm.model.teamcityBuildTemplateId"
-                       placeholder="Build Template"
-                       uib-typeahead="buildTemplate as buildTemplate.Name for buildTemplate in vm.buildTemplates | filter:$viewValue"
-                       typeahead-show-hint="true"
-                       typeahead-min-length="0"
-                       class="form-control">
+                <ui-select theme="bootstrap" ng-model="vm.model.teamcityBuildTemplateId">
+                    <ui-select-match placeholder="Select a project">
+                        <span ng-bind="$select.selected.Name"></span>
+                    </ui-select-match>
+                    <ui-select-choices repeat="template in (vm.buildTemplates | filter: $select.search) track by template.Id">
+                        <span ng-bind="template.Name"></span>
+                    </ui-select-choices>
+                </ui-select>
                 <span class="help-block">The name should not contain spaces or special characters.</span>
             </div>
         </div>

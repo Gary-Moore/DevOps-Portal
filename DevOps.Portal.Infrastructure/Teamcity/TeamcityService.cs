@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Mime;
-using System.Text;
 using System.Threading.Tasks;
 using DevOps.Portal.Domain.Teamcity;
 using DevOps.Portal.Infrastructure.Configuration;
@@ -117,12 +116,28 @@ namespace DevOps.Portal.Infrastructure.Teamcity
             throw new TeamCityOperationException(response.Errors, "Error updating build with template"); 
         }
 
+        public async Task<string> UpdateBuildParameter(string buildId, string parameterName, string parameterValue)
+        {
+            var response = await _client.PutDataAsync(TeamCityBuildParametersUrl(buildId, parameterName),
+                parameterValue,
+                MediaTypeNames.Text.Plain, _credentials, (res) => res, MediaTypeNames.Text.Plain);
+
+            if (response.Success)
+            {
+                return response.ResponseData;
+            }
+
+            throw new TeamCityOperationException(response.Errors, "Error updating build parameter");
+        }
+
+        private Uri TeamCityApiBaseUrl => new Uri($"{_teamcityUrl}/httpAuth/app/rest");
         private Uri TeamCityProjectsUrl => new Uri($"{_teamcityUrl}/httpAuth/app/rest/projects");
         private Uri TeamCityProjectBuildsUrl(string projectId) => new Uri($"{_teamcityUrl}/httpAuth/app/rest/projects/id:{projectId}/buildTypes");
         private Uri TeamCityBuildTemplateUrl(string buildId) => new Uri($"{_teamcityUrl}/httpAuth/app/rest/buildTypes/id:{buildId}/template");
         private Uri TeamCityVcsRootUrl => new Uri($"{_teamcityUrl}/httpAuth/app/rest/vcs-roots/");
         private Uri TeamCityBuildRootEntriesUrl(string buildId) => new Uri($"{_teamcityUrl}/httpAuth/app/rest/buildTypes/id:{buildId}/vcs-root-entries"); 
         private Uri TeamCityBuildTemplatesUrl => new Uri($"{_teamcityUrl}/httpAuth/app/rest/buildTypes?locator=templateFlag:true");
+        private Uri TeamCityBuildParametersUrl(string buildId, string parameterId) => new Uri($"{TeamCityApiBaseUrl}/buildTypes/id:{buildId}/parameters/{parameterId}");
 
         private static IEnumerable<Project> ParseProjectJson(string json)
         {

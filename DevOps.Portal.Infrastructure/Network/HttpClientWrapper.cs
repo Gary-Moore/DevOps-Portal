@@ -23,20 +23,20 @@ namespace DevOps.Portal.Infrastructure.Network
         }
         
         public async Task<NetworkResponse<T>> PutDataAsync<T>(Uri url, string data, string contentType, ICredentials credentials,
-            Func<string, T> convertAction) where T : class
+            Func<string, T> convertAction, string acceptContent = MediaContentTypes.Json) where T : class
         {
-            return await SendDataAsync(url, data, contentType, HttpMethod.Put, credentials, convertAction);
+            return await SendDataAsync(url, data, contentType, HttpMethod.Put, credentials, convertAction, acceptContent);
         }
 
         private static async Task<NetworkResponse<T>> SendDataAsync<T>(Uri url, string data, string contentType, HttpMethod httpMethod, ICredentials credentials,
-            Func<string, T> convertAction) where T : class
+            Func<string, T> convertAction, string acceptContent = MediaContentTypes.Json) where T : class
         {
             try
             {
                 using (var handler = new HttpClientHandler { Credentials = credentials })
                 using (var client = new HttpClient(handler))
                 {
-                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(MediaContentTypes.Json));
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptContent));
 
                     var requestMessage = new HttpRequestMessage(httpMethod, url);
                     if (data != null)

@@ -2,6 +2,6 @@
 {
     public static class MediaContentTypes
     {
-        public static string Json = "application/json";
+        public const string Json = "application/json";
     }
 }

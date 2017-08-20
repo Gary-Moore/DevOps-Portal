@@ -10,6 +10,7 @@
         'app.common',
         // 3rd Party Modules
         'ui.router',
-        'ui.bootstrap'
+        'ui.bootstrap',
+        'ui.select'
     ]);
 })();

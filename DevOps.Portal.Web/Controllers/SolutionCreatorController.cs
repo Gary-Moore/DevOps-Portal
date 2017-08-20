@@ -23,7 +23,7 @@ namespace DevOps.Portal.Web.Controllers
             {
                 model.SourceControlUrl = "https://github.com/Gary-Moore/VetSurgery";
                 await _command.Execute(model.TeamCityNewParentProjectName, model.TeamCitySubprojectName,
-                    model.SourceControlUrl);
+                    model.SourceControlUrl, model.VisualStudioSolutionName);
                 var returnData = new {result = "Success"};
 
                 return Json(returnData);

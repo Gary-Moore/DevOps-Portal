@@ -30,6 +30,7 @@ namespace DevOps.Portal.Web
                        "~/Scripts/bower/angular-animate/angular-animate.min.js",
                        "~/Scripts/bower/angular-sanitize/angular-sanitize.min.js",
                        "~/Scripts/angular-ui/ui-bootstrap-tpls.min.js",
+                       "~/Scripts/select.js",
                        "~/app/*module.js",
                        "~/app/core/*module.js",
                        "~/app/core/*.js",
@@ -50,6 +51,7 @@ namespace DevOps.Portal.Web
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/scss/main.css",
+                      "~/Content/select.css",
                       "~/Content/font-awesome.css",
                       "~/Content/toastr.css"));
         }

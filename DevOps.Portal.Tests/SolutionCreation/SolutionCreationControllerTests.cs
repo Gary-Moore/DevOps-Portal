@@ -28,7 +28,7 @@ namespace DevOps.Portal.Tests.SolutionCreation
         public void CreateTeamCitySolution_TeamCityExceptionThrown_ReturnsErrorsToView()
         {
             IEnumerable<string> errors = new List<string>(){"An error occurred"};
-            A.CallTo(() => _mockCreateSolutionCommand.Execute(A<string>._, A<string>._, A<string>._))
+            A.CallTo(() => _mockCreateSolutionCommand.Execute(A<string>._, A<string>._, A<string>._, A<string>._))
                 .Throws(() => new TeamCityOperationException(errors));
 
             var result = _sut.Create(new CreateSolutionViewModel()).Result as ViewResult;
