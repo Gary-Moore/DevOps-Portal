@@ -63,15 +63,11 @@
                             template: '<dp-confirm-step></dp-confirm-step>'
                         }
                     }
-                })
-            .state('solutioncreator.progress',
+            })
+            .state('createdsolution',
                 {
-                    url: '/progress',
-                    views: {
-                        'wizard': {
-                            template: '<dp-progress-step></dp-progress-step>'
-                        }
-                    }
+                    url: '/createdsolution/result',
+                    template: '<dp-solution-create-result></dp-solution-create-result>'
                 });
     }
 })();

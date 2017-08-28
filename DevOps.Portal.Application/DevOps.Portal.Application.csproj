@@ -44,7 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SolutionCreation\CreateSolutionModel.cs" />
+    <Compile Include="SolutionCreation\CreateSolutionResponse.cs" />
     <Compile Include="Teamcity\Commands\AttachVcsRoot\AttachVcsRootCommand.cs" />
     <Compile Include="Teamcity\Commands\AttachVcsRoot\Factory\ITeamCityVcsEntryFactory.cs" />
     <Compile Include="Teamcity\Commands\AttachVcsRoot\Factory\TeamCityVcsEntryFactory.cs" />
@@ -52,12 +55,13 @@
     <Compile Include="Teamcity\Commands\CreateBuild\CreateBuildCommand.cs" />
     <Compile Include="Teamcity\Commands\CreateBuild\ICreateBuildCommand.cs" />
     <Compile Include="Teamcity\Commands\CreateProject\CreateProjectCommand.cs" />
+    <Compile Include="Teamcity\Commands\CreateProject\CreateTeamcityProjectModel.cs" />
     <Compile Include="Teamcity\Commands\CreateProject\Factory\CreateTeamcityProjectFactory.cs" />
     <Compile Include="Teamcity\Commands\CreateProject\Factory\ICreateTeamcityProjectFactory.cs" />
     <Compile Include="Teamcity\Commands\CreateProject\ParentProjectModel.cs" />
-    <Compile Include="Teamcity\Commands\CreateProject\CreateTeamcityProjectModel.cs" />
     <Compile Include="Teamcity\Commands\CreateProject\ICreateProjectCommand.cs" />
     <Compile Include="Teamcity\Commands\CreateSolution\CreateTeamcitySolutionCommand.cs" />
+    <Compile Include="Teamcity\Commands\CreateSolution\CreateTeamCitySolutionResponse.cs" />
     <Compile Include="Teamcity\Commands\CreateSolution\ICreateTeamcitySolutionCommand.cs" />
     <Compile Include="Teamcity\Commands\CreateVcsRoot\CreateVcsRootCommand.cs" />
     <Compile Include="Teamcity\Commands\CreateVcsRoot\Factory\TeamcityVcsRootModelFactory.cs" />
@@ -65,7 +69,6 @@
     <Compile Include="Teamcity\Commands\CreateVcsRoot\ICreateVcsRootCommand.cs" />
     <Compile Include="Teamcity\Commands\UpdateBuildParameter\IUpdateBuildParameterCommand.cs" />
     <Compile Include="Teamcity\Commands\UpdateBuildParameter\UpdateBuildParameterCommand.cs" />
-    <Compile Include="Teamcity\ProjectBuilder.cs" />
     <Compile Include="Teamcity\Queries\GetBuildTemplates\GetBuildTemplatesQuery.cs" />
     <Compile Include="Teamcity\Queries\GetBuildTemplates\IGetBuildTemplatesQuery.cs" />
     <Compile Include="Teamcity\Queries\GetProjectsTemplates\GetProjectsQuery.cs" />

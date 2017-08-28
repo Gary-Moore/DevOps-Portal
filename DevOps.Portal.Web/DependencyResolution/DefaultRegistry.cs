@@ -15,7 +15,12 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
+using DevOps.Portal.Web.Hubs;
+using Microsoft.AspNet.SignalR;
+using Microsoft.AspNet.SignalR.Hubs;
+
 namespace DevOps.Portal.Web.DependencyResolution {
+    using Microsoft.AspNet.SignalR.Infrastructure;
     using StructureMap;
     using StructureMap.Configuration.DSL;
     using StructureMap.Graph;
@@ -32,6 +37,8 @@ namespace DevOps.Portal.Web.DependencyResolution {
                     scan.AssembliesFromApplicationBaseDirectory();
 					scan.With(new ControllerConvention());
                 });
+
+            For<IDependencyResolver>().Singleton().Use<StructureMapSignalrDependencyResolver>();
         }
 
         #endregion

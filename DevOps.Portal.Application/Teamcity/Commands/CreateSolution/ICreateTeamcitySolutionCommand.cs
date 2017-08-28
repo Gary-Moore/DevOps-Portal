@@ -1,9 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
+using DevOps.Portal.Application.SolutionCreation;
 
 namespace DevOps.Portal.Application.Teamcity.Commands.CreateSolution
 {
     public interface ICreateTeamcitySolutionCommand
     {
-        Task Execute(string mainProjectName, string subProjectName, string sourceControlUrl, string solutionName);
+        Task<CreateTeamCitySolutionResponse> ExecuteAsync(CreateSolutionModel model, Action<CreateSolutionModel, string> notifyAction);
     }
 }

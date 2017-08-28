@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using DevOps.Portal.Application.SolutionCreation;
 using DevOps.Portal.Application.Teamcity.Commands.CreateSolution;
 using DevOps.Portal.Infrastructure.Teamcity;
 using DevOps.Portal.Web.Controllers;
@@ -28,10 +30,11 @@ namespace DevOps.Portal.Tests.SolutionCreation
         public void CreateTeamCitySolution_TeamCityExceptionThrown_ReturnsErrorsToView()
         {
             IEnumerable<string> errors = new List<string>(){"An error occurred"};
-            A.CallTo(() => _mockCreateSolutionCommand.Execute(A<string>._, A<string>._, A<string>._, A<string>._))
+            A.CallTo(() => _mockCreateSolutionCommand.ExecuteAsync(A<CreateSolutionModel>._,
+                    A<Action<CreateSolutionModel, string>>._))
                 .Throws(() => new TeamCityOperationException(errors));
 
-            var result = _sut.Create(new CreateSolutionViewModel()).Result as ViewResult;
+            var result = _sut.Create(new CreateSolutionModel()).Result as ViewResult;
 
             var model = result.ViewBag.Error as IEnumerable<string>;
 

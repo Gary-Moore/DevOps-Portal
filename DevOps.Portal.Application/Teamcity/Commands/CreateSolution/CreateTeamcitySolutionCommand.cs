@@ -1,10 +1,12 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using DevOps.Portal.Application.Teamcity.Commands.CreateBuild;
 using DevOps.Portal.Application.Teamcity.Commands.CreateProject;
 using DevOps.Portal.Application.Teamcity.Commands.CreateProject.Factory;
 using DevOps.Portal.Application.Teamcity.Commands.CreateVcsRoot;
 using DevOps.Portal.Application.Teamcity.Commands.CreateVcsRoot.Factory;
 using DevOps.Portal.Application.Teamcity.Commands.UpdateBuildParameter;
+using DevOps.Portal.Application.SolutionCreation;
 
 namespace DevOps.Portal.Application.Teamcity.Commands.CreateSolution
 {
@@ -32,23 +34,33 @@ namespace DevOps.Portal.Application.Teamcity.Commands.CreateSolution
             _updateBuildParameterCommand = updateBuildParameterCommand;
         }
 
-        public async Task Execute(string mainProjectName, string subProjectName, string sourceControlUrl, string solutionName)
+        public async Task<CreateTeamCitySolutionResponse> ExecuteAsync(CreateSolutionModel model, Action<CreateSolutionModel, string> notifyAction)
         {
-           // Create Main Project
-            var mainProjectModel = _modelFactory.Create(mainProjectName);
+            notifyAction(model, "Teamcity build started");
+            
+            // Create Main Project
+            var mainProjectModel = _modelFactory.Create(model.TeamCityNewParentProjectName);
             var parentProject = await _createProjectCommand.ExecuteAsync(mainProjectModel);
 
             // Create Sub Project
-            var subProjectModel = _modelFactory.Create(subProjectName, parentProject.Id);
+            var subProjectModel = _modelFactory.Create(model.TeamCitySubprojectName, parentProject.Id);
             var subProject = await _createProjectCommand.ExecuteAsync(subProjectModel);
 
             // Create Build
             var build = await _createBuildCommand.ExecuteAsync(subProject.Id);
-            var param = await _updateBuildParameterCommand.Execute(build, "SolutionName", solutionName);
+            var param = await _updateBuildParameterCommand.Execute(build, "SolutionName", model.VisualStudioSolutionName);
             
             // Create VCS Root and attach to build
-            var vcsModel =  _vcsModelFactory.Create(subProjectName + " master", subProject.Id, sourceControlUrl);
+            var vcsModel =  _vcsModelFactory.Create(model.TeamCitySubprojectName + " master", subProject.Id, model.SourceControlUrl);
             var vcs = await _createVcsRootCommand.Execute(vcsModel, build.Id);
+            notifyAction(model, "Teamcity build complete");
+
+           return new CreateTeamCitySolutionResponse()
+            {
+                ParentProject = parentProject,
+                SubProject = subProject,
+                TypVcsRoot = vcs
+            };
         }
     }
 }

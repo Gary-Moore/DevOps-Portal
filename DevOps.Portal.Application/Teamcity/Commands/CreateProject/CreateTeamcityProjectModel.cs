@@ -1,14 +1,10 @@
 ﻿using System;
+using DevOps.Portal.Domain.Teamcity;
 
 namespace DevOps.Portal.Application.Teamcity.Commands.CreateProject
 {
-    [Serializable]
-    public class CreateTeamcityProjectModel
+    public class CreateTeamcityProjectModel : TeamCityComponent
     {
-        public string Name { get; set; }
-
-        public string Id { get; set; }
-
         public ParentProjectModel ParentProject { get; set; }
     }
 }
