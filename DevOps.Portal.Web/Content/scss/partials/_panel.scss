@@ -1,0 +1,13 @@
+﻿.panel-default {
+    & > .panel-heading {
+        background-color: $color-dark-grey;
+        border-color: $color-dark-grey;
+        color: $color-white;
+    }
+
+    .panel-body {
+        background-color: $color-light-grey;
+        border-color: $color-light-grey;
+        color: $color-charcoal;
+    }
+}

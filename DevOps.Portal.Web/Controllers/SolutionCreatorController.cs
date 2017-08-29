@@ -1,9 +1,12 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using DevOps.Portal.Application.SolutionCreation;
 using DevOps.Portal.Infrastructure.Teamcity;
 using DevOps.Portal.Application.Teamcity.Commands.CreateSolution;
-using DevOps.Portal.Web.Models.SolutionCreator;
+using DevOps.Portal.Web.Hubs;
+using Microsoft.AspNet.SignalR;
+
 
 namespace DevOps.Portal.Web.Controllers
 {
@@ -17,14 +20,13 @@ namespace DevOps.Portal.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create(CreateSolutionViewModel model)
+        public async Task<ActionResult> Create(CreateSolutionModel model)
         {
             try
             {
                 model.SourceControlUrl = "https://github.com/Gary-Moore/VetSurgery";
-                await _command.Execute(model.TeamCityNewParentProjectName, model.TeamCitySubprojectName,
-                    model.SourceControlUrl, model.VisualStudioSolutionName);
-                var returnData = new {result = "Success"};
+                var response = await _command.ExecuteAsync(model, NotifyProgress);                
+                var returnData = new {result = response, success = true};
 
                 return Json(returnData);
             }
@@ -32,6 +34,16 @@ namespace DevOps.Portal.Web.Controllers
             {
                 var returnData = new { result = "Failure", errors = ex.Errors.ToArray()};
                 return Json(returnData);
+            }
+        }
+        
+        public void NotifyProgress(CreateSolutionModel model, string message)
+        {
+            var hubContext = GlobalHost.ConnectionManager.GetHubContext<SolutionCreationHub>();
+            if (hubContext != null)
+            {
+                var data = new {model, currentStatus = message};
+                hubContext.Clients.Client(model.ConnectionId).progress(data);
             }
         }
     }

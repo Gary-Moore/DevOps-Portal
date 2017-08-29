@@ -8,7 +8,7 @@
     function dpSolutionCreator() {
         var directive = {
             scope: {
-
+                creationStarted: '='
             },
             templateUrl: 'app/solutioncreator/createSolutionTemplate.html',
             controller: dpSolutionCreatorController,

@@ -25,12 +25,14 @@ namespace DevOps.Portal.Web
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                        "~/Scripts/toastr.js",
+                       "~/Scripts/jquery.signalR-2.2.2.js",
                        "~/Scripts/bower/angular/angular.js",
                        "~/Scripts/bower/angular-ui-router/release/angular-ui-router.js",
                        "~/Scripts/bower/angular-animate/angular-animate.min.js",
                        "~/Scripts/bower/angular-sanitize/angular-sanitize.min.js",
                        "~/Scripts/angular-ui/ui-bootstrap-tpls.min.js",
                        "~/Scripts/select.js",
+                       "~/Scripts/angular-signalr-hub.js",
                        "~/app/*module.js",
                        "~/app/core/*module.js",
                        "~/app/core/*.js",
@@ -45,8 +47,10 @@ namespace DevOps.Portal.Web
                        "~/app/solutioncreator/*module.js",
                        "~/app/solutioncreator/*.js",
                        "~/app/solutioncreator/steps/*.js",
+                       "~/app/solutioncreator/confirm/*.js",
                        "~/app/solutioncreator/visualstudio/*.js",
-                       "~/app/solutioncreator/teamcity/*.js"));
+                       "~/app/solutioncreator/teamcity/*.js",
+                       "~/app/solutioncreator/progress/*.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

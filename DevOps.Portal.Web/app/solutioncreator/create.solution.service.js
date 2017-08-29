@@ -6,10 +6,13 @@
     createSolutionService.$inject = ['dataService'];
 
     function createSolutionService(dataService) {
-        var model = {};
+        var model = {},
+            completedSolution = {};
+
         return {
             create: create,
-            model: model
+            model: model,
+            completedSolution: completedSolution
         };
 
         function create() {
