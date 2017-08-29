@@ -38,6 +38,19 @@ namespace DevOps.Portal.Infrastructure.Teamcity
             throw new TeamCityOperationException(response.Errors, "Error attaching a TeamCity VCS root");
         }
 
+        public async Task<Project> GetProject(string id)
+        {
+            var response = await _client.GetDataAsync(TeamCityProjectUrl(id), null, MediaContentTypes.Json,
+                _credentials, JsonConvert.DeserializeObject<Project>);
+
+            if (response.Success)
+            {
+                return response.ResponseData;
+            }
+
+            throw new TeamCityOperationException(response.Errors, "Error retrieving teamcity project");
+        }
+
         public async Task<IEnumerable<Project>> GetProjects()
         {
             var response = await _client.GetDataAsync(TeamCityProjectsUrl, null, MediaContentTypes.Json,
@@ -48,7 +61,7 @@ namespace DevOps.Portal.Infrastructure.Teamcity
                 return response.ResponseData;
             }
 
-            throw new TeamCityOperationException(response.Errors, "Error retrieving build templates");
+            throw new TeamCityOperationException(response.Errors, "Error retrieving teamcity projects");
         }
 
         public async Task<VcsRoot> CreateVcsRoot(string createvcsRootJson)
@@ -132,6 +145,7 @@ namespace DevOps.Portal.Infrastructure.Teamcity
 
         private Uri TeamCityApiBaseUrl => new Uri($"{_teamcityUrl}/httpAuth/app/rest");
         private Uri TeamCityProjectsUrl => new Uri($"{_teamcityUrl}/httpAuth/app/rest/projects");
+        private Uri TeamCityProjectUrl(string id) => new Uri($"{TeamCityProjectsUrl}/id:{id}");
         private Uri TeamCityProjectBuildsUrl(string projectId) => new Uri($"{_teamcityUrl}/httpAuth/app/rest/projects/id:{projectId}/buildTypes");
         private Uri TeamCityBuildTemplateUrl(string buildId) => new Uri($"{_teamcityUrl}/httpAuth/app/rest/buildTypes/id:{buildId}/template");
         private Uri TeamCityVcsRootUrl => new Uri($"{_teamcityUrl}/httpAuth/app/rest/vcs-roots/");

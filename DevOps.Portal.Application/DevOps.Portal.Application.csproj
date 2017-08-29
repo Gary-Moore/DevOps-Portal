@@ -71,8 +71,11 @@
     <Compile Include="Teamcity\Commands\UpdateBuildParameter\UpdateBuildParameterCommand.cs" />
     <Compile Include="Teamcity\Queries\GetBuildTemplates\GetBuildTemplatesQuery.cs" />
     <Compile Include="Teamcity\Queries\GetBuildTemplates\IGetBuildTemplatesQuery.cs" />
-    <Compile Include="Teamcity\Queries\GetProjectsTemplates\GetProjectsQuery.cs" />
-    <Compile Include="Teamcity\Queries\GetProjectsTemplates\IGetProjectsQuery.cs" />
+    <Compile Include="Teamcity\Queries\GetProjects\GetProjectByIdQuery.cs" />
+    <Compile Include="Teamcity\Queries\GetProjects\GetProjectsQuery.cs" />
+    <Compile Include="Teamcity\Queries\GetProjects\IGetProjectByIdQuery.cs" />
+    <Compile Include="Teamcity\Queries\GetProjects\IGetProjectsQuery.cs" />
+    <Compile Include="Teamcity\Queries\GetProjects\ProjectSearchLevel.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

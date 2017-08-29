@@ -27,7 +27,6 @@
         function activate() {
             vm.model = createSolutionService.model;
             vm.creationStarted = false;
-            
         }
 
         function create() {
