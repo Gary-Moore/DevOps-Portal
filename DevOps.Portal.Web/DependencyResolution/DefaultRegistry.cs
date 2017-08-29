@@ -21,6 +21,7 @@ using Microsoft.AspNet.SignalR.Hubs;
 
 namespace DevOps.Portal.Web.DependencyResolution {
     using Microsoft.AspNet.SignalR.Infrastructure;
+
     using StructureMap;
     using StructureMap.Configuration.DSL;
     using StructureMap.Graph;
@@ -39,6 +40,7 @@ namespace DevOps.Portal.Web.DependencyResolution {
                 });
 
             For<IDependencyResolver>().Singleton().Use<StructureMapSignalrDependencyResolver>();
+
         }
 
         #endregion

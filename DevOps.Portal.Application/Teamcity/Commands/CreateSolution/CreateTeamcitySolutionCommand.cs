@@ -33,7 +33,7 @@ namespace DevOps.Portal.Application.Teamcity.Commands.CreateSolution
             _createVcsRootCommand = createVcsRootCommand;
             _updateBuildParameterCommand = updateBuildParameterCommand;
         }
-
+        
         public async Task<CreateTeamCitySolutionResponse> ExecuteAsync(CreateSolutionModel model, Action<CreateSolutionModel, string> notifyAction)
         {
             notifyAction(model, "Teamcity build started");
@@ -44,6 +44,7 @@ namespace DevOps.Portal.Application.Teamcity.Commands.CreateSolution
 
             // Create Sub Project
             var subProjectModel = _modelFactory.Create(model.TeamCitySubprojectName, parentProject.Id);
+
             var subProject = await _createProjectCommand.ExecuteAsync(subProjectModel);
 
             // Create Build

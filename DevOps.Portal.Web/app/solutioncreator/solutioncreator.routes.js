@@ -68,6 +68,7 @@
                 {
                     url: '/createdsolution/result',
                     template: '<dp-solution-create-result></dp-solution-create-result>'
+
                 });
     }
 })();

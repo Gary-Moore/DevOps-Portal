@@ -7,6 +7,7 @@ using DevOps.Portal.Application.Teamcity.Commands.CreateSolution;
 using DevOps.Portal.Web.Hubs;
 using Microsoft.AspNet.SignalR;
 
+
 namespace DevOps.Portal.Web.Controllers
 {
     public class SolutionCreatorController : Controller
@@ -24,8 +25,7 @@ namespace DevOps.Portal.Web.Controllers
             try
             {
                 model.SourceControlUrl = "https://github.com/Gary-Moore/VetSurgery";
-                var response = await _command.ExecuteAsync(model, NotifyProgress);
-                
+                var response = await _command.ExecuteAsync(model, NotifyProgress);                
                 var returnData = new {result = response, success = true};
 
                 return Json(returnData);
