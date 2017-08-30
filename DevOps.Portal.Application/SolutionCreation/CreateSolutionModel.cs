@@ -14,6 +14,7 @@ namespace DevOps.Portal.Application.SolutionCreation
         public string VisualStudioSolutionName { get; set; }
         public string VisualStudioSubprojectName { get; set; }
 
+        public bool NewParentProject { get; set; }
         public string TeamCityParentProjectId { get; set; }
         public string TeamCityNewParentProjectName { get; set; }
         public string TeamCityParentProjectDescription { get; set; }

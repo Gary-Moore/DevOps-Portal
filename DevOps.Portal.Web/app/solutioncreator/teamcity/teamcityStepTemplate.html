@@ -6,12 +6,12 @@
         <div class="form-group">
             <label>Parent Project Name</label>
             <div class="btn-group">
-                <label class="btn btn-primary btn-sm" ng-model="vm.newParent" uib-btn-radio="'existing'">Use existing</label>
-                <label class="btn btn-primary btn-sm" ng-model="vm.newParent" uib-btn-radio="'new'">Create New</label>
+                <label class="btn btn-primary btn-sm" ng-model="vm.model.newParentProject" uib-btn-radio="false">Use existing</label>
+                <label class="btn btn-primary btn-sm" ng-model="vm.model.newParentProject" uib-btn-radio="true">Create New</label>
             </div>
         </div>
         <div class="row">
-            <div class="form-group col-md-5" ng-hide="vm.newParent === 'new'">
+            <div class="form-group col-md-5" ng-show="vm.model.newParentProject === false">
                 <ui-select theme="bootstrap" ng-model="vm.model.teamCityParentProjectId">
                     <ui-select-match placeholder="Select a project">
                         <span ng-bind="$select.selected.Name"></span>
@@ -22,7 +22,7 @@
                 </ui-select>
                 <span class="help-block">Choose an existing Parent Project to add the new solution to.</span>
             </div>
-            <div class="form-group col-md-5" ng-show="vm.newParent === 'new'">
+            <div class="form-group col-md-5" ng-show="vm.model.newParentProject === true">
                 <input class="form-control" name="ParentProjectName" type="text"
                        ng-model="vm.model.teamCityNewParentProjectName"
                        placeholder="New Parent Project name" />

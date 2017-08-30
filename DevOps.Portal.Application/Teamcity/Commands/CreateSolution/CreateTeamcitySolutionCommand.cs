@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using DevOps.Portal.Application.Teamcity.Commands.CreateBuild;
 using DevOps.Portal.Application.Teamcity.Commands.CreateProject;
@@ -46,7 +45,7 @@ namespace DevOps.Portal.Application.Teamcity.Commands.CreateSolution
             Project parentProject;
 
             // Create Main Project
-            if (string.IsNullOrWhiteSpace(model.TeamCityParentProjectId))
+            if (model.NewParentProject)
             {
                 var mainProjectModel = _modelFactory.Create(model.TeamCityNewParentProjectName);
                 parentProject = await _createProjectCommand.ExecuteAsync(mainProjectModel);
