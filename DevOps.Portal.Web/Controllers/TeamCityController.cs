@@ -1,11 +1,11 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Mvc;
 using DevOps.Portal.Application.Teamcity.Queries.GetBuildTemplates;
-using DevOps.Portal.Application.Teamcity.Queries.GetProjectsTemplates;
+using DevOps.Portal.Application.Teamcity.Queries.GetProjects;
 
 namespace DevOps.Portal.Web.Controllers
 {
-    public class TeamCityController : Controller
+    public class TeamCityController : BaseController
     {
         private readonly IGetBuildTemplatesQuery _getBuildTemplatesQuery;
         private readonly IGetProjectsQuery _getProjectsQuery;
@@ -25,9 +25,10 @@ namespace DevOps.Portal.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> Projects(string searchTerm)
+        public async Task<ActionResult> Projects(string searchTerm, bool rootLevel = true)
         {
-            var projects = await _getProjectsQuery.Execute(searchTerm);
+            var projects = await _getProjectsQuery.Execute(searchTerm,
+                rootLevel ? ProjectSearchLevel.Root : ProjectSearchLevel.All);
 
             return Json(projects, JsonRequestBehavior.AllowGet);
         }

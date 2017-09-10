@@ -13,6 +13,7 @@ namespace DevOps.Portal.Infrastructure.Teamcity
         Task<Project> CreateProjectAsync(string createProjectJson);
         Task<Build> CreateBuildAsync(string createBuildJson, string projectId);
 
+        Task<Project> GetProject(string id);
         Task<IEnumerable<Project>> GetProjects();
         Task<IEnumerable<BuildType>> GetBuildTemplates();
 

@@ -1,6 +1,6 @@
-﻿(function (toastr) {
+﻿(function () {
     "use strict";
 
     angular.module("app.core")
         .constant('toastr', toastr);
-})(toastr);
+})();

@@ -28,7 +28,7 @@
 
         function activate() {
             vm.model = createSolutionService.model;
-            vm.newParent = 'existing';
+            vm.model.newParentProject = false;
 
             teamcityService.getBuildTemplates().then(function(data) {
                 vm.buildTemplates = data;

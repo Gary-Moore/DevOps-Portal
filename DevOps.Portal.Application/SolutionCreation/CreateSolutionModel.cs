@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DevOps.Portal.Application.SolutionCreation
+﻿namespace DevOps.Portal.Application.SolutionCreation
 {
     public class CreateSolutionModel
     {
@@ -14,6 +8,7 @@ namespace DevOps.Portal.Application.SolutionCreation
         public string VisualStudioSolutionName { get; set; }
         public string VisualStudioSubprojectName { get; set; }
 
+        public bool NewParentProject { get; set; }
         public string TeamCityParentProjectId { get; set; }
         public string TeamCityNewParentProjectName { get; set; }
         public string TeamCityParentProjectDescription { get; set; }

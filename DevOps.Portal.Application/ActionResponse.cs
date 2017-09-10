@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace DevOps.Portal.Application
 {
@@ -11,5 +7,10 @@ namespace DevOps.Portal.Application
         public bool Success { get; set; }
 
         public IEnumerable<string> Errors { get; set; }
+    }
+
+    public class ActionResponse<T> : ActionResponse
+    {
+        public T Data { get; set; }
     }
 }

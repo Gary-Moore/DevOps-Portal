@@ -16,7 +16,6 @@
         };
 
         function create() {
-
             var data = model;
             return dataService.post('SolutionCreator/Create', data);
         }
