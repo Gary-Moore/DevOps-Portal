@@ -8,4 +8,9 @@ namespace DevOps.Portal.Application
 
         public IEnumerable<string> Errors { get; set; }
     }
+
+    public class ActionResponse<T> : ActionResponse
+    {
+        public T Data { get; set; }
+    }
 }

@@ -18,7 +18,7 @@
                 exception: exception,
                 cause: cause
             };
-            toastr.error(exception.msg, errorData);
+            toastr.error(exception.message, errorData);
         }
     }
 })();

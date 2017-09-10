@@ -48,6 +48,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SolutionCreation\CreateSolutionModel.cs" />
     <Compile Include="SolutionCreation\CreateSolutionResponse.cs" />
+    <Compile Include="SolutionCreation\Validation\IValidationEngine.cs" />
+    <Compile Include="SolutionCreation\Validation\Rules\TeamCityValidationRules.cs" />
+    <Compile Include="SolutionCreation\Validation\Rules\ValidationRule.cs" />
+    <Compile Include="SolutionCreation\Validation\ValidationEngine.cs" />
+    <Compile Include="SolutionCreation\Validation\ValidationResult.cs" />
     <Compile Include="Teamcity\Commands\AttachVcsRoot\AttachVcsRootCommand.cs" />
     <Compile Include="Teamcity\Commands\AttachVcsRoot\Factory\ITeamCityVcsEntryFactory.cs" />
     <Compile Include="Teamcity\Commands\AttachVcsRoot\Factory\TeamCityVcsEntryFactory.cs" />

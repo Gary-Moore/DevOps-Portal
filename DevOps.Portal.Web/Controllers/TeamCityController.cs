@@ -5,7 +5,7 @@ using DevOps.Portal.Application.Teamcity.Queries.GetProjects;
 
 namespace DevOps.Portal.Web.Controllers
 {
-    public class TeamCityController : Controller
+    public class TeamCityController : BaseController
     {
         private readonly IGetBuildTemplatesQuery _getBuildTemplatesQuery;
         private readonly IGetProjectsQuery _getProjectsQuery;
