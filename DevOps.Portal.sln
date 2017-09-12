@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.14
+VisualStudioVersion = 15.0.26730.8
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevOps.Portal.Web", "DevOps.Portal.Web\DevOps.Portal.Web.csproj", "{1C3744F7-5874-4127-921F-CCB25A8BAAF2}"
 EndProject
@@ -19,6 +19,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevOps.Portal.Infrastructure", "DevOps.Portal.Infrastructure\DevOps.Portal.Infrastructure.csproj", "{3F3AC37B-ED9E-475A-99B2-288BFE34CB61}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevOps.Portal.Common", "DevOps.Portal.Common\DevOps.Portal.Common.csproj", "{AC6D161D-CE91-4E2B-B809-C521AA79D9EF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PowerShellScripts", "PowerShellScripts", "{E7732CE3-1EAE-4742-82A7-7D804E823D0D}"
+	ProjectSection(SolutionItems) = preProject
+		Clone-TemplateProject.ps1 = Clone-TemplateProject.ps1
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,5 +58,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B3C56BFA-B2C2-4CEB-8232-56455FEDAB83}
 	EndGlobalSection
 EndGlobal

@@ -46,6 +46,8 @@
   <ItemGroup>
     <Compile Include="ActionResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SolutionCreation\Commands\CreateSolutionCommand.cs" />
+    <Compile Include="SolutionCreation\Commands\ICreateSolutionCommand.cs" />
     <Compile Include="SolutionCreation\CreateSolutionModel.cs" />
     <Compile Include="SolutionCreation\CreateSolutionResponse.cs" />
     <Compile Include="SolutionCreation\Validation\IValidationEngine.cs" />
@@ -81,8 +83,16 @@
     <Compile Include="Teamcity\Queries\GetProjects\IGetProjectByIdQuery.cs" />
     <Compile Include="Teamcity\Queries\GetProjects\IGetProjectsQuery.cs" />
     <Compile Include="Teamcity\Queries\GetProjects\ProjectSearchLevel.cs" />
+    <Compile Include="VisualStudio\Commands\CreateSolution\CreateVisualStudioSolutionCommand.cs" />
+    <Compile Include="VisualStudio\Commands\CreateSolution\ICreateVisualStudioSolutionCommand.cs" />
+    <Compile Include="VisualStudio\Commands\DownloadTemplate\DownloadTemplateCommand.cs" />
+    <Compile Include="VisualStudio\Commands\DownloadTemplate\IDownloadTemplateCommand.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="GitLab\Commands\" />
+    <Folder Include="GitLab\Queries\" />
+    <Folder Include="VisualStudio\Queries\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DevOps.Portal.Domain\DevOps.Portal.Domain.csproj">
       <Project>{CB2C84C3-F5DB-48BA-81D4-DD2277E4FF26}</Project>

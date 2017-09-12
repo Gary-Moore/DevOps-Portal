@@ -49,6 +49,8 @@
   <ItemGroup>
     <Compile Include="Configuration\ConfigurationWrapper.cs" />
     <Compile Include="Configuration\IConfiguration.cs" />
+    <Compile Include="Git\GitHubService.cs" />
+    <Compile Include="Git\IGitHubService.cs" />
     <Compile Include="InfrastructureRegistry.cs" />
     <Compile Include="Network\HttpClientWrapper.cs" />
     <Compile Include="Network\IHttpClientWrapper.cs" />
