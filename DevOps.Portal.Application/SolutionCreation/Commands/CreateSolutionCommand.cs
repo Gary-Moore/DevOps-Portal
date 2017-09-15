@@ -4,22 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DevOps.Portal.Application.Teamcity.Commands.CreateSolution;
+using DevOps.Portal.Application.VisualStudio.Commands.CreateSolution;
 
 namespace DevOps.Portal.Application.SolutionCreation.Commands
 {
     public class CreateSolutionCommand : ICreateSolutionCommand
     {
+        private readonly ICreateVisualStudioSolutionCommand _createVisualStudioSolutionCommand;
         private readonly ICreateTeamcitySolutionCommand _createTeamcitySolutionCommand;
 
-        public CreateSolutionCommand(ICreateTeamcitySolutionCommand createTeamcitySolutionCommand)
+        public CreateSolutionCommand(ICreateVisualStudioSolutionCommand createVisualStudioSolutionCommand,
+            ICreateTeamcitySolutionCommand createTeamcitySolutionCommand)
         {
+            _createVisualStudioSolutionCommand = createVisualStudioSolutionCommand;
             _createTeamcitySolutionCommand = createTeamcitySolutionCommand;
         }
 
-        public Task<CreateSolutionResponse> ExecuteAsync(CreateSolutionModel model,
+        public async Task<CreateSolutionResponse> ExecuteAsync(CreateSolutionModel model,
             Action<CreateSolutionModel, string> notifyAction)
         {
-            throw new NotImplementedException();
+            notifyAction(model, "Solution creation process started");
+            var visualStudioResponse  = await _createVisualStudioSolutionCommand.ExecuteAsync(model, notifyAction);
+
+            var teamCityResponse = await _createTeamcitySolutionCommand.ExecuteAsync(model, notifyAction);
+
+            return new CreateSolutionResponse();
         }
     }
 }

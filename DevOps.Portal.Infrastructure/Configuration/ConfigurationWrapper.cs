@@ -8,6 +8,7 @@ namespace DevOps.Portal.Infrastructure.Configuration
         public string TeamcityHost => GetAppSettingValue<string>(nameof(TeamcityHost));
         public string TeamcityPassword => GetAppSettingValue<string>(nameof(TeamcityPassword));
         public string TeamcityUsername => GetAppSettingValue<string>(nameof(TeamcityUsername));
+        public string WorkingDirectory => GetAppSettingValue<string>(nameof(WorkingDirectory));
 
         private static T GetAppSettingValue<T>(string key) where T : IConvertible
         {

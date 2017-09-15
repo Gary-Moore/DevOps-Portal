@@ -5,5 +5,6 @@ namespace DevOps.Portal.Infrastructure.Configuration
         string TeamcityHost { get; }
         string TeamcityPassword { get; }
         string TeamcityUsername { get; }
+        string WorkingDirectory { get; }
     }
 }
