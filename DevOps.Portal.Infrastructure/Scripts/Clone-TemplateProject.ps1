@@ -27,4 +27,4 @@ Param(
 
 Write-Progress "Cloning template into working folder"
 
-git clone 
+git clone $repoUrl $checkoutPath

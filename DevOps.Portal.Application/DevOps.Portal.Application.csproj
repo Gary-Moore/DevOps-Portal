@@ -87,11 +87,14 @@
     <Compile Include="VisualStudio\Commands\CreateSolution\ICreateVisualStudioSolutionCommand.cs" />
     <Compile Include="VisualStudio\Commands\DownloadTemplate\DownloadTemplateCommand.cs" />
     <Compile Include="VisualStudio\Commands\DownloadTemplate\IDownloadTemplateCommand.cs" />
+    <Compile Include="VisualStudio\Commands\UpdateSolutionNamespaces\IUpdateSolutionFileNamespacesCommand.cs" />
+    <Compile Include="VisualStudio\Commands\UpdateSolutionNamespaces\UpdateSolutionFileNamespacesCommand.cs" />
+    <Compile Include="VisualStudio\Queries\GetTemplates\GetTemplatesQuery.cs" />
+    <Compile Include="VisualStudio\Queries\GetTemplates\IGetTemplatesQuery.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="GitLab\Commands\" />
     <Folder Include="GitLab\Queries\" />
-    <Folder Include="VisualStudio\Queries\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DevOps.Portal.Domain\DevOps.Portal.Domain.csproj">
@@ -104,6 +107,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

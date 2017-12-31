@@ -10,16 +10,16 @@ namespace DevOps.Portal.Application.VisualStudio.Commands.DownloadTemplate
 {
     public class DownloadTemplateCommand : IDownloadTemplateCommand
     {
-        private readonly IGitHubService _gitHubService;
+        private readonly IGitService _gitService;
 
-        public DownloadTemplateCommand(IGitHubService gitHubService)
+        public DownloadTemplateCommand(IGitService gitService)
         {
-            _gitHubService = gitHubService;
+            _gitService = gitService;
         }
 
         public async Task<ActionResponse> ExecuteAsync(CreateSolutionModel model, Action<CreateSolutionModel, string> notifyAction)
         {
-            await _gitHubService.DownloadProjectAsync("https://github.com/Gary-Moore/SolutionTemplates/archive/master.zip", model.TemplateUrl);
+            await _gitService.DownloadProjectAsync("https://github.com/Gary-Moore/SolutionTemplates/archive/master.zip", model.TemplateUrl);
 
             return new ActionResponse();
         }
