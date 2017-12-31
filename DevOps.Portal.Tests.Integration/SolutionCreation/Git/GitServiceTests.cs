@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using DevOps.Portal.Infrastructure.Configuration;
+using DevOps.Portal.Infrastructure.FileSystem;
 using NUnit.Framework;
 using DevOps.Portal.Infrastructure.Git;
 
@@ -32,13 +33,8 @@ namespace DevOps.Portal.Tests.Integration.SolutionCreation.Git
         public void CleanUp()
         {
             var configuration = Get<IConfiguration>();
-            var workingDirectory = new DirectoryInfo(configuration.WorkingDirectory);
-
-            if (workingDirectory.Exists)
-            {
-                SetAttributes(workingDirectory);
-                workingDirectory.Delete(true);
-            }
+            var directoryService = Get<IDirectoryService>();
+            directoryService.DeleteDirectory(configuration.WorkingDirectory);
         }
 
         private bool AssertDirectoryExists()
@@ -52,18 +48,6 @@ namespace DevOps.Portal.Tests.Integration.SolutionCreation.Git
             }
 
             throw new DirectoryNotFoundException();
-        }
-
-        private static void SetAttributes(DirectoryInfo directory)
-        {
-            foreach (var sub in directory.GetDirectories())
-            {
-                SetAttributes(sub);
-            }
-            foreach (var file in directory.GetFiles())
-            {
-                file.Attributes = FileAttributes.Normal;
-            }
         }
     }
 }

@@ -5,5 +5,6 @@ namespace DevOps.Portal.Infrastructure.FileSystem
     public interface IDirectoryService
     {
         DirectoryInfo CreateDirectory(string path);
+        void DeleteDirectory(string path);
     }
 }

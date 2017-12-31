@@ -52,15 +52,18 @@
     <Compile Include="DependencyResolution\IoC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SolutionCreation\Git\GitServiceTests.cs" />
+    <Compile Include="SolutionCreation\VisualStudio\UpdateSolutionFileNamespacesCommandTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="SolutionCreation\VisualStudio\" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\DevOps.Portal.Application\DevOps.Portal.Application.csproj">
+      <Project>{4A78A1ED-910C-4C6B-8F73-46A11993C215}</Project>
+      <Name>DevOps.Portal.Application</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DevOps.Portal.Infrastructure\DevOps.Portal.Infrastructure.csproj">
       <Project>{3F3AC37B-ED9E-475A-99B2-288BFE34CB61}</Project>
       <Name>DevOps.Portal.Infrastructure</Name>

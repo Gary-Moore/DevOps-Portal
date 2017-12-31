@@ -106,7 +106,9 @@
     <Content Include="Scripts\Clone-TemplateProject.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Scripts\Convert-Solution.ps1" />
+    <Content Include="Scripts\Convert-Solution.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

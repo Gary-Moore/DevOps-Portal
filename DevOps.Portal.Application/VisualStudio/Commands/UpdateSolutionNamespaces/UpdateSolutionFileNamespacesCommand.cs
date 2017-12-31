@@ -24,7 +24,11 @@ namespace DevOps.Portal.Application.VisualStudio.Commands.UpdateSolutionNamespac
             cloneProjectScript.AddArgument("workingDirPath", _configuration.WorkingDirectory);
 
             var result = await Task.Run(() => cloneProjectScript.ExecuteAync());
-            return new ActionResponse();
+            return new ActionResponse()
+            {
+                Success = result.Suceess,
+                Errors = result.ErrorMessages
+            };
         }
     }
 }
