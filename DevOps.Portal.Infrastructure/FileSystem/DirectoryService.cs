@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Linq;
 
 namespace DevOps.Portal.Infrastructure.FileSystem
 {
@@ -16,6 +17,37 @@ namespace DevOps.Portal.Infrastructure.FileSystem
             {
                 SetAttributes(directory);
                 directory.Delete(true);
+            }
+        }
+
+        public void CopyDirectory(string sourcePath, string destinationPath)
+        {
+            var sourceDirectory = new DirectoryInfo(sourcePath);
+            if (sourceDirectory.Exists)
+            {
+                if (!Directory.Exists(destinationPath))
+                {
+                    CreateDirectory(destinationPath);
+                }
+
+                var files = sourceDirectory.GetFiles();
+                foreach (var file in files)
+                {
+                    var destPath = Path.Combine(destinationPath, file.Name);
+                    File.Copy(file.FullName, destPath, true);
+                }
+
+                var subDirectories = sourceDirectory.GetDirectories().Where(dir => dir.Name != ".git").ToArray();
+
+                foreach (var subDirectory in subDirectories)
+                {
+                    var subDirectoryDestinationPath = Path.Combine(destinationPath, subDirectory.Name);
+                    CopyDirectory(subDirectory.FullName, subDirectoryDestinationPath);
+                }
+            }
+            else
+            {
+                throw new DirectoryNotFoundException();
             }
         }
 

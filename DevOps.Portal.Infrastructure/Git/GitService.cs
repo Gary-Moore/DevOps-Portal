@@ -26,7 +26,7 @@ namespace DevOps.Portal.Infrastructure.Git
         {
             var cloneProjectScript = new PowershellScript("Clone-TemplateProject.ps1", callback);
             cloneProjectScript.AddArgument("repoUrl", projectUrl);
-            cloneProjectScript.AddArgument("checkoutPath", _configuration.WorkingDirectory);
+            cloneProjectScript.AddArgument("checkoutPath", _configuration.DownloadDirectory);
 
             var result = await Task.Run(() => cloneProjectScript.ExecuteAync());
             return result;

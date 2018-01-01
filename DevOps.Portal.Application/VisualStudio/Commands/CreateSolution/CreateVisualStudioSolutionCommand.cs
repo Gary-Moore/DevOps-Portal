@@ -24,8 +24,11 @@ namespace DevOps.Portal.Application.VisualStudio.Commands.CreateSolution
 
         public async Task<ActionResponse> ExecuteAsync(CreateSolutionModel model, Action<CreateSolutionModel, string> notifyAction)
         {
-            // create directory at location if not existing
+            // Clean working directory
+            _directoryService.DeleteDirectory(_configuration.WorkingDirectory);
             var directory = _directoryService.CreateDirectory(_configuration.WorkingDirectory);
+
+
             // download template and unzip into location
             return await _downloadTemplateCommand.ExecuteAsync(model, notifyAction);
         }

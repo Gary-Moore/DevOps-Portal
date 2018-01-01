@@ -50,6 +50,7 @@
     <Compile Include="BaseTest.cs" />
     <Compile Include="DependencyResolution\DefaultRepository.cs" />
     <Compile Include="DependencyResolution\IoC.cs" />
+    <Compile Include="Filesystem\DirectoryServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SolutionCreation\Git\GitServiceTests.cs" />
     <Compile Include="SolutionCreation\VisualStudio\UpdateSolutionFileNamespacesCommandTests.cs" />

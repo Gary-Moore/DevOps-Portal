@@ -6,5 +6,6 @@ namespace DevOps.Portal.Infrastructure.FileSystem
     {
         DirectoryInfo CreateDirectory(string path);
         void DeleteDirectory(string path);
+        void CopyDirectory(string path, string newPath);
     }
 }
