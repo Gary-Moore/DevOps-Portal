@@ -1,25 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
+using DevOps.Portal.Data;
 using DevOps.Portal.Domain.VisualStudio;
-using DevOps.Portal.Infrastructure.TableStore;
 
 namespace DevOps.Portal.Application.VisualStudio.Queries.GetTemplates
 {
     public class GetTemplatesQuery : IGetTemplatesQuery
     {
-        private readonly ISolutionTemplateService _solutionTemplateService;
+        private readonly IDevOpsPortalRepository<SolutionTemplate> _repository;
 
-        public GetTemplatesQuery(ISolutionTemplateService solutionTemplateService)
+        public GetTemplatesQuery(IDevOpsPortalRepository<SolutionTemplate> repository)
         {
-            _solutionTemplateService = solutionTemplateService;
+            _repository = repository;
         }
 
         public async Task<IEnumerable<SolutionTemplate>> ExecuteAsync()
         {
-            return await Task.Run(() =>_solutionTemplateService.Get());
+            return await _repository.GetItemsAysnc(WhereFilter);
+        }
+
+        private static Expression<Func<SolutionTemplate, bool>> WhereFilter
+        {
+            get { return x => true; }
         }
     }
 }

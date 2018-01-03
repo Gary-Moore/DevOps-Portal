@@ -10,10 +10,8 @@ namespace DevOps.Portal.Infrastructure.Configuration
         public string TeamcityUsername => GetAppSettingValue<string>(nameof(TeamcityUsername));
         public string WorkingDirectory => GetAppSettingValue<string>(nameof(WorkingDirectory));
         public string DownloadDirectory => GetAppSettingValue<string>(nameof(DownloadDirectory));
-        public string TableStorageUrl => GetAppSettingValue<string>(nameof(TableStorageUrl));
+        public string StorageUriEndpoint => GetAppSettingValue<string>(nameof(StorageUriEndpoint));
         public string StorageAccountKey => GetAppSettingValue<string>(nameof(StorageAccountKey));
-        public string StorageAccountName => GetAppSettingValue<string>(nameof(StorageAccountName));
-        public string GitLocation => GetAppSettingValue<string>(nameof(GitLocation));
 
         private static T GetAppSettingValue<T>(string key) where T : IConvertible
         {

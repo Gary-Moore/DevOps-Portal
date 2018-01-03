@@ -1,18 +1,20 @@
-﻿using Microsoft.WindowsAzure.Storage.Table;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using Newtonsoft.Json;
 
 namespace DevOps.Portal.Domain.VisualStudio
 {
-    public class SolutionTemplate : TableEntity
+    public class SolutionTemplate
     {
-        public int Id { get; set; }
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; set; }
+
+        [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }
+
+        [JsonProperty(PropertyName = "repositoryUrl")]
         public string RepositoryUrl { get; set; }
 
+        [JsonIgnore]
         public Uri Uri => new Uri(RepositoryUrl);
     }
 }

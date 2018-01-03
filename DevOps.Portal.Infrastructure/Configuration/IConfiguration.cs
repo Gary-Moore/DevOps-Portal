@@ -7,9 +7,7 @@ namespace DevOps.Portal.Infrastructure.Configuration
         string TeamcityUsername { get; }
         string WorkingDirectory { get; }
         string DownloadDirectory { get; }
-        string TableStorageUrl { get; }
+        string StorageUriEndpoint { get; }
         string StorageAccountKey { get; }
-        string StorageAccountName { get; }
-        string GitLocation { get; }
     }
 }

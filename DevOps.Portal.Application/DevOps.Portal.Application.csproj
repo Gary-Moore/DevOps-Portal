@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DevOps.Portal.Application</RootNamespace>
     <AssemblyName>DevOps.Portal.Application</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -97,6 +97,10 @@
     <Folder Include="GitLab\Queries\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DevOps.Portal.Data\DevOps.Portal.Data.csproj">
+      <Project>{397CFAAD-29F3-41CE-9225-25FCF5451D18}</Project>
+      <Name>DevOps.Portal.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DevOps.Portal.Domain\DevOps.Portal.Domain.csproj">
       <Project>{CB2C84C3-F5DB-48BA-81D4-DD2277E4FF26}</Project>
       <Name>DevOps.Portal.Domain</Name>
