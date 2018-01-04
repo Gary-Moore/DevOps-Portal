@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using DevOps.Portal.Application.SolutionCreation;
+using DevOps.Portal.Application.SolutionCreation.Commands;
 using DevOps.Portal.Application.SolutionCreation.Validation;
 using DevOps.Portal.Infrastructure.Teamcity;
 using DevOps.Portal.Application.Teamcity.Commands.CreateSolution;
@@ -14,10 +15,10 @@ namespace DevOps.Portal.Web.Controllers
 {
     public class SolutionCreatorController : BaseController
     {
-        private readonly ICreateTeamcitySolutionCommand _command;
+        private readonly ICreateSolutionCommand _command;
         private readonly IValidationEngine _validationEngine;
 
-        public SolutionCreatorController(ICreateTeamcitySolutionCommand command, IValidationEngine validationEngine)
+        public SolutionCreatorController(ICreateSolutionCommand command, IValidationEngine validationEngine)
         {
             _command = command;
             _validationEngine = validationEngine;
@@ -30,6 +31,7 @@ namespace DevOps.Portal.Web.Controllers
             try
             {
                 model.SourceControlUrl = "https://github.com/Gary-Moore/VetSurgery";
+                model.TemplateUrl = Server.MapPath("~/Templates/Solution.zip");
                 var validationResponse = _validationEngine.Eval(model);
                 if (!validationResponse.Success)
                 {
@@ -42,7 +44,7 @@ namespace DevOps.Portal.Web.Controllers
                 else
                 {
                     var actionResponse = await _command.ExecuteAsync(model, NotifyProgress);
-                    response = new WebResponse<CreateTeamCitySolutionResponse>()
+                    response = new WebResponse<CreateSolutionResponse>()
                     {
                         Data = actionResponse,
                         Successful = true

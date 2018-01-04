@@ -8,6 +8,7 @@ using DevOps.Portal.Application.Teamcity.Commands.CreateVcsRoot.Factory;
 using DevOps.Portal.Application.Teamcity.Commands.UpdateBuildParameter;
 using DevOps.Portal.Application.SolutionCreation;
 using DevOps.Portal.Application.Teamcity.Queries.GetProjects;
+using DevOps.Portal.Application.VisualStudio.Commands.CreateSolution;
 using DevOps.Portal.Domain.Teamcity;
 
 namespace DevOps.Portal.Application.Teamcity.Commands.CreateSolution
@@ -21,6 +22,7 @@ namespace DevOps.Portal.Application.Teamcity.Commands.CreateSolution
         private readonly ICreateVcsRootCommand _createVcsRootCommand;
         private readonly IUpdateBuildParameterCommand _updateBuildParameterCommand;
         private readonly IGetProjectByIdQuery _getProjectQuery;
+        private readonly ICreateVisualStudioSolutionCommand _createVisualStudioSolutionCommand;
 
         public CreateTeamcitySolutionCommand(ICreateTeamcityProjectFactory modelFactory,
             ITeamcityVcsRootModelFactory vcsModelFactory,
@@ -28,7 +30,8 @@ namespace DevOps.Portal.Application.Teamcity.Commands.CreateSolution
             ICreateBuildCommand createBuildCommand,
             ICreateVcsRootCommand createVcsRootCommand, 
             IUpdateBuildParameterCommand updateBuildParameterCommand,
-            IGetProjectByIdQuery getProjectQuery)
+            IGetProjectByIdQuery getProjectQuery,
+            ICreateVisualStudioSolutionCommand createVisualStudioSolutionCommand)
         {
             _modelFactory = modelFactory;
             _vcsModelFactory = vcsModelFactory;
@@ -37,12 +40,15 @@ namespace DevOps.Portal.Application.Teamcity.Commands.CreateSolution
             _createVcsRootCommand = createVcsRootCommand;
             _updateBuildParameterCommand = updateBuildParameterCommand;
             _getProjectQuery = getProjectQuery;
+            _createVisualStudioSolutionCommand = createVisualStudioSolutionCommand;
         }
         
         public async Task<CreateTeamCitySolutionResponse> ExecuteAsync(CreateSolutionModel model, Action<CreateSolutionModel, string> notifyAction)
         {
             notifyAction(model, "Teamcity build started");
             Project parentProject;
+
+            await _createVisualStudioSolutionCommand.ExecuteAsync(model, notifyAction);
 
             // Create Main Project
             if (model.NewParentProject)

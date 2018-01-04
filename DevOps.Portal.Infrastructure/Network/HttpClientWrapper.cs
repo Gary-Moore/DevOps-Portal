@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -55,6 +56,26 @@ namespace DevOps.Portal.Infrastructure.Network
                     }
 
                     return new NetworkResponse<T>(new[] { reponseContent });
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public async Task DownloadZip(Uri requestUri, string fileName)
+        {
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    using (var response = await client.GetStreamAsync(requestUri))
+                    using (var fileStream = new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.None))
+                    {
+                        await response.CopyToAsync(fileStream);
+                    }
                 }
             }
             catch (Exception e)

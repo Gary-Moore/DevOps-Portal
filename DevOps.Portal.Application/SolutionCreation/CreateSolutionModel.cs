@@ -16,5 +16,8 @@
         public string TeamCitySubprojectDescription { get; set; }
         public string TeamcityBuildTemplateId { get; set; }
         public string SourceControlUrl { get; set; }
+        public string TemplateUrl { get; set; }
+
+        public string SolutionTemplateId { get; set; }
     }
 }

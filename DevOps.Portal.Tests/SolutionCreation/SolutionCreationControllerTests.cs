@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using DevOps.Portal.Application.SolutionCreation;
+using DevOps.Portal.Application.SolutionCreation.Commands;
 using DevOps.Portal.Application.SolutionCreation.Validation;
-using DevOps.Portal.Application.Teamcity.Commands.CreateSolution;
 using DevOps.Portal.Infrastructure.Teamcity;
 using DevOps.Portal.Web.Controllers;
-using DevOps.Portal.Web.Models.SolutionCreator;
 using FakeItEasy;
 using NUnit.Framework;
 
@@ -18,13 +17,13 @@ namespace DevOps.Portal.Tests.SolutionCreation
     {
         private SolutionCreatorController _sut;
         
-        private ICreateTeamcitySolutionCommand _mockCreateSolutionCommand;
+        private ICreateSolutionCommand _mockCreateSolutionCommand;
         private IValidationEngine _mockValidationEngine;
 
         [SetUp]
         public void Setup()
         {
-            _mockCreateSolutionCommand = A.Fake<ICreateTeamcitySolutionCommand>();
+            _mockCreateSolutionCommand = A.Fake<ICreateSolutionCommand>();
             _mockValidationEngine = A.Fake<IValidationEngine>();
             _sut = new SolutionCreatorController(_mockCreateSolutionCommand, _mockValidationEngine);
         }

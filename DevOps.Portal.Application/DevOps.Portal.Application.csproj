@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DevOps.Portal.Application</RootNamespace>
     <AssemblyName>DevOps.Portal.Application</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -46,6 +46,8 @@
   <ItemGroup>
     <Compile Include="ActionResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SolutionCreation\Commands\CreateSolutionCommand.cs" />
+    <Compile Include="SolutionCreation\Commands\ICreateSolutionCommand.cs" />
     <Compile Include="SolutionCreation\CreateSolutionModel.cs" />
     <Compile Include="SolutionCreation\CreateSolutionResponse.cs" />
     <Compile Include="SolutionCreation\Validation\IValidationEngine.cs" />
@@ -81,9 +83,26 @@
     <Compile Include="Teamcity\Queries\GetProjects\IGetProjectByIdQuery.cs" />
     <Compile Include="Teamcity\Queries\GetProjects\IGetProjectsQuery.cs" />
     <Compile Include="Teamcity\Queries\GetProjects\ProjectSearchLevel.cs" />
+    <Compile Include="VisualStudio\Commands\CreateSolution\CreateVisualStudioSolutionCommand.cs" />
+    <Compile Include="VisualStudio\Commands\CreateSolution\ICreateVisualStudioSolutionCommand.cs" />
+    <Compile Include="VisualStudio\Commands\DownloadTemplate\CloneSolutionTemplateCommand.cs" />
+    <Compile Include="VisualStudio\Commands\DownloadTemplate\ICloneSolutionTemplateCommand.cs" />
+    <Compile Include="VisualStudio\Commands\UpdateSolutionNamespaces\IUpdateSolutionFileNamespacesCommand.cs" />
+    <Compile Include="VisualStudio\Commands\UpdateSolutionNamespaces\UpdateSolutionFileNamespacesCommand.cs" />
+    <Compile Include="VisualStudio\Queries\GetTemplates\GetTemplateByIdQuery.cs" />
+    <Compile Include="VisualStudio\Queries\GetTemplates\GetTemplatesQuery.cs" />
+    <Compile Include="VisualStudio\Queries\GetTemplates\IGetTemplateByIdQuery.cs" />
+    <Compile Include="VisualStudio\Queries\GetTemplates\IGetTemplatesQuery.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <Folder Include="GitLab\Commands\" />
+    <Folder Include="GitLab\Queries\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DevOps.Portal.Data\DevOps.Portal.Data.csproj">
+      <Project>{397CFAAD-29F3-41CE-9225-25FCF5451D18}</Project>
+      <Name>DevOps.Portal.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DevOps.Portal.Domain\DevOps.Portal.Domain.csproj">
       <Project>{CB2C84C3-F5DB-48BA-81D4-DD2277E4FF26}</Project>
       <Name>DevOps.Portal.Domain</Name>
@@ -94,6 +113,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -17,15 +17,19 @@
         return directive;
     }
 
-    dpVisualStudioStepController.$inject = ['$state', 'createSolutionService'];
+    dpVisualStudioStepController.$inject = ['$state', 'createSolutionService', 'templateService'];
 
-    function dpVisualStudioStepController($state, createSolutionService) {
+    function dpVisualStudioStepController($state, createSolutionService, templateService) {
         var vm = this;
         vm.$onInit = activate;
         vm.moveToNextStep = moveToNextStep;
 
         function activate() {
             vm.model = createSolutionService.model;
+
+            templateService.getTemplates().then(function (data) {
+                vm.templates = data;
+            });
         }
 
         function moveToNextStep() {

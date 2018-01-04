@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.14
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevOps.Portal.Web", "DevOps.Portal.Web\DevOps.Portal.Web.csproj", "{1C3744F7-5874-4127-921F-CCB25A8BAAF2}"
 EndProject
@@ -19,6 +19,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevOps.Portal.Infrastructure", "DevOps.Portal.Infrastructure\DevOps.Portal.Infrastructure.csproj", "{3F3AC37B-ED9E-475A-99B2-288BFE34CB61}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevOps.Portal.Common", "DevOps.Portal.Common\DevOps.Portal.Common.csproj", "{AC6D161D-CE91-4E2B-B809-C521AA79D9EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevOps.Portal.Tests.Integration", "DevOps.Portal.Tests.Integration\DevOps.Portal.Tests.Integration.csproj", "{924F761F-A683-427E-8698-50AD9DCAEC65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevOps.Portal.Data", "DevOps.Portal.Data\DevOps.Portal.Data.csproj", "{397CFAAD-29F3-41CE-9225-25FCF5451D18}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,8 +54,19 @@ Global
 		{AC6D161D-CE91-4E2B-B809-C521AA79D9EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC6D161D-CE91-4E2B-B809-C521AA79D9EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC6D161D-CE91-4E2B-B809-C521AA79D9EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{924F761F-A683-427E-8698-50AD9DCAEC65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{924F761F-A683-427E-8698-50AD9DCAEC65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{924F761F-A683-427E-8698-50AD9DCAEC65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{924F761F-A683-427E-8698-50AD9DCAEC65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{397CFAAD-29F3-41CE-9225-25FCF5451D18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{397CFAAD-29F3-41CE-9225-25FCF5451D18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{397CFAAD-29F3-41CE-9225-25FCF5451D18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{397CFAAD-29F3-41CE-9225-25FCF5451D18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B3C56BFA-B2C2-4CEB-8232-56455FEDAB83}
 	EndGlobalSection
 EndGlobal
