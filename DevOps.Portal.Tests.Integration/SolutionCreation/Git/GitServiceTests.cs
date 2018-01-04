@@ -22,7 +22,7 @@ namespace DevOps.Portal.Tests.Integration.SolutionCreation.Git
         [Test]
         public void CloneRepo()
         {
-            var task = Sut.CloneProject(_repoUrl, s => { });
+            var task = Sut.CloneProjectAsync(_repoUrl, s => { });
             task.Wait();
 
             Assert.That(task.Result.Suceess, Is.True);

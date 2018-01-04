@@ -25,7 +25,7 @@ namespace DevOps.Portal.Tests.Integration.Filesystem
 
             var gitService = Get<IGitService>();
             var _repoUrl = "https://github.com/Gary-Moore/SolutionTemplates.git";
-            var task = gitService.CloneProject(_repoUrl, s => { });
+            var task = gitService.CloneProjectAsync(_repoUrl, s => { });
             task.Wait();
         }
 

@@ -4,7 +4,7 @@ using DevOps.Portal.Application.SolutionCreation;
 
 namespace DevOps.Portal.Application.VisualStudio.Commands.DownloadTemplate
 {
-    public interface IDownloadTemplateCommand
+    public interface ICloneSolutionTemplateCommand
     {
         Task<ActionResponse> ExecuteAsync(CreateSolutionModel model, Action<CreateSolutionModel, string> notifyAction);
     }

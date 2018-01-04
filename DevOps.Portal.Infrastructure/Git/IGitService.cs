@@ -6,7 +6,6 @@ namespace DevOps.Portal.Infrastructure.Git
 {
     public interface IGitService
     {
-        Task DownloadProjectAsync(string projectUrl, string filePath);
-        Task<ScriptExecutionResult> CloneProject(string projectUrl, Action<string> callback);
+        Task<ScriptExecutionResult> CloneProjectAsync(string projectUrl, Action<string> callback);
     }
 }

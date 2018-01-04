@@ -85,11 +85,13 @@
     <Compile Include="Teamcity\Queries\GetProjects\ProjectSearchLevel.cs" />
     <Compile Include="VisualStudio\Commands\CreateSolution\CreateVisualStudioSolutionCommand.cs" />
     <Compile Include="VisualStudio\Commands\CreateSolution\ICreateVisualStudioSolutionCommand.cs" />
-    <Compile Include="VisualStudio\Commands\DownloadTemplate\DownloadTemplateCommand.cs" />
-    <Compile Include="VisualStudio\Commands\DownloadTemplate\IDownloadTemplateCommand.cs" />
+    <Compile Include="VisualStudio\Commands\DownloadTemplate\CloneSolutionTemplateCommand.cs" />
+    <Compile Include="VisualStudio\Commands\DownloadTemplate\ICloneSolutionTemplateCommand.cs" />
     <Compile Include="VisualStudio\Commands\UpdateSolutionNamespaces\IUpdateSolutionFileNamespacesCommand.cs" />
     <Compile Include="VisualStudio\Commands\UpdateSolutionNamespaces\UpdateSolutionFileNamespacesCommand.cs" />
+    <Compile Include="VisualStudio\Queries\GetTemplates\GetTemplateByIdQuery.cs" />
     <Compile Include="VisualStudio\Queries\GetTemplates\GetTemplatesQuery.cs" />
+    <Compile Include="VisualStudio\Queries\GetTemplates\IGetTemplateByIdQuery.cs" />
     <Compile Include="VisualStudio\Queries\GetTemplates\IGetTemplatesQuery.cs" />
   </ItemGroup>
   <ItemGroup>

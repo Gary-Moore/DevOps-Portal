@@ -67,7 +67,7 @@ namespace DevOps.Portal.Tests.Integration.SolutionCreation.VisualStudio
         private void CloneTestGitRepo()
         {
             var gitService = Get<IGitService>();
-            var cloneTask = gitService.CloneProject(GitRepoUrl, s => { });
+            var cloneTask = gitService.CloneProjectAsync(GitRepoUrl, s => { });
             cloneTask.Wait();
         }
     }
