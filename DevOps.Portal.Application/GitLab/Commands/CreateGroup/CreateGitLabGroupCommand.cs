@@ -4,24 +4,24 @@ using DevOps.Portal.Infrastructure.Git;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace DevOps.Portal.Application.GitLab.Commands.CreateProject
+namespace DevOps.Portal.Application.GitLab.Commands.CreateGroup
 {
-    public class CreateGitLabProjectCommand : ICreateGitLabProjectCommand
+    public class CreateGitLabGroupCommand : ICreateGitLabGroupCommand
     {
         private readonly IGitLabService _gitLabService;
 
-        public CreateGitLabProjectCommand(IGitLabService gitLabService)
+        public CreateGitLabGroupCommand(IGitLabService gitLabService)
         {
             _gitLabService = gitLabService;
         }
 
-        public async Task<Project> ExecuteAsync(Project project)
+        public async Task<Group> ExecuteAsync(Group project)
         {
             var serializerSettings =
                 new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() };
             var json = JsonConvert.SerializeObject(project, serializerSettings);
 
-            return await _gitLabService.Create(json);
+            return await _gitLabService.CreateGroup(json);
         }
     }
 }

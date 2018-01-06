@@ -9,5 +9,6 @@ namespace DevOps.Portal.Infrastructure.Configuration
         string DownloadDirectory { get; }
         string StorageUriEndpoint { get; }
         string StorageAccountKey { get; }
+        string GitLabUrl { get; }
     }
 }

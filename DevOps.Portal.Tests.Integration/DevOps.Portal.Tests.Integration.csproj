@@ -73,6 +73,7 @@
     <Compile Include="DependencyResolution\IoC.cs" />
     <Compile Include="Filesystem\DirectoryServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SolutionCreation\Git\GitLabServiceTests.cs" />
     <Compile Include="SolutionCreation\Git\GitServiceTests.cs" />
     <Compile Include="SolutionCreation\VisualStudio\CreateVisualStudioSolutionCommandTests.cs" />
     <Compile Include="SolutionCreation\VisualStudio\UpdateSolutionFileNamespacesCommandTests.cs" />

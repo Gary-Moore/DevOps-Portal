@@ -45,8 +45,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActionResponse.cs" />
+    <Compile Include="GitLab\Commands\CreateGroup\CreateGitLabGroupCommand.cs" />
+    <Compile Include="GitLab\Commands\CreateGroup\ICreateGitLabGroupCommand.cs" />
     <Compile Include="GitLab\Commands\CreateProject\CreateGitLabProjectCommand.cs" />
     <Compile Include="GitLab\Commands\CreateProject\ICreateGitLabProjectCommand.cs" />
+    <Compile Include="GitLab\Queries\GetProjects\GetProjectByIdQuery.cs" />
+    <Compile Include="GitLab\Queries\GetProjects\GetProjectsQuery.cs" />
+    <Compile Include="GitLab\Queries\GetProjects\IGetProjectByIdQuery.cs" />
+    <Compile Include="GitLab\Queries\GetProjects\IGetProjectsQuery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SolutionCreation\Commands\CreateSolutionCommand.cs" />
     <Compile Include="SolutionCreation\Commands\ICreateSolutionCommand.cs" />
@@ -97,7 +103,7 @@
     <Compile Include="VisualStudio\Queries\GetTemplates\IGetTemplatesQuery.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="GitLab\Queries\GetProjects\" />
+    <Folder Include="GitLab\Queries\GetGroup\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DevOps.Portal.Data\DevOps.Portal.Data.csproj">
