@@ -17,5 +17,7 @@ namespace DevOps.Portal.Infrastructure.Git
         Task<Group> CreateGroup(string createGroupJson);
 
         Task<Group> UpdateGroup(string updateGroupJson);
+
+        Task DeleteGroup(string deleteGroupJson);
     }
 }

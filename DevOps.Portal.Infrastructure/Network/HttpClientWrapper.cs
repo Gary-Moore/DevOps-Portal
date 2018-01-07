@@ -29,6 +29,11 @@ namespace DevOps.Portal.Infrastructure.Network
             return await SendDataAsync(url, data, contentType, HttpMethod.Put, credentials, convertAction, acceptContent);
         }
 
+        public async Task<NetworkResponse<T>> DeleteDataAsync<T>(Uri url, string data, string contentType, ICredentials credentials, Func<string, T> convertAction) where T : class
+        {
+            return await SendDataAsync(url, data, contentType, HttpMethod.Delete, credentials, convertAction);
+        }
+
         private static async Task<NetworkResponse<T>> SendDataAsync<T>(Uri url, string data, string contentType, HttpMethod httpMethod, ICredentials credentials,
             Func<string, T> convertAction, string acceptContent = MediaContentTypes.Json) where T : class
         {

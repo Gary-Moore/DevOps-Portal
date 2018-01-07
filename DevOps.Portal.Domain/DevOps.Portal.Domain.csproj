@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GitLab\Group.cs" />
+    <Compile Include="GitLab\GroupVisibility.cs" />
     <Compile Include="GitLab\Project.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Teamcity\Build.cs" />

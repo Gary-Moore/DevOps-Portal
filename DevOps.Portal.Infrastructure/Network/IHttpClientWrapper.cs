@@ -15,6 +15,9 @@ namespace DevOps.Portal.Infrastructure.Network
         Task<NetworkResponse<T>> GetDataAsync<T>(Uri url, string data, string contentType, ICredentials credentials,
             Func<string, T> convertAction) where T : class;
 
+        Task<NetworkResponse<T>> DeleteDataAsync<T>(Uri url, string data, string contentType, ICredentials credentials,
+            Func<string, T> convertAction) where T : class;
+
         Task DownloadZip(Uri requestUri, string fileName);
     }
 }

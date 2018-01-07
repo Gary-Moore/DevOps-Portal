@@ -73,6 +73,13 @@ namespace DevOps.Portal.Infrastructure.Git
             return result.ResponseData;
         }
 
+        public async Task DeleteGroup(string deleteGroupJson)
+        {
+            var result = await _httpClientWrapper.DeleteDataAsync(GroupsUrl, deleteGroupJson, MediaContentTypes.Json,
+                _networkCredential, JsonConvert.DeserializeObject<Group>);
+            
+        }
+
         private Uri GitLabApiBaseUrl => new Uri($"{_gitLabBaseUrl}/api/v4");
         private Uri ProjectsUrl => new Uri($"{GitLabApiBaseUrl}/projects");
         private Uri ProjectUrl(string id) => new Uri($"{ProjectsUrl}/id:{id}");
