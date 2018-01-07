@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace DevOps.Portal.Domain.GitLab
 {
@@ -20,6 +21,7 @@ namespace DevOps.Portal.Domain.GitLab
         public string Description { get; set; }
 
         [JsonProperty(PropertyName = "visibility")]
+        [JsonConverter(typeof(StringEnumConverter))]
         public GroupVisibility Visibility { get; set; }    
     }
 }

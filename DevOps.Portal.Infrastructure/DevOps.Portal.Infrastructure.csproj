@@ -77,11 +77,13 @@
     <Compile Include="Configuration\IConfiguration.cs" />
     <Compile Include="FileSystem\DirectoryService.cs" />
     <Compile Include="FileSystem\IDirectoryService.cs" />
+    <Compile Include="Git\GitLabOperationException.cs" />
     <Compile Include="Git\GitLabService.cs" />
     <Compile Include="Git\GitService.cs" />
     <Compile Include="Git\IGitLabService.cs" />
     <Compile Include="Git\IGitService.cs" />
     <Compile Include="InfrastructureRegistry.cs" />
+    <Compile Include="Network\CustomHeader.cs" />
     <Compile Include="Network\HttpClientWrapper.cs" />
     <Compile Include="Network\IHttpClientWrapper.cs" />
     <Compile Include="Network\MediaContentTypes.cs" />

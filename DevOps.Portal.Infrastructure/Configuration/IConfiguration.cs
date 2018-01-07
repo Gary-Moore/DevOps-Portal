@@ -10,5 +10,6 @@ namespace DevOps.Portal.Infrastructure.Configuration
         string StorageUriEndpoint { get; }
         string StorageAccountKey { get; }
         string GitLabUrl { get; }
+        string GitLabPrivateToken { get; }
     }
 }

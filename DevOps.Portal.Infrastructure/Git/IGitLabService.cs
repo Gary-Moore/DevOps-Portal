@@ -18,6 +18,6 @@ namespace DevOps.Portal.Infrastructure.Git
 
         Task<Group> UpdateGroup(string updateGroupJson);
 
-        Task DeleteGroup(string deleteGroupJson);
+        Task<bool> DeleteGroup(string deleteGroupJson);
     }
 }

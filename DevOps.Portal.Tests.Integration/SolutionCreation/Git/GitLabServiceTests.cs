@@ -16,12 +16,14 @@ namespace DevOps.Portal.Tests.Integration.SolutionCreation.Git
         private IGitLabService Sut;
         private string _json;
         private Group _group;
+        private Project _project;
+        private string _groupId;
+        private string _projectId;
 
         [SetUp]
         public void Setup()
         {
             Sut = Get<IGitLabService>();
-
         }
 
         [Test]
@@ -38,19 +40,51 @@ namespace DevOps.Portal.Tests.Integration.SolutionCreation.Git
             _json = ParseObjectTojson(_group);
             var result = Sut.CreateGroup(_json);
             result.Wait();
+            _groupId = result.Result.Id;
 
-            Assert.That(result.Result.Id, Is.Not.Empty);
+            Assert.That(_groupId, Is.Not.Empty);
+        }
+
+        [Test]
+        public void CreateProject_ReturnsSucessfulResult()
+        {
+            _group = new Group()
+            {
+                Name = "Divisions",
+                Description = "Divisions system",
+                Path = "Divisions",
+                Visibility = GroupVisibility.Private
+            };
+
+            _json = ParseObjectTojson(_group);
+            var createGroupResult = Sut.CreateGroup(_json);
+            createGroupResult.Wait();
+            
+            _project = new Project()
+            {
+                Name = "Admin",
+                Description = "Divisions Admin system",
+                Path = "Admin",
+                GroupId = createGroupResult.Result.Id,
+                Visibility = GroupVisibility.Private
+            };
+
+            _json = ParseObjectTojson(_project);
+            var result = Sut.Create(_json);
+            result.Wait();
+            _projectId = result.Result.Id;
+
+            Assert.That(_groupId, Is.Not.Empty);
         }
 
         [TearDown]
         public void TearDown()
         {
-            _json = ParseObjectTojson(_group);
-            var result = Sut.DeleteGroup(_json);
+            var result = Sut.DeleteGroup(_groupId);
             result.Wait();
         }
 
-        private string ParseObjectTojson<T>(T model) where T : class
+        private static string ParseObjectTojson<T>(T model) where T : class
         {
             return JsonConvert.SerializeObject(model);
         }
