@@ -25,7 +25,9 @@ namespace DevOps.Portal.Application.SolutionCreation.Commands
         {
             notifyAction(model, "Solution creation process started");
 
-            var visualStudioResponse  = await _createVisualStudioSolutionCommand.ExecuteAsync(model, notifyAction);
+            var visualStudioResponse = await _createVisualStudioSolutionCommand.ExecuteAsync(model, notifyAction);
+
+            var gitLabResponse = await _createTeamcitySolutionCommand.ExecuteAsync(model, notifyAction);
 
             var teamCityResponse = await _createTeamcitySolutionCommand.ExecuteAsync(model, notifyAction);
 
