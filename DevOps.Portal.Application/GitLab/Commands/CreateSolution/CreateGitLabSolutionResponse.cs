@@ -6,7 +6,8 @@ namespace DevOps.Portal.Application.GitLab.Commands.CreateSolution
     {
         public Group Group { get; set; }
 
-        public Project Project { get; set; }    
+        public Project Project { get; set; }
 
+        public bool PushToRepositorySuccessful { get; set; }
     }
 }
