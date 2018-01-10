@@ -3,34 +3,41 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Net.Mime;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 
 namespace DevOps.Portal.Infrastructure.Network
 {
     public class HttpClientWrapper : IHttpClientWrapper
     {
         public async Task<NetworkResponse<T>> GetDataAsync<T>(Uri url, string data, string contentType, ICredentials credentials,
-            Func<string, T> convertAction) where T : class
+            Func<string, T> convertAction, CustomHeader customHeader = null) where T : class
         {
             return await SendDataAsync(url, data, contentType, HttpMethod.Get, credentials, convertAction);
         }
 
-        public async Task<NetworkResponse<T>> PostDataAsync<T>(Uri url, string data, string contentType, ICredentials credentials,
-            Func<string, T> convertAction) where T : class
+        public async Task<NetworkResponse<T>> PostDataAsync<T>(Uri url, string data, string contentType,
+            ICredentials credentials,
+            Func<string, T> convertAction, CustomHeader customHeader = null) where T : class
         {
-            return await SendDataAsync(url, data, contentType, HttpMethod.Post, credentials, convertAction);
+            return await SendDataAsync(url, data, contentType, HttpMethod.Post, credentials, convertAction,
+                customHeader: customHeader);
         }
-        
+
         public async Task<NetworkResponse<T>> PutDataAsync<T>(Uri url, string data, string contentType, ICredentials credentials,
-            Func<string, T> convertAction, string acceptContent = MediaContentTypes.Json) where T : class
+            Func<string, T> convertAction, string acceptContent = MediaContentTypes.Json, CustomHeader customHeader = null) where T : class
         {
             return await SendDataAsync(url, data, contentType, HttpMethod.Put, credentials, convertAction, acceptContent);
         }
 
+        public async Task<NetworkResponse<T>> DeleteDataAsync<T>(Uri url, string data, string contentType,
+            ICredentials credentials, Func<string, T> convertAction, CustomHeader customHeader = null) where T : class
+        {
+            return await SendDataAsync(url, data, contentType, HttpMethod.Delete, credentials, convertAction,
+                customHeader: customHeader);
+        }
+
         private static async Task<NetworkResponse<T>> SendDataAsync<T>(Uri url, string data, string contentType, HttpMethod httpMethod, ICredentials credentials,
-            Func<string, T> convertAction, string acceptContent = MediaContentTypes.Json) where T : class
+            Func<string, T> convertAction, string acceptContent = MediaContentTypes.Json, CustomHeader customHeader = null) where T : class
         {
             try
             {
@@ -38,6 +45,11 @@ namespace DevOps.Portal.Infrastructure.Network
                 using (var client = new HttpClient(handler))
                 {
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptContent));
+
+                    if (customHeader != null)
+                    {
+                        client.DefaultRequestHeaders.Add(customHeader.Name, customHeader.Value);
+                    }
 
                     var requestMessage = new HttpRequestMessage(httpMethod, url);
                     if (data != null)

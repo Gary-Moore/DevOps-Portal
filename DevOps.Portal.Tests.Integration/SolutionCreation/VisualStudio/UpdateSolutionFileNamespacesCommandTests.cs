@@ -16,14 +16,17 @@ namespace DevOps.Portal.Tests.Integration.SolutionCreation.VisualStudio
         private IConfiguration _configuration;
         private CreateSolutionModel _createSolutionModel;
         private const string GitRepoUrl = "https://github.com/Gary-Moore/SolutionTemplates.git";
+        private IDirectoryService _directoryService;
 
         [SetUp]
         public void Setup()
         {
             _Sut = Get<UpdateSolutionFileNamespacesCommand>();
             _configuration = Get<IConfiguration>();
+            _directoryService = Get<IDirectoryService>();
 
             CloneTestGitRepo();
+            CopyFolder();
         }
         
         [Test]
@@ -70,5 +73,11 @@ namespace DevOps.Portal.Tests.Integration.SolutionCreation.VisualStudio
             var cloneTask = gitService.CloneProjectAsync(GitRepoUrl, s => { });
             cloneTask.Wait();
         }
+        
+        private void CopyFolder()
+        {
+            _directoryService.CopyDirectory(_configuration.DownloadDirectory, _configuration.WorkingDirectory);
+        }
+
     }
 }

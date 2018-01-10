@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using DevOps.Portal.Application.Teamcity.Commands.CreateSolution;
 using DevOps.Portal.Application.VisualStudio.Commands.CreateSolution;
@@ -25,7 +22,9 @@ namespace DevOps.Portal.Application.SolutionCreation.Commands
         {
             notifyAction(model, "Solution creation process started");
 
-            var visualStudioResponse  = await _createVisualStudioSolutionCommand.ExecuteAsync(model, notifyAction);
+            var visualStudioResponse = await _createVisualStudioSolutionCommand.ExecuteAsync(model, notifyAction);
+
+            var gitLabResponse = await _createTeamcitySolutionCommand.ExecuteAsync(model, notifyAction);
 
             var teamCityResponse = await _createTeamcitySolutionCommand.ExecuteAsync(model, notifyAction);
 

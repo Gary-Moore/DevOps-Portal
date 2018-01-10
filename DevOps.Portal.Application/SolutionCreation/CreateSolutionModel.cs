@@ -19,5 +19,12 @@
         public string TemplateUrl { get; set; }
 
         public string SolutionTemplateId { get; set; }
+
+        // GitLab
+        public int? GitLabGroupId { get; set; }
+        public string GitLabGroupName { get; set; }
+        public string GitLabProjectName { get; set; }
+        public string GitLabProjectDescription { get; set; }
+        public string GitLabGroupPath { get; set; }
     }
 }

@@ -77,16 +77,18 @@
     <Compile Include="Configuration\IConfiguration.cs" />
     <Compile Include="FileSystem\DirectoryService.cs" />
     <Compile Include="FileSystem\IDirectoryService.cs" />
+    <Compile Include="Git\GitLabOperationException.cs" />
+    <Compile Include="Git\GitLabService.cs" />
     <Compile Include="Git\GitService.cs" />
+    <Compile Include="Git\IGitLabService.cs" />
     <Compile Include="Git\IGitService.cs" />
     <Compile Include="InfrastructureRegistry.cs" />
+    <Compile Include="Network\CustomHeader.cs" />
     <Compile Include="Network\HttpClientWrapper.cs" />
     <Compile Include="Network\IHttpClientWrapper.cs" />
     <Compile Include="Network\MediaContentTypes.cs" />
     <Compile Include="Network\NetworkResponse.cs" />
-    <Compile Include="Scripts\IPowerShellService.cs" />
     <Compile Include="Scripts\PowershellScript.cs" />
-    <Compile Include="Scripts\PowerShellService.cs" />
     <Compile Include="Scripts\ScriptExecutionResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Teamcity\ITeamcityService.cs" />
@@ -106,6 +108,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\Convert-Solution.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\Create-GitRepository.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

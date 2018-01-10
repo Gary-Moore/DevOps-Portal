@@ -12,6 +12,8 @@ namespace DevOps.Portal.Infrastructure.Configuration
         public string DownloadDirectory => GetAppSettingValue<string>(nameof(DownloadDirectory));
         public string StorageUriEndpoint => GetAppSettingValue<string>(nameof(StorageUriEndpoint));
         public string StorageAccountKey => GetAppSettingValue<string>(nameof(StorageAccountKey));
+        public string GitLabUrl => GetAppSettingValue<string>(nameof(GitLabUrl));
+        public string GitLabPrivateToken => GetAppSettingValue<string>(nameof(GitLabPrivateToken));
 
         private static T GetAppSettingValue<T>(string key) where T : IConvertible
         {
