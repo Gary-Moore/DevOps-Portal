@@ -19,9 +19,8 @@ namespace DevOps.Portal.Infrastructure.Scripts
             Name = name;
             _callback = callback;
             ArgumentsList = new List<KeyValuePair<string, string>>();
-            ScriptFolderPath = ConfigurationManager.AppSettings["PowerShellDirectory"];
             var projectDirectory = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
-            ScriptFolderPath = Path.Combine(projectDirectory.FullName, ScriptFolderPath);
+            ScriptFolderPath = Path.Combine(projectDirectory.FullName, "Scripts");
         }
 
         public ScriptExecutionResult ExecuteAync()

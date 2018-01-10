@@ -2,6 +2,6 @@
 {
     public class PushToRepositoryRequest
     {
-       
+        public string RepositoryUrl { get; set; }
     }
 }

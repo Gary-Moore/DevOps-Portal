@@ -46,6 +46,8 @@
   <ItemGroup>
     <Compile Include="ActionResponse.cs" />
     <Compile Include="GitLab\Commands\CreateGroup\CreateGitLabGroupCommand.cs" />
+    <Compile Include="GitLab\Commands\CreateGroup\Factory\GitLabGroupFactory.cs" />
+    <Compile Include="GitLab\Commands\CreateGroup\Factory\IGitLabGroupFactory.cs" />
     <Compile Include="GitLab\Commands\CreateGroup\ICreateGitLabGroupCommand.cs" />
     <Compile Include="GitLab\Commands\CreateProject\CreateGitLabProjectCommand.cs" />
     <Compile Include="GitLab\Commands\CreateProject\Factory\GitLabProjectFactory.cs" />

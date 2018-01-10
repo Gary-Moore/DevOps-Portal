@@ -28,5 +28,8 @@ namespace DevOps.Portal.Domain.GitLab
         [JsonProperty(PropertyName = "visibility")]
         [JsonConverter(typeof(StringEnumConverter))]
         public GroupVisibility Visibility { get; set; }
+
+        [JsonProperty(PropertyName = "http_url_to_repo")]
+        public string HttpUrl { get; set; }
     }
 }

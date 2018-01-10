@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using DevOps.Portal.Application.GitLab.Commands.CreateGroup;
+using DevOps.Portal.Application.GitLab.Commands.CreateGroup.Factory;
 using DevOps.Portal.Application.GitLab.Commands.CreateProject;
 using DevOps.Portal.Application.GitLab.Commands.CreateProject.Factory;
 using DevOps.Portal.Application.GitLab.Commands.CreateSolution;
@@ -20,6 +21,7 @@ namespace DevOps.Portal.Tests.SolutionCreation.GitLab
         private ICreateGitLabProjectCommand _createGitLabProjectCommand;
         private IPushToGitLabRepositoryCommand _pushToGitLabRepositoryCommand;
         private IGitLabProjectFactory _gitLabProjectFactory;
+        private IGitLabGroupFactory _gitLabGroupFactory;
 
         private PushToRepositoryResponse _pushToRepositoryResponse;
         private Project _project;
@@ -33,6 +35,7 @@ namespace DevOps.Portal.Tests.SolutionCreation.GitLab
             _createGitLabProjectCommand = A.Fake<ICreateGitLabProjectCommand>();
             _pushToGitLabRepositoryCommand = A.Fake<IPushToGitLabRepositoryCommand>();
             _gitLabProjectFactory = A.Fake<IGitLabProjectFactory>();
+            _gitLabGroupFactory = A.Fake<IGitLabGroupFactory>();
 
             _pushToRepositoryResponse = new PushToRepositoryResponse()
             {
@@ -50,7 +53,7 @@ namespace DevOps.Portal.Tests.SolutionCreation.GitLab
             A.CallTo(() => _createGitLabProjectCommand.ExecuteAsync(A<Project>._)).Returns(_project);
 
             _sut = new CreateGitLabSolutionCommand(_createGitLabGroupCommand, _createGitLabProjectCommand,
-                _pushToGitLabRepositoryCommand, _gitLabProjectFactory);
+                _pushToGitLabRepositoryCommand, _gitLabProjectFactory, _gitLabGroupFactory);
         }
 
         [Test]
