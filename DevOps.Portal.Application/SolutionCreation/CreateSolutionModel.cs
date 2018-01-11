@@ -26,5 +26,11 @@
         public string GitLabProjectName { get; set; }
         public string GitLabProjectDescription { get; set; }
         public string GitLabGroupPath { get; set; }
+
+        // Octopus
+        public string OctopusProjectName { get; set; }
+        public string OctopusGroupName { get; set; }
+        public string OctopusGroupId { get; set; }
+        public string OctopusLifeCycleId { get; set; }
     }
 }

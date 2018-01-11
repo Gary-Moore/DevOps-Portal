@@ -14,6 +14,8 @@ namespace DevOps.Portal.Infrastructure.Configuration
         public string StorageAccountKey => GetAppSettingValue<string>(nameof(StorageAccountKey));
         public string GitLabUrl => GetAppSettingValue<string>(nameof(GitLabUrl));
         public string GitLabPrivateToken => GetAppSettingValue<string>(nameof(GitLabPrivateToken));
+        public string OctopusApiKey => GetAppSettingValue<string>(nameof(OctopusApiKey));
+        public string OctopusServerUrl => GetAppSettingValue<string>(nameof(OctopusServerUrl));
 
         private static T GetAppSettingValue<T>(string key) where T : IConvertible
         {
