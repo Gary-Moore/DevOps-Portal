@@ -16,6 +16,9 @@ namespace DevOps.Portal.Infrastructure.Configuration
         public string GitLabPrivateToken => GetAppSettingValue<string>(nameof(GitLabPrivateToken));
         public string OctopusApiKey => GetAppSettingValue<string>(nameof(OctopusApiKey));
         public string OctopusServerUrl => GetAppSettingValue<string>(nameof(OctopusServerUrl));
+        public string AzureClientId => GetAppSettingValue<string>(nameof(AzureClientId));
+        public string AzureClientSecret => GetAppSettingValue<string>(nameof(AzureClientSecret));
+        public string AzureTenantId => GetAppSettingValue<string>(nameof(AzureTenantId));
 
         private static T GetAppSettingValue<T>(string key) where T : IConvertible
         {
