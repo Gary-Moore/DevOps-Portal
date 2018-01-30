@@ -11,5 +11,10 @@ namespace DevOps.Portal.Infrastructure.Configuration
         string StorageAccountKey { get; }
         string GitLabUrl { get; }
         string GitLabPrivateToken { get; }
+        string OctopusApiKey { get; }
+        string OctopusServerUrl { get; }
+        string AzureClientId { get; }
+        string AzureClientSecret { get; }
+        string AzureTenantId { get; }
     }
 }
