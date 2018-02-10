@@ -20,8 +20,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatStepperModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatStepperModule
   ],
-  declarations: [SolutionCreationComponent, TeamcityComponent, OctopusComponent, VisualStudioComponent, AzureComponent, GitlabComponent]
+  declarations: [SolutionCreationComponent, TeamcityComponent, 
+    OctopusComponent, VisualStudioComponent, AzureComponent, GitlabComponent]
 })
 export class SolutionCreationModule { }
