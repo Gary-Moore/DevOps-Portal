@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'dp-solution-creation',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SolutionCreationComponent implements OnInit {
 
-  constructor() { }
+  visualStudioFormGroup: FormGroup;
+  constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.visualStudioFormGroup = this._formBuilder.group({
+      firstCtrl: ['', Validators.required]
+    });
   }
 
 }

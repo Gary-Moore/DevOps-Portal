@@ -5,11 +5,12 @@ import { FooterComponent } from './footer/footer.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { RouterModule } from '@angular/router';
+import { MaterialModule } from '../shared/material.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    MatToolbarModule,
+    MaterialModule,
     RouterModule
   ],
   declarations: [HeaderComponent, FooterComponent, SideMenuComponent],

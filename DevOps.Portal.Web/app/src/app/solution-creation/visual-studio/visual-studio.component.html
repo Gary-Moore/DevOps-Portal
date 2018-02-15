@@ -1,5 +1,9 @@
-<mat-step label="Visual Studio" [stepControl]="visualStudioFormGroup">
-  <form [formGroup]="visualStudioFormGroup">
-   
-  </form>
-</mat-step>
+<mat-form-field>
+  <input matInput placeholder="Enter solution name" formControlName="solutionName" required>
+</mat-form-field>
+<mat-form-field>
+  <input matInput placeholder="Enter Project name" formControlName="projectName" required>
+</mat-form-field>
+<div>
+  <button mat-button matStepperNext type="button">Next</button>
+</div>

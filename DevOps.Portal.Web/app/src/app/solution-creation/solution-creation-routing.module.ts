@@ -8,7 +8,7 @@ const routes: Routes = [
     path: 'solution-creation', 
     component: SolutionCreationComponent,
     children: [
-      {path: '', component: VisualStudioComponent}
+      //{path: '', component: VisualStudioComponent}
     ]
   }
 ];

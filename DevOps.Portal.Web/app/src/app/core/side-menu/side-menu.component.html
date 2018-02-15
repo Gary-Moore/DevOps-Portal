@@ -1,10 +1,19 @@
-<nav>
-  <ul>
-    <li>
-      <a [routerLink]="['/dashboard']" href="">Dashboard</a>
-    </li>
-    <li>
-        <a [routerLink]="['/solution-creation']" href=""> Solution Creator</a>
-     </li>
-  </ul>
-</nav>
+<mat-sidenav-container class="dp-side-container">
+  <mat-sidenav #sidenav 
+            class="dp-sidenav mat-elevation-z10"
+            [mode]="isScreenSmall() ? 'over' : 'side'" 
+            [opened]="!isScreenSmall()">            
+      <mat-nav-list>
+        <mat-list-item>
+          <a [routerLink]="['/dashboard']" href="">Dashboard</a>
+        </mat-list-item>
+        <mat-list-item>
+          <a [routerLink]="['/solution-creation']" href=""> Solution Creator</a>
+        </mat-list-item>
+      </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="dp-sidenav-content">
+      <router-outlet></router-outlet>
+      <dp-footer></dp-footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>

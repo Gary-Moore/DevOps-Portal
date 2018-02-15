@@ -1,8 +1,11 @@
 <mat-horizontal-stepper linear>
-  <dp-visual-studio></dp-visual-studio>
+  <mat-step label="Visual Studio" [stepControl]="visualStudioFormGroup">
+    <form [formGroup]="visualStudioFormGroup" class="form-container">
+      <dp-visual-studio></dp-visual-studio>
+    </form>
+  </mat-step>
   <mat-step label="GitLab"></mat-step>
   <mat-step label="Teamcity"></mat-step>
   <mat-step label="Octopus"></mat-step>
   <mat-step label="Azure"></mat-step>
 </mat-horizontal-stepper>
-<router-outlet></router-outlet>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { VisualStudioTemplateService } from './visual-studio-template.service';
+import { Observable } from 'rxjs/Observable';
+import { VisualStudioTemplate } from '../models/visual-studio-template';
 
 @Component({
   selector: 'dp-visual-studio',
@@ -7,14 +9,15 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./visual-studio.component.scss']
 })
 export class VisualStudioComponent implements OnInit {
-
-  visualStudioFormGroup: FormGroup;
+  templates: Observable<VisualStudioTemplate[]>;
   
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(private templateService: VisualStudioTemplateService) { }
 
   ngOnInit() {
-    this.visualStudioFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
-    });
+   this.templates = this.templateService.templates;
+   this.templateService.loadAll();
+   this.templates.subscribe(data =>{
+     console.log(data);
+   });
   }
 }

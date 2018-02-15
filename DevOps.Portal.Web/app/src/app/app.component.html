@@ -1,11 +1,3 @@
 <dp-header></dp-header>
-<mat-sidenav-container>
-    <mat-sidenav mode="side" opened="true">
-        <dp-side-menu></dp-side-menu>
-    </mat-sidenav>
-    <mat-sidenav-content>
-        <router-outlet></router-outlet>
-        <dp-footer></dp-footer>
-    </mat-sidenav-content>
-</mat-sidenav-container>
+<dp-side-menu (toggleSideNav)="togs()"></dp-side-menu>
 
