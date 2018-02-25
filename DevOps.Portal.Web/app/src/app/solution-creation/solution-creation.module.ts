@@ -11,6 +11,7 @@ import { GitlabComponent } from './gitlab/gitlab.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { MaterialModule } from '../shared/material.module';
+import { VisualStudioTemplateService } from './visual-studio/visual-studio-template.service';
 
 @NgModule({
   imports: [
@@ -19,7 +20,16 @@ import { MaterialModule } from '../shared/material.module';
     SolutionCreationRoutingModule,
     ReactiveFormsModule    
   ],
-  declarations: [SolutionCreationComponent, TeamcityComponent, 
-    OctopusComponent, VisualStudioComponent, AzureComponent, GitlabComponent]
+  declarations: [
+    SolutionCreationComponent, 
+    TeamcityComponent, 
+    OctopusComponent, 
+    VisualStudioComponent, 
+    AzureComponent, 
+    GitlabComponent
+  ],
+  providers:[
+    VisualStudioTemplateService
+  ]
 })
 export class SolutionCreationModule { }
