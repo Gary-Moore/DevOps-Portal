@@ -1,11 +1,83 @@
 <mat-horizontal-stepper linear>
   <mat-step label="Visual Studio" [stepControl]="visualStudioFormGroup">
-    <form [formGroup]="visualStudioFormGroup" class="form-container">
-      <dp-visual-studio></dp-visual-studio>
+    <form [formGroup]="visualStudioForm" class="form-container">
+        <mat-form-field>
+            <input matInput placeholder="Enter solution name" formControlName="solutionName" required>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Enter Project name" formControlName="projectName" required>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="select a template">
+              <mat-option *ngFor="let template of templates" [value]="template.value">
+                {{template.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperNext type="button">Next</button>
+          </div>
+      <!-- <dp-visual-studio></dp-visual-studio> -->
     </form>
   </mat-step>
-  <mat-step label="GitLab"></mat-step>
-  <mat-step label="Teamcity"></mat-step>
-  <mat-step label="Octopus"></mat-step>
-  <mat-step label="Azure"></mat-step>
+  <mat-step label="GitLab">
+      <form [formGroup]="gitLabForm" class="form-container">
+          <mat-form-field>
+              <input matInput placeholder="Enter Group name" formControlName="gitlabGroupName" required>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Enter Project name" formControlName="gitlabProjectName" required>
+          </mat-form-field>
+          <div>
+              <button mat-button matStepperPrevious ype="button">Back</button>
+          </div>
+          <div>
+              <button mat-button matStepperNext type="button">Next</button>
+          </div>
+        <!-- <dp-visual-studio></dp-visual-studio> -->
+      </form>
+  </mat-step>
+  <mat-step label="Teamcity">
+    <form [formGroup]="teamcityForm" class="form-container">
+        <mat-button-toggle-group #group="matButtonToggleGroup">
+          <mat-button-toggle>
+            Existing
+          </mat-button-toggle>
+          <mat-button-toggle>
+              New Project
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+        <mat-form-field>
+            <input matInput placeholder="Enter Group name" formControlName="teamcityParentProject" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Enter Sub Project name" formControlName="teamcitySubProjecttName" required>
+        </mat-form-field>
+        <div>
+              <button mat-button matStepperPrevious ype="button">Back</button>
+        </div>
+        <div>
+            <button mat-button matStepperNext type="button">Next</button>
+        </div>
+    </form>
+  </mat-step>
+  <mat-step label="Octopus">
+      <form [formGroup]="octopusForm" class="form-container">
+          <mat-form-field>
+              <input matInput placeholder="Enter Group name" formControlName="octopusParentProject" required>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Enter Sub Project name" formControlName="octopusSubProjecttName" required>
+          </mat-form-field>
+          <div>
+              <button mat-button matStepperPrevious ype="button">Back</button>
+        </div>
+        <div>
+            <button mat-button matStepperNext type="button">Next</button>
+        </div>
+      </form>
+  </mat-step>
+  <mat-step label="Azure">
+
+  </mat-step>
 </mat-horizontal-stepper>

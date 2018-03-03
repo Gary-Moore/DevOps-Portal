@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { VisualStudioTemplateService } from './visual-studio-template.service';
 import { Observable } from 'rxjs/Observable';
 import { VisualStudioTemplate } from '../models/visual-studio-template';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'dp-visual-studio',
@@ -10,7 +11,8 @@ import { VisualStudioTemplate } from '../models/visual-studio-template';
 })
 export class VisualStudioComponent implements OnInit {
   templates: Observable<VisualStudioTemplate[]>;
-  
+  visualStudioForm:FormGroup;
+
   constructor(private templateService: VisualStudioTemplateService) { }
 
   ngOnInit() {
@@ -18,6 +20,10 @@ export class VisualStudioComponent implements OnInit {
    this.templateService.loadAll();
    this.templates.subscribe(data =>{
      console.log(data);
+   });
+
+   this.visualStudioForm = new FormGroup({
+     
    });
   }
 }
