@@ -8,10 +8,10 @@ import { OctopusComponent } from './octopus/octopus.component';
 import { VisualStudioComponent } from './visual-studio/visual-studio.component';
 import { AzureComponent } from './azure/azure.component';
 import { GitlabComponent } from './gitlab/gitlab.component';
-import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { MaterialModule } from '../shared/material.module';
 import { VisualStudioTemplateService } from './visual-studio/visual-studio-template.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
