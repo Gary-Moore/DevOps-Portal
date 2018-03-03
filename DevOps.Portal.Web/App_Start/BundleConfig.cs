@@ -23,10 +23,15 @@ namespace DevOps.Portal.Web
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
+                    "~/angular_dist/inline.*",
+                    "~/angular_dist/polyfills.*",
+                    "~/angular_dist/scripts.*",
+                    "~/angular_dist/vendor.*",
+                    "~/angular_dist/main.*"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/scss/main.css",
-                      "~/Content/select.css",
+                      "~/angular_dist/styles.*",
                       "~/Content/font-awesome.css",
                       "~/Content/toastr.css"));
         }

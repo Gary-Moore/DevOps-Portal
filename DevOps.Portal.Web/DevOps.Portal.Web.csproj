@@ -182,6 +182,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SolutionCreationController.cs" />
     <Compile Include="Controllers\SolutionCreatorController.cs" />
     <Compile Include="Controllers\SolutionTemplateController.cs" />
     <Compile Include="Controllers\TeamCityController.cs" />
@@ -202,6 +203,13 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="angular_dist\favicon.ico" />
+    <Content Include="angular_dist\index.html" />
+    <Content Include="angular_dist\inline.bundle.js" />
+    <Content Include="angular_dist\main.bundle.js" />
+    <Content Include="angular_dist\polyfills.bundle.js" />
+    <Content Include="angular_dist\styles.bundle.css" />
+    <Content Include="angular_dist\vendor.bundle.js" />
     <Content Include="app\karma.conf.js" />
     <Content Include="app\protractor.conf.js" />
     <Content Include="app\src\app\app.component.html" />
@@ -215,12 +223,10 @@
     <Content Include="app\src\app\solution-creation\solution-creation.component.html" />
     <Content Include="app\src\app\solution-creation\teamcity\teamcity.component.html" />
     <Content Include="app\src\app\solution-creation\visual-studio\visual-studio.component.html" />
+    <Content Include="app\src\assets\images\gearwheels-couple.svg" />
+    <Content Include="app\src\assets\images\two-cogwheels-configuration-interface-symbol.svg" />
     <Content Include="app\src\favicon.ico" />
     <Content Include="app\src\index.html" />
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\images\gearwheels-couple.svg" />
@@ -235,24 +241,15 @@
     <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="packages.config" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Scripts\angular-signalr-hub.js" />
     <Content Include="Scripts\angular-signalr-hub.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\fontawesome-webfont.woff" />
@@ -282,6 +279,11 @@
     <Content Include="app\src\app\solution-creation\teamcity\teamcity.component.scss" />
     <Content Include="app\src\app\solution-creation\visual-studio\visual-studio.component.scss" />
     <Content Include="app\src\app\solution-creation\solution-creation.component.scss" />
+    <Content Include="angular_dist\inline.bundle.js.map" />
+    <Content Include="angular_dist\main.bundle.js.map" />
+    <Content Include="angular_dist\polyfills.bundle.js.map" />
+    <Content Include="angular_dist\vendor.bundle.js.map" />
+    <Content Include="angular_dist\styles.bundle.css.map" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -444,4 +446,10 @@
   </Target>
   <Target Name="AfterBuild">
   </Target> -->
+  <Target Name="NgDebug" BeforeTargets="Build" Condition="'$(Configuration)' == 'Debug'">
+    <Exec WorkingDirectory="$(ProjectDir)app" Command="ng build -ec" />
+  </Target>
+  <Target Name="NgRelease" BeforeTargets="Build" Condition="'$(Configuration)' == 'Release'">
+    <Exec WorkingDirectory="$(ProjectDir)app" Command="ng build --prod" />
+  </Target>
 </Project>
