@@ -252,3 +252,4 @@ paket-files/
 *.sln.iml
 # Bower pacakges
 /DevOps.Portal.Web/Scripts/bower
+/DevOps.Portal.Web/app/dist/out-tsc

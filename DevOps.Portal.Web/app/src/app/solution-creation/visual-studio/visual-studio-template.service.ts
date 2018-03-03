@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { VisualStudioTemplate } from '../models/visual-studio-template';
+import { VisualStudioTemplate } from '../shared/visual-studio-template';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { VisualStudioTemplateService } from './visual-studio-template.service';
 import { Observable } from 'rxjs/Observable';
-import { VisualStudioTemplate } from '../models/visual-studio-template';
+import { VisualStudioTemplate } from '../shared/visual-studio-template';
 import { FormGroup } from '@angular/forms';
 
 @Component({
