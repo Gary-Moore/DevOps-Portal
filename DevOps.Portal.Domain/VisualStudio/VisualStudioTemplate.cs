@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace DevOps.Portal.Domain.VisualStudio
 {
-    public class SolutionTemplate
+    public class VisualStudioTemplate
     {
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }

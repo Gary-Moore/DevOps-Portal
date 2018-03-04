@@ -1,17 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { HttpModule } from "@angular/http";
+
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MaterialModule } from '../shared/material.module';
+
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { SideMenuComponent } from './side-menu/side-menu.component';
-import { RouterModule } from '@angular/router';
-import { MaterialModule } from '../shared/material.module';
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
-    RouterModule
+    RouterModule,
+    HttpModule
   ],
   declarations: [HeaderComponent, FooterComponent, SideMenuComponent],
   exports:[HeaderComponent, FooterComponent, SideMenuComponent]

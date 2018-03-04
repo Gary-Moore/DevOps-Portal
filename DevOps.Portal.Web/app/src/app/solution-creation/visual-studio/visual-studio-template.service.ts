@@ -23,7 +23,7 @@ export class VisualStudioTemplateService {
   }
 
   loadAll(){
-    const templatesUrl = '';
+    const templatesUrl = '/api/visual-studio/templates';
 
     return this.http.get<VisualStudioTemplate[]>(templatesUrl)
     .subscribe(data => {

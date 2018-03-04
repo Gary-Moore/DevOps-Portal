@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
+using DevOps.Portal.Web.Models.SolutionCreator;
 
 namespace DevOps.Portal.Web.Controllers
 {
+    [Route("api/solution-creation")]
     public class SolutionCreationController : ApiController
     {
+        public SolutionCreationController()
+        {
+            
+        }
+
         // GET api/<controller>
         public IEnumerable<string> Get()
         {
@@ -21,19 +25,9 @@ namespace DevOps.Portal.Web.Controllers
             return "value";
         }
 
-        // POST api/<controller>
-        public void Post([FromBody]string value)
+        public void Post([FromBody]VisualStudioProjectViewModel model)
         {
-        }
-
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
+            Console.Write("post" + model.ProjectName);
         }
     }
 }

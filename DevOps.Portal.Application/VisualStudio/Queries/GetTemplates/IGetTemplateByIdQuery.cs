@@ -6,6 +6,6 @@ namespace DevOps.Portal.Application.VisualStudio.Queries.GetTemplates
 {
     public interface IGetTemplateByIdQuery
     {
-        Task<SolutionTemplate> ExecuteAsync(string id);
+        Task<VisualStudioTemplate> ExecuteAsync(string id);
     }
 }

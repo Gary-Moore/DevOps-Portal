@@ -8,8 +8,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class SolutionCreationComponent implements OnInit {
 
-  visualStudioForm: FormGroup;
-  gitlabForm: FormGroup;
+  
+  gitLabForm: FormGroup;
   teamcityForm: FormGroup;
   octopusForm: FormGroup;
   azureForm: FormGroup;
@@ -17,12 +17,9 @@ export class SolutionCreationComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.visualStudioForm = this._formBuilder.group({
-      solutionName: ['', Validators.required],
-      projectName : ['', Validators.required]
-    });
+    
 
-    this.gitlabForm = this._formBuilder.group({
+    this.gitLabForm = this._formBuilder.group({
 
     });
 

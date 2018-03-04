@@ -9,19 +9,19 @@ namespace DevOps.Portal.Application.VisualStudio.Queries.GetTemplates
 {
     public class GetTemplatesQuery : IGetTemplatesQuery
     {
-        private readonly IDevOpsPortalRepository<SolutionTemplate> _repository;
+        private readonly IDevOpsPortalRepository<VisualStudioTemplate> _repository;
 
-        public GetTemplatesQuery(IDevOpsPortalRepository<SolutionTemplate> repository)
+        public GetTemplatesQuery(IDevOpsPortalRepository<VisualStudioTemplate> repository)
         {
             _repository = repository;
         }
 
-        public async Task<IEnumerable<SolutionTemplate>> ExecuteAsync()
+        public async Task<IEnumerable<VisualStudioTemplate>> ExecuteAsync()
         {
             return await _repository.GetItemsAysnc(WhereFilter);
         }
 
-        private static Expression<Func<SolutionTemplate, bool>> WhereFilter
+        private static Expression<Func<VisualStudioTemplate, bool>> WhereFilter
         {
             get { return x => true; }
         }

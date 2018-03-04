@@ -76,7 +76,7 @@
     <Compile Include="Teamcity\VcsProperty.cs" />
     <Compile Include="Teamcity\VcsRoot.cs" />
     <Compile Include="Teamcity\VcsRootEntry.cs" />
-    <Compile Include="VisualStudio\SolutionTemplate.cs" />
+    <Compile Include="VisualStudio\VisualStudioTemplate.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
