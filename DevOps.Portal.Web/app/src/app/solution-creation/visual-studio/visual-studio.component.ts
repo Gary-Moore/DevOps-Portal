@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { VisualStudioTemplateService } from './visual-studio-template.service';
 import { Observable } from 'rxjs/Observable';
-import { VisualStudioTemplate } from '../shared/visual-studio-template';
+import { IVisualStudioTemplate } from '../shared/visual-studio-template';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -10,7 +10,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./visual-studio.component.scss']
 })
 export class VisualStudioComponent implements OnInit {
-  templates: Observable<VisualStudioTemplate[]>;
+  templates: Observable<IVisualStudioTemplate[]>;
   visualStudioForm:FormGroup;
 
   constructor(private _formBuilder: FormBuilder, private templateService: VisualStudioTemplateService) { }
@@ -24,7 +24,8 @@ export class VisualStudioComponent implements OnInit {
 
    this.visualStudioForm = this._formBuilder.group({
       solutionName: ['', Validators.required],
-      projectName : ['', Validators.required]
+      projectName: ['', Validators.required],
+      templateId: ['', Validators.required]
     });
   }
 }

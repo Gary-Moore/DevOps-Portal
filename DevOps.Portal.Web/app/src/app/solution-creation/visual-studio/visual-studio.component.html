@@ -1,14 +1,14 @@
 <form [formGroup]="visualStudioForm" class="form-container">
-  <mat-form-field>
+    <mat-form-field>
       <input matInput placeholder="Enter solution name" formControlName="solutionName" required>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Enter Project name" formControlName="projectName" required>
+      <input matInput placeholder="Enter project name" formControlName="projectName" required>
     </mat-form-field>
     <mat-form-field>
-      <mat-select placeholder="select a template">
-        <mat-option *ngFor="let template of templates" [value]="template.value">
-          {{template.name}}
+      <mat-select placeholder="Select a template" formControlName="templateId" required>
+        <mat-option *ngFor="let template of templates| async" [value]="template.id">
+          {{template.description}}
         </mat-option>
       </mat-select>
     </mat-form-field>
