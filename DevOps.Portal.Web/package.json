@@ -1,0 +1,13 @@
+{
+  "name": "devops-portal",
+  "version": "1.0.0",
+  "description": "Portal Application to control the DevOps process of a development team",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gary Moore",
+  "license": "ISC",
+  "devDependencies": {
+    "@angular/cli": "^6.0.0"
+  }
+}
