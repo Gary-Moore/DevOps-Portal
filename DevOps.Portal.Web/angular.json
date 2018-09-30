@@ -4,7 +4,7 @@
   "newProjectRoot": "projects",
   "projects": {
     "portal-app": {
-      "root": "",
+      "root": "ClientApp",
       "sourceRoot": "ClientApp",
       "projectType": "application",
       "prefix": "app",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "wwwroot/ClientApp/dist/portal-app",
+            "outputPath": "wwwroot/clientapp/dist/portal-app",
             "index": "ClientApp/index.html",
             "main": "ClientApp/main.ts",
             "polyfills": "ClientApp/polyfills.ts",
@@ -123,5 +123,10 @@
       }
     }
   },
-  "defaultProject": "portal-app"
+  "defaultProject": "portal-app",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

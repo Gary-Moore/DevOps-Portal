@@ -1,0 +1,66 @@
+<div>
+    <h1>Ultrabuild</h1>
+
+    <app-wizard (completed)="complete()">
+        <app-wizard-step (next)="stepNext($event)" [title]="'Visual Studio'" [showPrev]="false" [showNext]="true">
+            <form #visualStudioForm="ngForm">
+                <div class="form-group">
+                    <label>Solution name</label>
+                    <input class="form-control" name="solutionName" placeholder="Enter a solution name" [(ngModel)]="model.visualStudio.solutionName" required />
+                </div>
+
+                <div class="form-group">
+                    <label>Project name</label>
+                    <input class="form-control" placeholder="Enter a project name" required />
+                </div>
+            </form>
+        </app-wizard-step>
+        <app-wizard-step [title]="'GitLab'" [showPrev]="true" [showNext]="true">
+            <div class="form-group">
+                <label>Group name</label>
+                <input class="form-control" placeholder="Enter a group name" required />
+            </div>
+
+            <div class="form-group">
+                <label>Project name</label>
+                <input class="form-control" placeholder="Enter a project name" required />
+            </div>
+        </app-wizard-step>
+        <app-wizard-step [title]="'Teamcity'" [showPrev]="true" [showNext]="true">
+            <div class="form-group">
+                <label>Group name</label>
+                <input class="form-control" placeholder="Enter a group name" required />
+            </div>
+
+            <div class="form-group">
+                <label>Project name</label>
+                <input class="form-control" placeholder="Enter a project name" required />
+            </div>
+        </app-wizard-step>
+        <app-wizard-step [title]="'Octopus'" [showPrev]="true" [showNext]="true">
+            <div class="form-group">
+                <label>Group name</label>
+                <input class="form-control" placeholder="Enter a group name" required />
+            </div>
+
+            <div class="form-group">
+                <label>Project name</label>
+                <input class="form-control" placeholder="Enter a project name" required />
+            </div>
+        </app-wizard-step>
+        <app-wizard-step [title]="'Azure'" [showPrev]="true" [showNext]="true">
+            <div class="form-group">
+                <label>Group name</label>
+                <input class="form-control" placeholder="Enter a group name" required />
+            </div>
+
+            <div class="form-group">
+                <label>Project name</label>
+                <input class="form-control" placeholder="Enter a project name" required />
+            </div>
+        </app-wizard-step>
+        <app-wizard-step [title]="'Confirm'" [showPrev]="true" [showNext]="false">
+
+        </app-wizard-step>
+    </app-wizard>
+</div>

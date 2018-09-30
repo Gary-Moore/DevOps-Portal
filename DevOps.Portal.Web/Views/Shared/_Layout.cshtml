@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -9,7 +9,11 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-@RenderBody()
-    <portal-app></portal-app>
-<script type="text/javascript" src="/dist/app.bundle.js"></script><script type="text/javascript" src="/dist/polyfills.bundle.js"></script></body>
+    @RenderBody()
+    <script src="~/clientapp/dist/portal-app/runtime.js"></script>
+    <script src="~/clientapp/dist/portal-app/polyfills.js"></script>
+    <script src="~/clientapp/dist/portal-app/styles.js"></script>
+    <script src="~/clientapp/dist/portal-app/vendor.js"></script>
+    <script src="~/clientapp/dist/portal-app/main.js"></script>
+</body>
 </html>
