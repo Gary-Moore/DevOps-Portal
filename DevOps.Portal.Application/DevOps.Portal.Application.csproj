@@ -34,8 +34,13 @@
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Octopus.Client, Version=4.29.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Octopus.Client.4.29.0\lib\net451\Octopus.Client.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -64,6 +69,11 @@
     <Compile Include="GitLab\Queries\GetProjects\GetProjectsQuery.cs" />
     <Compile Include="GitLab\Queries\GetProjects\IGetProjectByIdQuery.cs" />
     <Compile Include="GitLab\Queries\GetProjects\IGetProjectsQuery.cs" />
+    <Compile Include="Octopus\Commands\CreateProject\CreateOctopusProjectCommand.cs" />
+    <Compile Include="Octopus\Commands\CreateProject\ICreateOctopusProjectCommand.cs" />
+    <Compile Include="Octopus\Commands\CreateSolution\CreateOctopusSolutionCommand.cs" />
+    <Compile Include="Octopus\Commands\CreateSolution\CreateOctopusSolutionResponse.cs" />
+    <Compile Include="Octopus\Commands\CreateSolution\ICreateOctopusSolutionCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SolutionCreation\Commands\CreateSolutionCommand.cs" />
     <Compile Include="SolutionCreation\Commands\ICreateSolutionCommand.cs" />
@@ -115,6 +125,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="GitLab\Queries\GetGroup\" />
+    <Folder Include="Octopus\Commands\CreateGroup\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DevOps.Portal.Data\DevOps.Portal.Data.csproj">
