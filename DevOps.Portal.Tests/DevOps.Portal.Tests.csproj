@@ -98,10 +98,6 @@
       <Project>{3f3ac37b-ed9e-475a-99b2-288bfe34cb61}</Project>
       <Name>DevOps.Portal.Infrastructure</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DevOps.Portal.WebOld\DevOps.Portal.WebOld.csproj">
-      <Project>{1c3744f7-5874-4127-921f-ccb25a8baaf2}</Project>
-      <Name>DevOps.Portal.WebOld</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

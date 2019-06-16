@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using DevOps.Portal.Core.Application.UltraBuild;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DevOps.Portal.Web.Controllers
@@ -14,7 +11,7 @@ namespace DevOps.Portal.Web.Controllers
         [HttpPut]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
-        public IActionResult Put(string x)
+        public IActionResult Put([FromBody] UltraBuildModel model)
         {
             return Ok("Solution built");
         }

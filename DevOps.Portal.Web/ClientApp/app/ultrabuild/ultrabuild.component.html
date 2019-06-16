@@ -6,24 +6,28 @@
             <form #visualStudioForm="ngForm">
                 <div class="form-group">
                     <label>Solution name</label>
-                    <input class="form-control" name="solutionName" placeholder="Enter a solution name" [(ngModel)]="model.visualStudio.solutionName" required />
+                    <input class="form-control" name="solutionName" placeholder="Enter a solution name" [(ngModel)]="model.visualStudio.solutionName"
+                        required />
                 </div>
 
                 <div class="form-group">
                     <label>Project name</label>
-                    <input class="form-control" placeholder="Enter a project name" required />
+                    <input class="form-control" name="projectName" placeholder="Enter a project name" [(ngModel)]="model.visualStudio.projectName"
+                        required />
                 </div>
             </form>
         </app-wizard-step>
         <app-wizard-step [title]="'GitLab'" [showPrev]="true" [showNext]="true">
             <div class="form-group">
                 <label>Group name</label>
-                <input class="form-control" placeholder="Enter a group name" required />
+                <input class="form-control" name="groupName" placeholder="Enter a group name" [(ngModel)]="model.gitLab.groupName"
+                    required />
             </div>
 
             <div class="form-group">
                 <label>Project name</label>
-                <input class="form-control" placeholder="Enter a project name" required />
+                <input class="form-control" name="projectName" placeholder="Enter a project name" [(ngModel)]="model.gitLab.projectName"
+                    required />
             </div>
         </app-wizard-step>
         <app-wizard-step [title]="'Teamcity'" [showPrev]="true" [showNext]="true">
@@ -40,12 +44,14 @@
         <app-wizard-step [title]="'Octopus'" [showPrev]="true" [showNext]="true">
             <div class="form-group">
                 <label>Group name</label>
-                <input class="form-control" placeholder="Enter a group name" required />
+                <input class="form-control" name="groupName" placeholder="Enter a group name" [(ngModel)]="model.octopus.groupName"
+                    required />
             </div>
 
             <div class="form-group">
                 <label>Project name</label>
-                <input class="form-control" placeholder="Enter a project name" required />
+                <input class="form-control" name="projectName" placeholder="Enter a project name" [(ngModel)]="model.octopus.projectName"
+                    required />
             </div>
         </app-wizard-step>
         <app-wizard-step [title]="'Azure'" [showPrev]="true" [showNext]="true">

@@ -12,6 +12,6 @@ export class UltraBuildService {
 
   build(model: IUltraBuild): Observable<any> {
     const uri = 'api/ultrabuild';
-    return this.http.put(uri, {x: model.visualStudio.solutionName});
+    return this.http.put<IUltraBuild>(uri, model);
   }
 }

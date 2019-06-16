@@ -30,6 +30,7 @@
   </ItemGroup>
   
   <ItemGroup>
+    <ProjectReference Include="..\DevOps.Portal.Core.Application\DevOps.Portal.Core.Application.csproj" />
     <ProjectReference Include="..\DevOps.Portal.Core.Domain\DevOps.Portal.Core.Domain.csproj" />
     <ProjectReference Include="..\DevOps.Portal.Core.Infrastructure\DevOps.Portal.Core.Infrastructure.csproj" />
   </ItemGroup>
