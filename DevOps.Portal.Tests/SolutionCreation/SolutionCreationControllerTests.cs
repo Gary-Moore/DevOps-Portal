@@ -6,7 +6,7 @@ using DevOps.Portal.Application.SolutionCreation;
 using DevOps.Portal.Application.SolutionCreation.Commands;
 using DevOps.Portal.Application.SolutionCreation.Validation;
 using DevOps.Portal.Infrastructure.Teamcity;
-using DevOps.Portal.Web.Controllers;
+using DevOps.Portal.WebOld.Controllers;
 using FakeItEasy;
 using NUnit.Framework;
 

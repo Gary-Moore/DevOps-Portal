@@ -6,14 +6,14 @@ namespace DevOps.Portal.Application.VisualStudio.Queries.GetTemplates
 {
     public class GetTemplateByIdQuery : IGetTemplateByIdQuery
     {
-        private readonly IDevOpsPortalRepository<SolutionTemplate> _repository;
+        private readonly IDevOpsPortalRepository<VisualStudioTemplate> _repository;
 
-        public GetTemplateByIdQuery(IDevOpsPortalRepository<SolutionTemplate> repository)
+        public GetTemplateByIdQuery(IDevOpsPortalRepository<VisualStudioTemplate> repository)
         {
             _repository = repository;
         }
 
-        public async Task<SolutionTemplate> ExecuteAsync(string id)
+        public async Task<VisualStudioTemplate> ExecuteAsync(string id)
         {
             return await _repository.GetItemAsync(id);
         }
