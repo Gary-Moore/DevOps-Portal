@@ -85,20 +85,6 @@
     <Folder Include="SolutionCreation\Teamcity\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DevOps.Portal.Application\DevOps.Portal.Application.csproj">
-      <Project>{4a78a1ed-910c-4c6b-8f73-46a11993c215}</Project>
-      <Name>DevOps.Portal.Application</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DevOps.Portal.Domain\DevOps.Portal.Domain.csproj">
-      <Project>{cb2c84c3-f5db-48ba-81d4-dd2277e4ff26}</Project>
-      <Name>DevOps.Portal.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DevOps.Portal.Infrastructure\DevOps.Portal.Infrastructure.csproj">
-      <Project>{3f3ac37b-ed9e-475a-99b2-288bfe34cb61}</Project>
-      <Name>DevOps.Portal.Infrastructure</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
