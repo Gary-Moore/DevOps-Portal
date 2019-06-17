@@ -1,0 +1,40 @@
+.sidenav {
+    flex: 0 1 320px;
+    height: calc(100vh - 3.1rem);
+    position: sticky;
+    left: 0;
+    background-color: #323130;
+    margin-left: -15px;
+    margin-right: -15px;
+    border-right: 1px;
+    box-shadow: inset -6px 0px 8px 0px rgba(0, 0, 0, 0.5);
+    padding-top: 10px;
+
+    .sidenav-link {
+        display: block;
+
+        &:hover {
+            background-color: #444440;
+            box-shadow: inset -6px 0px 2px 0px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+        }
+
+        a {
+            text-decoration: none;
+            color: azure;
+            display: flex;
+            flex: 1 1 auto;
+            height: 32px;
+            padding-left: 15px;
+            align-items: center;
+
+            .side-nav-label {
+                flex: 1 1 auto;
+                margin-left: 8px;
+            }
+
+            &.active {
+            }
+        }
+    }
+}

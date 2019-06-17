@@ -1,0 +1,22 @@
+<div class="sidenav">
+  <nav class="">
+    <div class="sidenav-link">
+        <a routerLink="/dashboard" routerLinkActive="active">
+            <fa-icon [icon]="['fas', 'tachometer-alt']"></fa-icon>
+            <div class="side-nav-label">Dashboard</div>
+        </a>
+    </div>
+    <div class="sidenav-link">
+        <a routerLink="/teamcity" routerLinkActive="active">
+            <fa-icon [icon]="['fas', 'hammer']"></fa-icon>
+            <div class="side-nav-label">Builds</div>
+        </a>
+    </div>
+    <div class="sidenav-link">
+        <a routerLink="/application-logs" routerLinkActive="active">
+            <fa-icon [icon]="['fas', 'sticky-note']"></fa-icon>
+            <div class="side-nav-label">Application logs</div>
+        </a>
+    </div>
+  </nav>
+</div>
