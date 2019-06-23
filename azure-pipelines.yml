@@ -16,11 +16,12 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: 'Terraform'
+    SourceFolder: '$(System.DefaultWorkingDirectory)\Terraform'
     Contents: '**'
-    TargetFolder: '$(build.artifactstagingdirectory)/Terraform'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)/Terraform'
