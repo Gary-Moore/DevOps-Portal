@@ -20,8 +20,7 @@ steps:
   displayName: 'dotnet build $(buildConfiguration)
 
 - task: CopyFiles@2
-  displayName: 'Copy Terraform files'
   inputs:
-    SourceFolder: Terraform
+    SourceFolder: 'Terraform'
     Contents: '**'
     TargetFolder: '$(build.artifactstagingdirectory)/Terraform'
