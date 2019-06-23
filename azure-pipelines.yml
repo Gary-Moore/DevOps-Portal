@@ -23,4 +23,5 @@ steps:
   displayName: 'Copy Terraform files'
   inputs:
     SourceFolder: Terraform
+    Contents: '**'
     TargetFolder: '$(build.artifactstagingdirectory)/Terraform'
