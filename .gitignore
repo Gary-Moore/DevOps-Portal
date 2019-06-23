@@ -254,3 +254,6 @@ paket-files/
 /DevOps.Portal.Web/Scripts/bower
 /DevOps.Portal.Web/app/dist/out-tsc
 /DevOps.Portal.Web/angular_dist
+
+# Local .terraform directories
+**/.terraform/*
