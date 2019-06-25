@@ -18,15 +18,18 @@ variables:
 steps:
 
 - task: DotNetCoreCLI@2
+  displayName: 'Restore Packages'
   inputs:
     command: 'restore'
     feedsToUse: 'select'
 
 - task: DotNetCoreCLI@2
+  displayName: 'Build Solution'
   inputs:
     command: 'build'
 
 - task: CopyFiles@2
+  displayName: 'Copy Terraform to artifacts'
   inputs:
     SourceFolder: '$(System.DefaultWorkingDirectory)/Terraform'
     Contents: '**'
