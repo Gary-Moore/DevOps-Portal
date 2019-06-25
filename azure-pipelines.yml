@@ -43,7 +43,7 @@ steps:
     TargetFolder: '$(Build.ArtifactStagingDirectory)/Terraform'
 
 - task: PublishBuildArtifacts@1
-  displayName: 'Publish Arifact'
+  displayName: 'Publish Artifact'
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
