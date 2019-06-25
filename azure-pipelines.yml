@@ -24,6 +24,6 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '$(System.DefaultWorkingDirectory)\Terraform'
+    SourceFolder: '$(System.DefaultWorkingDirectory)/Terraform'
     Contents: '**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)/Terraform'
