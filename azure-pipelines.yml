@@ -18,19 +18,33 @@ variables:
 steps:
 
 - task: DotNetCoreCLI@2
-  displayName: 'Restore Packages'
+  displayName: 'Restore'
   inputs:
     command: 'restore'
     feedsToUse: 'select'
 
 - task: DotNetCoreCLI@2
-  displayName: 'Build Solution'
+  displayName: 'Build'
   inputs:
     command: 'build'
 
+- task: DotNetCoreCLI@2
+  displayName: 'Publish'
+  inputs:
+    command: 'publish'
+    publishWebProjects: true
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+
 - task: CopyFiles@2
-  displayName: 'Copy Terraform to artifacts'
+  displayName: 'Copy Terraform files to artifacts'
   inputs:
     SourceFolder: '$(System.DefaultWorkingDirectory)/Terraform'
     Contents: '**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)/Terraform'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Arifact'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
