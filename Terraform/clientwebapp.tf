@@ -28,13 +28,13 @@ resource "azurerm_app_service_plan" "devops_portal" {
   kind = "Linux"
   reserved = true
 
-  sku = {
-    tier = "Free",
+  sku {
+    tier = "Free"
     size = "F1"
   }
 
   tags = {
-    product = "devops portal",
+      product = "devops portal",
       organisation = "GammaWeb Solutions"
   }
 }
