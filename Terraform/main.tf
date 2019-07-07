@@ -58,3 +58,15 @@ resource "azurerm_app_service" "devops_portal" {
   }
 }
 
+resource "azurerm_app_service" "devops_portal" {
+  name = "gw-devops-portal-api"
+  location = "${azurerm_resource_group.devops_portal.location}"
+  resource_group_name = "${azurerm_resource_group.devops_portal.name}"
+  app_service_plan_id = "${azurerm_app_service_plan.devops_portal.id}"
+  https_only = true
+
+  tags = {
+      product = "${var.product}",
+      organisation = "${var.organisation}"
+  }
+}
