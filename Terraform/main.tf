@@ -45,7 +45,7 @@ resource "azurerm_app_service_plan" "devops_portal" {
   }
 }
 
-resource "azurerm_app_service" "devops_portal" {
+resource "azurerm_app_service" "devops_portal_client" {
   name = "gw-devops-portal-client"
   location = "${azurerm_resource_group.devops_portal.location}"
   resource_group_name = "${azurerm_resource_group.devops_portal.name}"
@@ -58,7 +58,7 @@ resource "azurerm_app_service" "devops_portal" {
   }
 }
 
-resource "azurerm_app_service" "devops_portal" {
+resource "azurerm_app_service" "devops_portal_api" {
   name = "gw-devops-portal-api"
   location = "${azurerm_resource_group.devops_portal.location}"
   resource_group_name = "${azurerm_resource_group.devops_portal.name}"
