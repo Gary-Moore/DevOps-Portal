@@ -33,14 +33,12 @@ steps:
   inputs:
     command: 'build'
 
-
-
 - task: DotNetCoreCLI@2
   displayName: 'Publish'
   inputs:
     command: 'publish'
     publishWebProjects: true
-    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)/ClientApp'
 
 - task: CopyFiles@2
   displayName: 'Copy Terraform files to artifacts'
