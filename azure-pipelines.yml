@@ -1,71 +1,39 @@
-# ASP.NET Core
-# Build and test ASP.NET Core projects targeting .NET Core.
-# Add steps that run tests, create a NuGet package, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+# Docker
+# Build and push an image to Azure Container Registry
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
 trigger:
-  branches:
-    include:
-    - master
-
-pr:
 - master
 
-pool:
-  vmImage: 'Ubuntu-16.04'
+resources:
+- repo: self
 
 variables:
-  buildConfiguration: 'Release'
+  # Container registry service connection established during pipeline creation
+  dockerRegistryServiceConnection: '9bb53b60-bb2a-4c16-90ff-fa7838d92e2a'
+  imageRepository: 'devopsportal'
+  containerRegistry: 'gammawebuk.azurecr.io'
+  dockerfilePath: '**/Dockerfile'
+  tag: '$(Build.BuildId)'
+  
+  # Agent VM image name
+  vmImageName: 'ubuntu-latest'
 
-steps:
-
-- task: GitVersion@4
-  inputs:
-    updateAssemblyInfo: true
-
-- task: DotNetCoreCLI@2
-  displayName: 'Restore'
-  inputs:
-    command: 'restore'
-    feedsToUse: 'select'
-
-- task: DotNetCoreCLI@2
-  displayName: 'Build'
-  inputs:
-    command: 'build'
-
-- task: DotNetCoreCLI@2
-  displayName: 'Publish Client'
-  inputs:
-    command: 'publish'
-    publishWebProjects: true
-    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)/ClientApp'
-
-- task: DotNetCoreCLI@2
-  displayName: 'Publish Api'
-  inputs:
-    command: 'publish'
-    publishWebProjects: false
-    projects: 'DevOps.Portal.Api/*.csproj'
-    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)/Api'
-
-- task: CopyFiles@2
-  displayName: 'Copy Terraform files to artifacts'
-  inputs:
-    SourceFolder: '$(System.DefaultWorkingDirectory)/Terraform'
-    Contents: '**'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)/Terraform'
-
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact'
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
-
-- task: Docker@2
-  inputs:
-    containerRegistry: 'gammaweb'
-    repository: '$(imageRepository)'
-    command: 'buildAndPush'
-    Dockerfile: '**/Dockerfile'
+stages:
+- stage: Build
+  displayName: Build and push stage
+  jobs:  
+  - job: Build
+    displayName: Build
+    pool:
+      vmImage: $(vmImageName)
+    steps:
+    - task: Docker@2
+      displayName: Build and push an image to container registry
+      inputs:
+        command: buildAndPush
+        repository: $(imageRepository)
+        dockerfile: $(dockerfilePath)
+        containerRegistry: $(dockerRegistryServiceConnection)
+        tags: |
+          $(tag)
