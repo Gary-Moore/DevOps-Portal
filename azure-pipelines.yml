@@ -64,7 +64,8 @@ steps:
     publishLocation: 'Container'
 
 - task: Docker@2
-  displayName: 'Build an image'
   inputs:
+    containerRegistry: 'gammaweb'
+    repository: '$(imageRepository)'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
