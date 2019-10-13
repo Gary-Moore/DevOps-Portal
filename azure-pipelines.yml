@@ -10,7 +10,6 @@ resources:
 
 variables:
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: '9bb53b60-bb2a-4c16-90ff-fa7838d92e2a'
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
   
